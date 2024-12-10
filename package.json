@@ -1,0 +1,22 @@
+{
+  "name": "fleet-types",
+  "version": "1.0.0",
+  "description": "Reusable TypeScript types and interfaces for Fleet API.",
+  "main": "",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc && cp -R src/types dist/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "typescript",
+    "types",
+    "interfaces",
+    "api"
+  ],
+  "author": "Zahid Allaulddin",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  }
+}
