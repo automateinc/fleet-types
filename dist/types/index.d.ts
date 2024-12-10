@@ -1,3 +1,38 @@
+import { AxiosError } from "axios";
+import { UseInfiniteQueryOptions, UseMutationOptions, UseQueryOptions } from "@tanstack/react-query";
+
+type APIError = {
+	error:
+		| string
+		| Array<{
+				message: string;
+				field: string;
+		  }>;
+};
+
+export type MutationOptions<Response, Args = void> = UseMutationOptions<Response, AxiosError<APIError>, Args, any>;
+
+export type QueryOptions<Response> = UseQueryOptions<Response, AxiosError<APIError>, Response, any>;
+
+export type InfiniteQueryOptions<Response> = Omit<
+	UseInfiniteQueryOptions<Response, AxiosError<APIError>, Response, Response, any>,
+	"queryKey" | "queryFn"
+>;
+
+export type FormInputType<T> = Parameters<ReturnType<T>["mutate"]>[0];
+
+export type PaginatedResponse<T> = {
+	limit: number;
+	page: number;
+	count: number;
+	exceedCount: boolean;
+	exceedTotalPages: boolean;
+	result: T[];
+	hasNextPage: boolean;
+	hasPrevPage: boolean;
+	totalPages: number;
+};
+
 export * from "./attendance";
 export * from "./attendance-count";
 export * from "./company";
