@@ -51,6 +51,7 @@ export * from "./request-category";
 export * from "./contact";
 export * from "./request-category-field";
 export * from "./request-type";
+export * from "./models";
 export * from "./role";
 export * from "./schedule";
 export * from "./schedule-draft";
