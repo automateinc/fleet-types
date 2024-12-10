@@ -17,6 +17,8 @@ export interface IRequestCategoryField {
 		options: any[];
 		optionsUrl: string;
 		uploadCategory?: string;
+		dependencies?: string[];
+		hasDependency?: boolean;
 		variant?: string;
 	};
 }
