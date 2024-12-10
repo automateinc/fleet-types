@@ -104,6 +104,7 @@ export * from "./config";
 export * from "./contract-allowance";
 export * from "./contract-deduction";
 export * from "./contract-benefit";
+export * from "./payment-cycle";
 export * from "./building";
 export * from "./building-lease";
 export * from "./building-lease-payment";
