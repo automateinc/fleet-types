@@ -41,6 +41,7 @@ export * from "./dispatch";
 export * from "./dispatch-attendance";
 export * from "./dispatch-count";
 export * from "./employee";
+export * from "./nfc-tag";
 export * from "./employee-status";
 export * from "./region";
 export * from "./request";
