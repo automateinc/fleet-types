@@ -1,5 +1,5 @@
 import { AxiosError } from "axios";
-import { UseInfiniteQueryOptions, UseMutationOptions, UseMutationResult, UseQueryOptions } from "@tanstack/react-query";
+import { UseInfiniteQueryOptions, UseMutationOptions, UseQueryOptions } from "@tanstack/react-query";
 
 type APIError = {
 	error:
@@ -19,7 +19,7 @@ export type InfiniteQueryOptions<Response> = Omit<
 	"queryKey" | "queryFn"
 >;
 
-export type FormInputType<T extends UseMutationResult<any, any, any, any>> = Parameters<T['mutate']>[0];
+export type FormInputType<T extends (...args: any) => any> = Parameters<ReturnType<T>["mutate"]>[0];
 
 export type PaginatedResponse<T> = {
 	limit: number;
