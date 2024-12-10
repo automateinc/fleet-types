@@ -1,3 +1,5 @@
+import { IModel } from "./models";
+
 export interface IRequestCategoryField {
 	name: string;
 	required: boolean;
@@ -12,7 +14,7 @@ export interface IRequestCategoryField {
 		| "RELATION"
 		| "SINGLE_SELECT"
 		| "SIGNATURE";
-	model?: "contract" | "company" | "contact";
+	model?: IModel;
 	config: {
 		options: any[];
 		optionsUrl: string;
