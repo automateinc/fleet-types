@@ -19,6 +19,7 @@ export type InfiniteQueryOptions<Response> = Omit<
 	"queryKey" | "queryFn"
 >;
 
+//@ts-ignore
 export type FormInputType<T> = Parameters<ReturnType<T>["mutate"]>[0];
 
 export type PaginatedResponse<T> = {
