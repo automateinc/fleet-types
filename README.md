@@ -13,5 +13,5 @@ npm i @automateinc/fleet-types
 ## Example Usage
 
 ```js
-import { IAttendance } from "fleet-types";
+import { IAttendance } from "@automateinc/fleet-types";
 ```
