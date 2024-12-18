@@ -7,7 +7,7 @@
 To install the package, use npm:
 
 ```bash
-npm i fleet-types@https://github.com/automateinc/fleet-types.git
+npm i @automateinc/fleet-types
 ```
 
 ## Example Usage
