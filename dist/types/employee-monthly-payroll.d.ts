@@ -5,7 +5,7 @@ interface Value<T = number> {
 	defaultHidden?: boolean;
 }
 
-export interface EmployeeMonthlyPayroll {
+export interface IEmployeeMonthlyPayroll {
 	status: Value<string>;
 	company: Value<string>;
 	role: Value<string>;
