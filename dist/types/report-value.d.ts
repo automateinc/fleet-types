@@ -9,7 +9,7 @@ export interface IReportValue {
 	model?: IModel;
 	required?: boolean;
 	relation?: {
-		[key: string]: any;
+		[key: PropertyKey]: any;
 	};
 	relationValue?: string;
 	file?: IFile;

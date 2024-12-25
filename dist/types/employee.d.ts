@@ -33,8 +33,8 @@ export interface IEmployee {
 	}>;
 
 	fields: {
-		[key: string]: {
-			[key: string]: string;
+		[key: PropertyKey]: {
+			[key: PropertyKey]: any;
 		};
 	};
 }
