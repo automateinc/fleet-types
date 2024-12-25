@@ -1,4 +1,4 @@
-import { IAttendanceLeaveReason, ICoords, IEmployee, IFile } from ".";
+import { IAttendanceLeaveReason, ICoords, IFile } from ".";
 
 export interface IAttendance {
 	id: string;

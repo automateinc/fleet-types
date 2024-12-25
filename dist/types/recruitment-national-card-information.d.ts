@@ -1,5 +1,3 @@
-import { IFile } from ".";
-
 export interface IRecruitmentNationalCardInformation {
 	id: string;
 	createdAt: string;

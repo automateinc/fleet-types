@@ -2,13 +2,21 @@ import { IMetadataDocuments, IMetadataExpiringDocuments, IMetadataMissingDocumen
 
 export interface IMetadata {
 	expiringDocuments?: {
-		[key: string]: IMetadataExpiringDocuments;
+		[key: PropertyKey]: IMetadataExpiringDocuments;
 	};
 	statusCheck?: IMetadataStatusCheck;
 	documents?: {
-		[key: string]: IMetadataDocuments;
+		[key: PropertyKey]: IMetadataDocuments;
 	};
 	missingDocuments?: {
-		[key: string]: IMetadataMissingDocuments;
+		[key: PropertyKey]: IMetadataMissingDocuments;
+	};
+	fields?: {
+		[key: PropertyKey]: any;
+	};
+	payroll?: {
+		iban: string;
+		increment: number;
+		contractType: "TRANSFER" | "CASH" | "CHECK" | "UNPAID" | "FORSA" | "OTHER";
 	};
 }

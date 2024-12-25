@@ -17,6 +17,8 @@ export interface IRequest {
 	verifiedById?: string;
 	rejectedById?: string;
 	withdrawnAt?: string;
+	folderKey?: string | null;
+	archivedAt?: string | null;
 	status: "PENDING_APPROVAL" | "APPROVED" | "REJECTED" | "WITHDRAWN" | "PENDING_VERIFICATION" | "ARCHIVED";
 	actionsExecutionStatus: "PENDING" | "COMPLETED" | "PROCESSING" | "FAILED" | "SKIPPED";
 }

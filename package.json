@@ -1,13 +1,17 @@
 {
   "name": "@automateinc/fleet-types",
   "private": false,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Reusable TypeScript types and interfaces for Fleet API.",
   "main": "dist/index.js",
   "types": "dist/types/index.d.ts",
   "scripts": {
+    "prepare": "husky install",
     "build": "tsc && cp -R src/types dist/",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "eslintConfig": {
+    "extends": "@404-software/eslint-config"
   },
   "keywords": [
     "typescript",
@@ -22,9 +26,18 @@
   "author": "Automate Inc. <hello@automate.bh> (https://automate.bh)",
   "license": "MIT",
   "devDependencies": {
+    "@404-software/eslint-config": "^1.0.20",
     "@tanstack/react-query": "^4.36.1",
     "axios": "^1.7.9",
+    "eslint": "^8.18.0",
+    "husky": "^9.1.7",
+    "prettier": "^2.7.1",
     "typescript": "5.1.6"
+  },
+  "lint-staged": {
+    "src/**/*.ts": [
+      "eslint --fix"
+    ]
   },
   "dependencies": {
     "asynckit": "^0.4.0",

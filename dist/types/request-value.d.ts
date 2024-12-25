@@ -6,9 +6,12 @@ export interface IRequestValue {
 	name: string;
 	value: any;
 	model?: IModel;
+	config?: {
+		[key: PropertyKey]: any;
+	};
 	required?: boolean;
 	relation?: {
-		[key: string]: any;
+		[key: PropertyKey]: any;
 	};
 	relationValue?: string;
 	file?: IFile;

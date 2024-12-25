@@ -44,6 +44,7 @@ export * from "./dispatch-count";
 export * from "./employee";
 export * from "./nfc-tag";
 export * from "./employee-status";
+export * from "./employee-monthly-payroll";
 export * from "./region";
 export * from "./request";
 export * from "./request-verification";
