@@ -5,6 +5,7 @@ export interface IConfig {
 	name: string;
 	value: any;
 	type: "DEFAULT" | "TEAM" | "REGION" | "COMPANY";
+	valueType: "STRING" | "NUMBER" | "BOOLEAN" | "DATE" | "DATETIME" | "TIME" | "JSON";
 	teamId?: string;
 	regionId?: string;
 	companyId?: string;
