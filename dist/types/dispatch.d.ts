@@ -8,6 +8,7 @@ export interface IDispatch {
 	date: string;
 	verified: boolean;
 	// timeOnSite: number;
+	fleetCheckTime: string;
 	zoneId: string;
 	primaryKey: string;
 }
