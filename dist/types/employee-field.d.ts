@@ -30,7 +30,7 @@ export type EmployeeFieldMetadataInput = Pick<EmployeeFieldBase, "fieldType" | "
 	path: string[];
 };
 
-type EmployeeFieldInput = EmployeeFieldRequestInput | EmployeeFieldRecruitmentInput;
+type EmployeeFieldInput = EmployeeFieldRequestInput | EmployeeFieldRecruitmentInput | EmployeeFieldMetadataInput;
 
 export interface IEmployeeField {
 	id: string;
