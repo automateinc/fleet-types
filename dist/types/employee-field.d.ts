@@ -15,17 +15,20 @@ type EmployeeFieldBase = {
 };
 
 type EmployeeFieldRequest = {
-	mode?: "LATEST" | "ALL" | "SUM" | "COUNT" | "EXISTENCE";
-	requestType?: string;
-	requestCategory?: string;
+	mode: "LATEST" | "ALL" | "SUM" | "COUNT" | "EXISTENCE";
+	requestType: string;
+	requestCategory: string;
 };
 
 type EmployeeFieldRecruitment = {
-	recruitmentGroup?: EmployeeFieldRecruitmentGroup;
+	recruitmentGroup: EmployeeFieldRecruitmentGroup;
 };
 
-type EmployeeFieldRequestInput = EmployeeFieldBase & EmployeeFieldRequest;
-type EmployeeFieldRecruitmentInput = EmployeeFieldBase & EmployeeFieldRecruitment;
+export type EmployeeFieldRequestInput = EmployeeFieldBase & EmployeeFieldRequest;
+export type EmployeeFieldRecruitmentInput = EmployeeFieldBase & EmployeeFieldRecruitment;
+export type EmployeeFieldMetadataInput = Pick<EmployeeFieldBase, "fieldType" | "defaultValue"> & {
+	path: string[];
+};
 
 type EmployeeFieldInput = EmployeeFieldRequestInput | EmployeeFieldRecruitmentInput;
 
