@@ -4,6 +4,9 @@ export interface IScheduleDraft {
 	id: string;
 	createdAt: string;
 	updatedAt: string;
+	deletedAt?: string;
+
+	date: string;
 
 	status: "DRAFT" | "PENDING" | "ACCEPTED" | "REJECTED";
 
