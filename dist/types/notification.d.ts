@@ -11,4 +11,9 @@ export interface INotification {
 
 	userId?: string;
 	employeeId?: string;
+	requestId?: string;
+	attendanceId?: string;
+	attendancePresenceCheckId?: string;
+	recruitmentId?: string;
+	dispatchId?: string;
 }
