@@ -149,3 +149,4 @@ export * from "./report-comment-reaction";
 export * from "./call-log";
 export * from "./notification";
 export * from "./notification-token";
+export * from "./employee-label";
