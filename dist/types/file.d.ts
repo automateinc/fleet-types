@@ -4,6 +4,7 @@ export interface IFile {
 	id: string;
 	updatedAt: Date;
 	createdAt: Date;
+	lastAccessedAt?: string;
 
 	name: string;
 	slug: string;

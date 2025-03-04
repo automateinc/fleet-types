@@ -1,7 +1,7 @@
 {
   "name": "@automateinc/fleet-types",
   "private": false,
-  "version": "1.0.18",
+  "version": "1.0.19",
   "description": "Reusable TypeScript types and interfaces for Fleet API.",
   "main": "dist/index.js",
   "types": "dist/types/index.d.ts",
