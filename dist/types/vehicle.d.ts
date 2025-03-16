@@ -19,5 +19,7 @@ export interface IVehicle {
 
 	regionId: string;
 
+	statusId: string;
+
 	assignment: "EMPLOYEE" | "USER" | "POSITION" | "UNASSIGNED";
 }
