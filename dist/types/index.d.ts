@@ -137,6 +137,7 @@ export * from "./vehicle-registration";
 export * from "./vehicle-insurance";
 export * from "./vehicle-contract";
 export * from "./vehicle-contract-payment";
+export * from "./vehicle-status";
 export * from "./loan";
 export * from "./loan-installment";
 export * from "./report";
