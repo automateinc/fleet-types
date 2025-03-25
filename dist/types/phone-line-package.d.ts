@@ -5,7 +5,7 @@ export interface IPhoneLinePackage {
 	deletedAt?: string;
 
 	price: number;
-	dataThreshold: number;
+	dataThreshold: string;
 	internationalBarring: boolean;
 
 	primaryKey: string;

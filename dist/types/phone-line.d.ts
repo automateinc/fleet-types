@@ -5,6 +5,7 @@ export interface IPhoneLine {
 	deletedAt?: string;
 
 	number: string;
+	note?: string;
 
 	assignment: "EMPLOYEE" | "USER" | "SITE" | "POSITION" | "UNASSIGNED";
 	status: "ACTIVE" | "TERMINATED";
