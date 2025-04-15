@@ -8,5 +8,8 @@ export interface IRecruitment {
 	createdById: string;
 	folderKey: string;
 
+	recruitedAt?: string;
+	recruitedById?: string;
+
 	requestedChanges?: string;
 }
