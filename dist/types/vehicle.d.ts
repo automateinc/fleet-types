@@ -14,6 +14,7 @@ export interface IVehicle {
 	type: string;
 
 	companyId: string;
+	operatingCompanyId?: string;
 	employeeId?: string;
 	userId?: string;
 
