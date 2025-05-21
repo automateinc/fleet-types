@@ -152,3 +152,4 @@ export * from "./notification";
 export * from "./notification-token";
 export * from "./employee-label";
 export * from "./tag-color";
+export * from "./employee-event";
