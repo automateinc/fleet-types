@@ -1,7 +1,7 @@
 export interface IEmployeeEvent {
 	id: string;
-	createdAt: Date;
-	updatedAt: Date;
+	createdAt: string;
+	updatedAt: string;
 
 	employeeId: string;
 
