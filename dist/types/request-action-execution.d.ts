@@ -4,7 +4,7 @@ export interface IRequestActionExecution {
 	updatedAt: string;
 
 	actionId: string;
-	status: "PENDING" | "COMPLETED" | "PROCESSING" | "FAILED" | "SKIPPED";
+	status: "PENDING" | "COMPLETED" | "PROCESSING" | "FAILED" | "SKIPPED" | "ON_HOLD";
 	startedAt: string | null;
 	endedAt: string | null;
 	failureReason?: string;
