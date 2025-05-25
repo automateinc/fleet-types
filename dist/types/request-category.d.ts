@@ -9,4 +9,5 @@ export interface IRequestCategory {
 	requiresApproval: boolean;
 	createdAt: string;
 	updatedAt: string;
+	allowedRequesters: Array<"USER" | "EMPLOYEE">;
 }

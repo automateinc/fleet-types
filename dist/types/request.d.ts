@@ -7,7 +7,8 @@ export interface IRequest {
 	id: string;
 	category: IRequestCategory;
 	categoryId: string;
-	createdById: string;
+	createdById?: string;
+	employeeCreatedById?: string;
 	rejectionReason: null;
 	requestForId: string;
 	type: IRequestType;
