@@ -34,6 +34,7 @@ export type PaginatedResponse<T> = {
 };
 
 export * from "./attendance";
+export * from "./attendance-action";
 export * from "./attendance-presence-check";
 export * from "./attendance-count";
 export * from "./company";
