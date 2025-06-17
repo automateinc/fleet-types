@@ -9,5 +9,6 @@ export interface IRequestAction {
 	type: "VERIFICATION" | "APPROVAL" | "REJECTION" | "CREATION";
 	operation: "HTTP";
 	config: Record<string, any>;
+	order: number;
 	fields: IRequestCategoryField[];
 }
