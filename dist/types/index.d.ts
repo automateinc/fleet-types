@@ -158,3 +158,7 @@ export * from "./leave-type";
 export * from "./leave-event";
 export * from "./leave";
 export * from "./company-file";
+export * from "./position-patrol";
+export * from "./position-patrol-point";
+export * from "./attendance-patrol";
+export * from "./attendance-patrol-point";
