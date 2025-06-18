@@ -51,4 +51,4 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Output Published Version
-        run: echo "📦 Published version: ${{ steps.bump.outputs.version }}"
+        run: 'echo "📦 Published version: ${{ steps.bump.outputs.version }}"'
