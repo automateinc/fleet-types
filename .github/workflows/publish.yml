@@ -9,6 +9,7 @@ jobs:
     permissions:
       contents: read
       id-token: write
+
     steps:
       - uses: actions/checkout@v4
 
@@ -17,7 +18,7 @@ jobs:
           node-version: '20.x'
           registry-url: 'https://registry.npmjs.org'
 
-      - run: npm install -g semver jq
+      - run: npm install -g semver
 
       - name: Bump version temporarily
         run: |
