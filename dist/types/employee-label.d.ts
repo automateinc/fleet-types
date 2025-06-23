@@ -10,4 +10,5 @@ export interface IEmployeeLabel {
 	darkColors?: ITagColor;
 
 	regionId: string;
+	userId?: string;
 }
