@@ -8,6 +8,7 @@ export interface IEmployeeLabel {
 	name: string;
 	lightColors: ITagColor;
 	darkColors?: ITagColor;
+	type: "USER_CREATED" | "SYSTEM_CREATED";
 
 	regionId: string;
 	userId?: string;
