@@ -158,3 +158,4 @@ export * from "./leave-type";
 export * from "./leave-event";
 export * from "./leave";
 export * from "./company-file";
+export * from "./employee-label-assignment";
