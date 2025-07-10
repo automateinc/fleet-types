@@ -3,9 +3,10 @@ export interface INFCTag {
 	createdAt: string;
 	updatedAt: string;
 
-	type: "SITE_INFORMATION" | "EMPLOYEE";
+	type: "SITE_INFORMATION" | "EMPLOYEE" | "PATROLLING";
 	uri: string;
 	data?: any;
-	siteId?: number;
-	employeeId?: number;
+	siteId?: string;
+	employeeId?: string;
+	positionPatrolId?: string;
 }
