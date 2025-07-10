@@ -8,5 +8,5 @@ export interface INFCTag {
 	data?: any;
 	siteId?: string;
 	employeeId?: string;
-	positionPatrolId?: string;
+	positionPatrolPointId?: string;
 }
