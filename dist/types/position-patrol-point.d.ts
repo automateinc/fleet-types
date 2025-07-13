@@ -9,4 +9,5 @@ export interface IPositionPatrolPoint {
 	type: "CLOSE_ENDED_QUESTION" | "OPEN_ENDED_QUESTION" | "NO_ACTION" | "PHOTO" | "VIDEO";
 
 	patrolId: string;
+	nfcTagId?: string;
 }
