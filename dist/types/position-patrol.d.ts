@@ -6,6 +6,7 @@ export interface IPositionPatrol {
 	name: string;
 	description?: string;
 	flow: "SEQUENTIAL" | "RANDOM";
+	frequency: number;
 
 	positionId: string;
 }
