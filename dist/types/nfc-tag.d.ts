@@ -3,6 +3,7 @@ export interface INFCTag {
 	createdAt: string;
 	updatedAt: string;
 
+	name?: string;
 	type: "SITE_INFORMATION" | "EMPLOYEE" | "PATROLLING";
 	uri: string;
 	data?: any;
