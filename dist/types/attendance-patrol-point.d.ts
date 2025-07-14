@@ -4,7 +4,8 @@ export interface IAttendancePatrolPoint {
 	updatedAt?: string;
 
 	notes?: string;
-	status: "PENDING" | "COMPLETED" | "SKIPPED";
+	status: "PENDING" | "COMPLETED" | "SKIPPED" | "ON_HOLD";
+	order: number;
 
 	positionPatrolPointId: string;
 	attendancePatrolId: string;
