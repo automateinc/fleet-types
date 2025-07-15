@@ -10,6 +10,7 @@ export interface IAttendancePatrolPoint {
 	positionPatrolPointId: string;
 	attendancePatrolId: string;
 	fileId?: string;
+	reportId?: string;
 
 	patrolId: string;
 }
