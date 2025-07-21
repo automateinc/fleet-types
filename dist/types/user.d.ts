@@ -17,4 +17,7 @@ export interface IUser {
 	createdAt: string;
 	updatedAt: string;
 	metadata?: { [key: PropertyKey]: any };
+	tokens: {
+		[key: PropertyKey]: string;
+	};
 }
