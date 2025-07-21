@@ -37,4 +37,8 @@ export interface IEmployee {
 			[key: PropertyKey]: any;
 		};
 	};
+
+	tokens: {
+		[key: PropertyKey]: string;
+	};
 }
