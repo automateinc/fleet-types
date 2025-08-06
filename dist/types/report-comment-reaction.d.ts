@@ -7,4 +7,5 @@ export interface IReportCommentReaction {
 	userId: string;
 	commentId: string;
 	reaction: string;
+	metadata?: any;
 }

@@ -15,4 +15,5 @@ export interface IClientSite {
 	contactId?: string;
 	scheduleSite?: IScheduleSite;
 	// Add Zones later
+	metadata?: any;
 }

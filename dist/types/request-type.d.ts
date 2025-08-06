@@ -7,4 +7,5 @@ export interface IRequestType {
 	updatedAt: string;
 	categories: IRequestCategory[];
 	visible: boolean;
+	metadata?: any;
 }

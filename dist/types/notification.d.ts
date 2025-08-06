@@ -16,4 +16,5 @@ export interface INotification {
 	attendancePresenceCheckId?: string;
 	recruitmentId?: string;
 	dispatchId?: string;
+	metadata?: any;
 }

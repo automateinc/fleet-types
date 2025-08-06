@@ -13,4 +13,5 @@ export interface IAttendancePatrolPoint {
 	reportId?: string;
 
 	patrolId: string;
+	metadata?: any;
 }

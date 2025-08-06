@@ -7,4 +7,5 @@ export interface IEmployeeLabelAssignment {
 	employeeId: string;
 
 	systemAssigned: boolean;
+	metadata?: any;
 }

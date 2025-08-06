@@ -33,4 +33,5 @@ export interface ICallLog {
 	reportId?: string;
 
 	regionId: string;
+	metadata?: any;
 }

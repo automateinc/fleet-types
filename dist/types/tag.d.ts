@@ -4,4 +4,5 @@ export interface ITag {
 	updatedAt: string;
 	name: string;
 	value: string;
+	metadata?: any;
 }

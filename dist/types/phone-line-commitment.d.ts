@@ -8,4 +8,5 @@ export interface IPhoneLineCommitment {
 	dueUntil: string;
 
 	lineId: string;
+	metadata?: any;
 }

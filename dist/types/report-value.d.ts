@@ -13,4 +13,5 @@ export interface IReportValue {
 	};
 	relationValue?: string;
 	file?: IFile;
+	metadata?: any;
 }

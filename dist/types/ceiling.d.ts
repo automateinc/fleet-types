@@ -6,4 +6,5 @@ export interface ICeiling {
 	companyId: string;
 
 	limit: number;
+	metadata?: any;
 }

@@ -3,4 +3,5 @@ export interface IRole {
 	id: string;
 	name: string;
 	updatedAt: Date;
+	metadata?: any;
 }

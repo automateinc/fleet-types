@@ -5,4 +5,5 @@ export interface IContractBenefit {
 	name: string;
 	regionId: string;
 	companyId?: string;
+	metadata?: any;
 }

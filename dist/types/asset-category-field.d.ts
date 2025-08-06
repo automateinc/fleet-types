@@ -20,4 +20,5 @@ export interface IAssetCategoryField {
 		variant?: string;
 		dependencies?: any[];
 	};
+	metadata?: any;
 }

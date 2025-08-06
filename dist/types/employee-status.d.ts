@@ -3,4 +3,5 @@ export interface IEmployeeStatus {
 	id: string;
 	name: string;
 	updatedAt: Date;
+	metadata?: any;
 }

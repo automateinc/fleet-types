@@ -18,4 +18,5 @@ export interface IPositionVersion {
 
 	positionId: string;
 	activePositionId: string;
+	metadata?: any;
 }

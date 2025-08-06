@@ -9,4 +9,5 @@ export interface IRecruitmentPassportInformation {
 	placeOfIssue?: string;
 	issueDate?: string;
 	secondPage?: boolean;
+	metadata?: any;
 }

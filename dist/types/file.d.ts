@@ -16,4 +16,5 @@ export interface IFile {
 	thumbnail?: IFile;
 
 	tags?: ITag[];
+	metadata?: any;
 }

@@ -9,4 +9,5 @@ export interface IContractDeduction {
 	regionId: string;
 	companyId?: string;
 	computedValue: number;
+	metadata?: any;
 }

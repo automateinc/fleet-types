@@ -5,4 +5,5 @@ export interface IShiftType {
 
 	name: string;
 	hours: number;
+	metadata?: any;
 }

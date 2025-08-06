@@ -4,4 +4,5 @@ export interface IRegion {
 	updatedAt: string;
 	name: string;
 	prefix?: string;
+	metadata?: any;
 }

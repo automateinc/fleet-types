@@ -8,4 +8,5 @@ export interface IAttendanceLeaveReason {
 	name: string;
 	description?: string;
 	attendances?: IAttendance[];
+	metadata?: any;
 }

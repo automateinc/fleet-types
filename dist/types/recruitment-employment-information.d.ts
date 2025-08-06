@@ -9,4 +9,5 @@ export interface IRecruitmentEmploymentInformation {
 
 	desiredRole?: string;
 	history?: IRecruitmentEmploymentInformationHistory[];
+	metadata?: any;
 }

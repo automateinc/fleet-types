@@ -14,4 +14,5 @@ export interface IContract {
 	overtimeRate: number;
 	contractualAllowancesProvided: boolean;
 	paymentType: "TRANSFER" | "CASH" | "CHECK" | "UNPAID" | "FORSA" | "OTHER";
+	metadata?: any;
 }

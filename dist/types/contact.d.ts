@@ -6,4 +6,5 @@ export interface IContact {
 	type: "EMAIL" | "PHONE";
 	value: string;
 	verified: boolean;
+	metadata?: any;
 }

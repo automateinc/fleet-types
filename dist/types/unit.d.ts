@@ -5,4 +5,5 @@ export interface IUnit {
 	name: string;
 	buildingId: string;
 	status: "ACTIVE" | "INACTIVE";
+	metadata?: any;
 }

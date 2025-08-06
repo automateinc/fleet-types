@@ -9,4 +9,5 @@ export interface INFCTag {
 	data?: any;
 	siteId?: string;
 	employeeId?: string;
+	metadata?: any;
 }

@@ -7,4 +7,5 @@ export interface IReportCategory {
 	fields: IReportCategoryField[];
 	createdAt: string;
 	updatedAt: string;
+	metadata?: any;
 }

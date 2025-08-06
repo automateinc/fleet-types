@@ -17,4 +17,5 @@ export interface IPhoneLine {
 	userId?: string;
 	siteId?: string;
 	positionId?: string;
+	metadata?: any;
 }

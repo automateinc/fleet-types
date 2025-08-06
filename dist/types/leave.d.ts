@@ -13,4 +13,5 @@ export type ILeave = {
 	status: "ACTIVE" | "UPCOMING" | "ENDED";
 
 	notes?: string;
+	metadata?: any;
 };

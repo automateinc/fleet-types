@@ -8,4 +8,5 @@ export type ILeaveType = {
 	paid: boolean;
 
 	regionId: string;
+	metadata?: any;
 };

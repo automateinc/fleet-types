@@ -13,4 +13,5 @@ export interface IAssetValue {
 	};
 	relationValue?: string;
 	file?: IFile;
+	metadata?: any;
 }

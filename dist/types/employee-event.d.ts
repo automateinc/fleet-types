@@ -6,5 +6,5 @@ export interface IEmployeeEvent {
 	employeeId: string;
 
 	type: string;
-	metadata: any;
+	metadata?: any;
 }

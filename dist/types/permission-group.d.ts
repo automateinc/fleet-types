@@ -5,4 +5,5 @@ export interface IPermissionGroup {
 	name: string;
 	description?: string;
 	teamId: string;
+	metadata?: any;
 }

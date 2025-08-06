@@ -10,4 +10,5 @@ export interface IRequestVerification {
 	verifiedBy: IEmployee;
 
 	rejectionReason?: string;
+	metadata?: any;
 }

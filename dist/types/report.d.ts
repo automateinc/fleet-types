@@ -19,5 +19,6 @@ export interface IReport {
 	clientId?: string;
 	siteId?: string;
 	zoneId?: string;
+	metadata?: any;
 	buildingId?: string;
 }

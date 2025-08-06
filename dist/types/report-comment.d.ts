@@ -8,4 +8,5 @@ export interface IReportComment {
 	userId: string;
 
 	comment: string;
+	metadata?: any;
 }

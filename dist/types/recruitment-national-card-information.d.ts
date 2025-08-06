@@ -8,4 +8,5 @@ export interface IRecruitmentNationalCardInformation {
 	placeOfIssue?: string;
 	issueDate?: string;
 	recruitmentId: string;
+	metadata?: any;
 }

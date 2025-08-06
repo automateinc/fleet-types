@@ -4,4 +4,5 @@ export interface IPermission {
 	updatedAt: string;
 	name: string;
 	description?: string;
+	metadata?: any;
 }

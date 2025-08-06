@@ -15,4 +15,5 @@ export interface IScheduleDraft {
 
 	employee: IEmployee;
 	employeeId?: string;
+	metadata?: any;
 }

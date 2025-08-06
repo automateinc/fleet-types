@@ -9,4 +9,5 @@ export interface IPositionPatrol {
 	frequency: number;
 
 	positionId: string;
+	metadata?: any;
 }

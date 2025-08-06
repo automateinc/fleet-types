@@ -7,4 +7,5 @@ export interface IBuildingContact {
 	email?: string;
 	notes?: string;
 	buildingId: string;
+	metadata?: any;
 }

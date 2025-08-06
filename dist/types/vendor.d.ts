@@ -10,4 +10,5 @@ export interface IVendor {
 	folderKey?: string;
 
 	regionId: string;
+	metadata?: any;
 }

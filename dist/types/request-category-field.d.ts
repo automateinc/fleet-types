@@ -23,4 +23,5 @@ export interface IRequestCategoryField {
 		hasDependency?: boolean;
 		variant?: string;
 	};
+	metadata?: any;
 }

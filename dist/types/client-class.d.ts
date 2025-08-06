@@ -6,4 +6,5 @@ export interface IClientClass {
 	regionId: string;
 	createdAt: string;
 	updatedAt: string;
+	metadata?: any;
 }

@@ -6,4 +6,5 @@ export interface IRecruitmentMedicalInformation {
 	referenceNumber?: string;
 	expiryDate?: string;
 	institutionName?: string;
+	metadata?: any;
 }

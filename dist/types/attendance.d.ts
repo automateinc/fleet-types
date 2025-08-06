@@ -39,4 +39,5 @@ export interface IAttendance {
 		| "UNVERIFIED"
 		| null;
 	type: "SCHEDULED" | "REROUTED" | "REPLACEMENT";
+	metadata?: any;
 }

@@ -3,4 +3,5 @@ export interface IPaymentCycle {
 	createdAt: Date;
 	from: Date;
 	to: Date;
+	metadata?: any;
 }

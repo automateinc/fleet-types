@@ -5,4 +5,5 @@ export interface IRecruitmentOtherInformation {
 	createdAt: string;
 	updatedAt: string;
 	additionalInformation: IRecruitmentOtherInformationAdditionalInformation[];
+	metadata?: any;
 }

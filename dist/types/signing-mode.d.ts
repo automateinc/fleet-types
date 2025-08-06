@@ -5,4 +5,5 @@ export interface ISigningMode {
 
 	userId: string;
 	employeeId?: string;
+	metadata?: any;
 }

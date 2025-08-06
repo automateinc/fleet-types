@@ -12,4 +12,5 @@ export interface IVehicleRegistration {
 	expiryDate: string;
 
 	active: boolean;
+	metadata?: any;
 }

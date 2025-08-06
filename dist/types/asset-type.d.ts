@@ -3,4 +3,5 @@ export interface IAssetType {
 	name: string;
 	createdAt: string;
 	updatedAt: string;
+	metadata?: any;
 }
