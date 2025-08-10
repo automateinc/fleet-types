@@ -7,4 +7,5 @@ export interface IVehicleStatus {
 	name: string;
 
 	regionId: string;
+	metadata?: any;
 }

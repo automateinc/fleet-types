@@ -5,4 +5,5 @@ export interface IUnitRoom {
 
 	name: string;
 	unitId: string;
+	metadata?: any;
 }

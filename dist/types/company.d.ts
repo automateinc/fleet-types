@@ -10,4 +10,5 @@ export interface ICompany {
 	parentCompanyId?: string;
 	logoId?: string;
 	stampId?: string;
+	metadata?: any;
 }

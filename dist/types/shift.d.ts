@@ -21,4 +21,5 @@ export interface IShift {
 	coversFriday: boolean;
 
 	positionId: string;
+	metadata?: any;
 }

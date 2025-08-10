@@ -11,4 +11,5 @@ export interface IBuilding {
 	status: "ACTIVE" | "INACTIVE";
 	companyId: string;
 	zoneId: string;
+	metadata?: any;
 }

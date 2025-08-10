@@ -5,4 +5,5 @@ export interface IBunk {
 	name: string;
 	roomId: string;
 	employeeId: string;
+	metadata?: any;
 }

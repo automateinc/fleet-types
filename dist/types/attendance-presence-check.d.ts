@@ -8,4 +8,5 @@ export interface IAttendancePresenceCheck {
 	attendanceId: string;
 	userId?: string;
 	imageId?: string;
+	metadata?: any;
 }

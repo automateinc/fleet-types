@@ -11,4 +11,5 @@ export interface IRequestAction {
 	config: Record<string, any>;
 	order: number;
 	fields: IRequestCategoryField[];
+	metadata?: any;
 }

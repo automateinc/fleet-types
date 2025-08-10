@@ -15,4 +15,5 @@ export interface IRecruitmentPersonalInformation {
 	name?: string;
 	fullName?: string;
 	location?: string;
+	metadata?: any;
 }

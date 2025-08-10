@@ -23,4 +23,5 @@ export interface IRequest {
 	employeeId: string;
 	status: "PENDING_APPROVAL" | "APPROVED" | "REJECTED" | "WITHDRAWN" | "PENDING_VERIFICATION" | "ARCHIVED";
 	actionsExecutionStatus: "PENDING" | "COMPLETED" | "PROCESSING" | "FAILED" | "SKIPPED";
+	metadata?: any;
 }

@@ -14,4 +14,5 @@ export interface IClient {
 	classId: string;
 	companies?: ICompany[];
 	contacts?: IClientContact[];
+	metadata?: any;
 }

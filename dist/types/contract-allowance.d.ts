@@ -14,4 +14,5 @@ export interface IContractAllowance {
 	regionId: string;
 	companyId?: string;
 	computedValue: number;
+	metadata?: any;
 }

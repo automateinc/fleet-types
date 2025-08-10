@@ -11,4 +11,5 @@ export interface IRestriction {
 	valueB?: string;
 
 	requestCategoryId?: string;
+	metadata?: any;
 }

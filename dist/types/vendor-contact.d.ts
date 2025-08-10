@@ -10,4 +10,5 @@ export interface IVendorContact {
 	notes?: string;
 
 	vendorId: string;
+	metadata?: any;
 }

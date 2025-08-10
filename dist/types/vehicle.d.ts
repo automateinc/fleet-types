@@ -23,4 +23,5 @@ export interface IVehicle {
 	statusId: string;
 
 	assignment: "EMPLOYEE" | "USER" | "POSITION" | "UNASSIGNED";
+	metadata?: any;
 }

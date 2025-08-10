@@ -13,4 +13,5 @@ export interface IOneTimePassword {
 
 	requestId?: string;
 	contactId?: string;
+	metadata?: any;
 }

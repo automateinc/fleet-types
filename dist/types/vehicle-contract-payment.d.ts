@@ -12,4 +12,5 @@ export interface IVehicleContractPayment {
 	contractId: string;
 
 	status: "PENDING" | "PAID" | "OVERDUE" | "CANCELLED";
+	metadata?: any;
 }

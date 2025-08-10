@@ -6,4 +6,5 @@ export interface IAttendancePatrol {
 	positionPatrolId: string;
 	attendanceId: string;
 	reportId?: string;
+	metadata?: any;
 }

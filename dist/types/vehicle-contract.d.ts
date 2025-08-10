@@ -14,4 +14,5 @@ export interface IVehicleContract {
 	vendorId: string;
 
 	active: boolean;
+	metadata?: any;
 }

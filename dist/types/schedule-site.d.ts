@@ -13,4 +13,5 @@ export interface IScheduleSite {
 	positionsCount: number;
 	schedulesCount: number;
 	scheduledSchedulesCount: number;
+	metadata?: any;
 }

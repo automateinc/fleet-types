@@ -9,4 +9,5 @@ export interface IConfig {
 	teamId?: string;
 	regionId?: string;
 	companyId?: string;
+	metadata?: any;
 }

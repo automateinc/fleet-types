@@ -7,4 +7,5 @@ export interface IAssetCategory {
 	fields: IAssetCategoryField[];
 	createdAt: string;
 	updatedAt: string;
+	metadata?: any;
 }

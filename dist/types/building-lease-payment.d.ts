@@ -10,4 +10,5 @@ export interface IBuildingLeasePayment {
 	leaseId: string;
 
 	status: "PENDING" | "PAID" | "OVERDUE" | "CANCELLED";
+	metadata?: any;
 }

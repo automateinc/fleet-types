@@ -7,4 +7,5 @@ export interface IDispatchAttendance {
 	checked: boolean | null;
 	dispatchId: string;
 	attendanceId: string;
+	metadata?: any;
 }

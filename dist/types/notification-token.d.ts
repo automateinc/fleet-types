@@ -7,4 +7,5 @@ export interface INotificationToken {
 
 	userId?: string;
 	employeeId?: string;
+	metadata?: any;
 }

@@ -10,4 +10,5 @@ export interface IStandardOperatingProcedure {
 
 	positionId?: string;
 	siteId?: string;
+	metadata?: any;
 }

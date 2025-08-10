@@ -15,4 +15,5 @@ export interface IRequestValue {
 	};
 	relationValue?: string;
 	file?: IFile;
+	metadata?: any;
 }

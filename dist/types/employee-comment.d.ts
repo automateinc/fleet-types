@@ -7,4 +7,5 @@ export interface IEmployeeComment {
 	userId: string;
 	employeeId: string;
 	comment: string;
+	metadata?: any;
 }

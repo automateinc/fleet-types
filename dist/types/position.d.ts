@@ -7,4 +7,5 @@ export interface IPosition {
 	primaryKey: string;
 	siteId: string;
 	roleId: string;
+	metadata?: any;
 }

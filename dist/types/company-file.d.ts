@@ -7,4 +7,5 @@ export interface ICompanyFile {
 	name: string;
 	fileId: string;
 	companyId: string;
+	metadata?: any;
 }

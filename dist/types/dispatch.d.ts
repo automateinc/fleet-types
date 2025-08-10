@@ -11,4 +11,5 @@ export interface IDispatch {
 	fleetCheckTime: string;
 	zoneId: string;
 	primaryKey: string;
+	metadata?: any;
 }

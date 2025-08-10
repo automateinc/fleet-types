@@ -11,4 +11,5 @@ export interface ILoanInstallment {
 	amount: number;
 
 	loanId: string;
+	metadata?: any;
 }

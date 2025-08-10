@@ -15,4 +15,5 @@ export interface IVehicleInsurance {
 	expiryDate: string;
 
 	active: boolean;
+	metadata?: any;
 }

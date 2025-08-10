@@ -5,4 +5,5 @@ export interface IVehicleMake {
 	deletedAt?: string;
 
 	name: string;
+	metadata?: any;
 }

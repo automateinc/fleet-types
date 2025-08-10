@@ -46,4 +46,5 @@ export interface IEmployeeField {
 	config?: EmployeeFieldInput;
 
 	fallbackId?: string;
+	metadata?: any;
 }

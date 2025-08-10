@@ -11,4 +11,5 @@ export interface IPhoneLinePackage {
 	primaryKey: string;
 
 	regionId: string;
+	metadata?: any;
 }

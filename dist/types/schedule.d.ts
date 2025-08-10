@@ -10,4 +10,5 @@ export interface ISchedule {
 
 	employee: IEmployee;
 	employeeId?: string;
+	metadata?: any;
 }

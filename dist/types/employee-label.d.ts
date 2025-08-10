@@ -12,4 +12,5 @@ export interface IEmployeeLabel {
 
 	regionId: string;
 	userId?: string;
+	metadata?: any;
 }

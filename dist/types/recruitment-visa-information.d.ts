@@ -5,4 +5,5 @@ export interface IRecruitmentVisaInformation {
 	type: string;
 
 	expiryDate?: string;
+	metadata?: any;
 }

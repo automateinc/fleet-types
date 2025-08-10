@@ -8,4 +8,5 @@ export interface IRequestActionExecution {
 	startedAt: string | null;
 	endedAt: string | null;
 	failureReason?: string;
+	metadata?: any;
 }

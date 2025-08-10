@@ -12,4 +12,5 @@ export interface IRecruitment {
 	recruitedById?: string;
 
 	requestedChanges?: string;
+	metadata?: any;
 }

@@ -3,4 +3,5 @@ export interface ITeam {
 	name: string;
 	createdAt: string;
 	updatedAt: string;
+	metadata?: any;
 }

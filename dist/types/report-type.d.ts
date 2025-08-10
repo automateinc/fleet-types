@@ -4,4 +4,5 @@ export interface IReportType {
 	typeId: string;
 	createdAt: string;
 	updatedAt: string;
+	metadata?: any;
 }

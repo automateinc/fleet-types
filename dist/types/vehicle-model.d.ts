@@ -9,4 +9,5 @@ export interface IVehicleModel {
 	makeId: string;
 
 	regionId: string;
+	metadata?: any;
 }

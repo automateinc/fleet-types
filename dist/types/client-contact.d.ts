@@ -10,4 +10,5 @@ export interface IClientContact {
 	notes?: string;
 	client: IClient;
 	clientId: string;
+	metadata?: any;
 }

@@ -11,4 +11,5 @@ export interface IPhoneLineContract {
 
 	vendorId: string;
 	companyId: string;
+	metadata?: any;
 }

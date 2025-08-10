@@ -13,4 +13,5 @@ export interface IPositionPatrolPoint {
 	nfcTagId?: string;
 	reportTypeId?: string;
 	reportCategoryId?: string;
+	metadata?: any;
 }

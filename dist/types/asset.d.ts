@@ -14,4 +14,5 @@ export interface IAsset {
 	siteId?: string;
 	positionId?: string;
 	phoneLineCommitmentId?: string;
+	metadata?: any;
 }

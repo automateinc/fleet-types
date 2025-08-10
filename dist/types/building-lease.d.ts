@@ -9,4 +9,5 @@ export interface IBuildingLease {
 	endDate: string;
 
 	status: "ACTIVE" | "INACTIVE";
+	metadata?: any;
 }

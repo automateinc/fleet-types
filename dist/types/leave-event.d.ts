@@ -12,4 +12,5 @@ export type ILeaveEvent = {
 	recurrence: "ONCE" | "ANNUAL";
 
 	regionId: string;
+	metadata?: any;
 };

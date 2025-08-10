@@ -4,4 +4,5 @@ export interface IRecruitmentEmploymentInformationHistory {
 	endDate?: string;
 	position: string;
 	description?: string;
+	metadata?: any;
 }

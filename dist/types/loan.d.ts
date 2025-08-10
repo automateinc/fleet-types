@@ -15,4 +15,5 @@ export interface ILoan {
 	repaymentPeriod: number;
 
 	status: "PENDING" | "PAID";
+	metadata?: any;
 }
