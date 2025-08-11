@@ -14,4 +14,6 @@ export interface IRecruitmentValue {
 	relationValue?: string;
 	file?: IFile;
 	metadata?: any;
+	categoryId: string;
+	regionId: string;
 }
