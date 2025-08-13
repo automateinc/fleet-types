@@ -157,3 +157,4 @@ export * from "./attendance-patrol-point";
 export * from "./recruitment-category";
 export * from "./recruitment-category-field";
 export * from "./recruitment-value";
+export * from "./value";
