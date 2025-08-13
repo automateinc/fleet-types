@@ -3,6 +3,10 @@ export interface IRecruitment {
 	createdAt: string;
 	updatedAt: string;
 
+	firstName: string;
+	lastName: string;
+	name: string;
+
 	status: "DRAFT" | "VERIFIED" | "PENDING" | "CHANGES_NEEDED" | "RECRUITED";
 	regionId: string;
 	createdById: string;
