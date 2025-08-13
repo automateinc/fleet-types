@@ -1,19 +1,29 @@
-import { IFile, IRecruitmentCategoryField } from ".";
 import { IModel } from "./models";
+import { IRecruitmentCategoryField } from ".";
 
 export interface IRecruitmentValue {
 	id: string;
 	type: IRecruitmentCategoryField["type"];
 	name: string;
 	value: any;
-	model?: IModel;
-	required?: boolean;
-	relation?: {
-		[key: PropertyKey]: any;
+	config?: {
+		model?: IModel;
+		options?: Array<{ label: string; value: string } | string>;
+		optionsUrl?: string;
+		dependencies?: string[];
+		hasDependency?: boolean;
+		uploadCategory?: string;
 	};
-	relationValue?: string;
-	file?: IFile;
 	metadata?: any;
 	categoryId: string;
-	regionId: string;
+	clientId?: string;
+	companyId?: string;
+	contactId?: string;
+	contractId?: string;
+	fileId?: string;
+	paymentCycleId?: string;
+	zoneId?: string;
+	recruitmentId: string;
+	createdAt: string;
+	updatedAt: string;
 }
