@@ -163,3 +163,5 @@ export * from "./position-patrol";
 export * from "./position-patrol-point";
 export * from "./attendance-patrol";
 export * from "./attendance-patrol-point";
+export * from "./position-template";
+export * from "./position-template-item";
