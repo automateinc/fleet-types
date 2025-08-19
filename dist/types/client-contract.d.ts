@@ -1,0 +1,31 @@
+import { ICoords } from "./coords";
+import { IDayOfWeek } from "./day-of-week";
+
+export interface IClientContract {
+	id: string;
+	createdAt: string;
+	updatedAt: string;
+
+	status: "INACTIVE" | "ACTIVE" | "TERMINATED";
+	clientId: string;
+	companyId: string;
+	startDate: string;
+	endDate?: string;
+	duration?: number | "ONGOING";
+
+	geolocation: ICoords;
+	coverage: IDayOfWeek[];
+	nationalities: string[];
+	requirements: string[];
+	costPerHead: number;
+	shiftCoverage: number;
+	monthlyAmount: number;
+	paymentDate: string;
+	performanceBondAmount: number;
+	thirdPartyLiabilityInsurance: boolean;
+	notes: string;
+	supplementalAgreementId?: string;
+	personInChargeId?: string;
+
+	metadata?: any;
+}
