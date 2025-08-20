@@ -3,7 +3,7 @@ export interface IClientSubContract {
 	createdAt: string;
 	updatedAt: string;
 
-	status: "INACTIVE" | "ACTIVE" | "TERMINATED";
+	status: "INACTIVE" | "ACTIVE" | "TERMINATED" | "EXPIRED";
 	contractId: string;
 	startDate: string;
 	endDate?: string;

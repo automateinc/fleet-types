@@ -6,7 +6,7 @@ export interface IClientContract {
 	createdAt: string;
 	updatedAt: string;
 
-	status: "INACTIVE" | "ACTIVE" | "TERMINATED";
+	status: "INACTIVE" | "ACTIVE" | "TERMINATED" | "EXPIRED";
 	clientId: string;
 	companyId: string;
 	startDate: string;
