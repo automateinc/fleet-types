@@ -26,6 +26,7 @@ export interface IClientContract {
 	notes: string;
 	supplementalAgreementId?: string;
 	personInChargeId?: string;
+	parentContractId?: string;
 
 	metadata?: any;
 }
