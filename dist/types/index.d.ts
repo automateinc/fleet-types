@@ -167,4 +167,3 @@ export * from "./position-template";
 export * from "./position-template-item";
 export * from "./day-of-week";
 export * from "./client-contract";
-export * from "./client-sub-contract";

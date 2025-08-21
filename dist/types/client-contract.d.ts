@@ -1,4 +1,3 @@
-import { ICoords } from "./coords";
 import { IDayOfWeek } from "./day-of-week";
 
 export interface IClientContract {
@@ -6,6 +5,7 @@ export interface IClientContract {
 	createdAt: string;
 	updatedAt: string;
 
+	primaryKey: string;
 	status: "INACTIVE" | "ACTIVE" | "TERMINATED" | "EXPIRED";
 	clientId: string;
 	companyId: string;
@@ -13,7 +13,6 @@ export interface IClientContract {
 	endDate?: string;
 	duration?: number | "ONGOING";
 
-	geolocation: ICoords;
 	coverage: IDayOfWeek[];
 	nationalities: string[];
 	requirements: string[];
@@ -26,6 +25,8 @@ export interface IClientContract {
 	notes: string;
 	supplementalAgreementId?: string;
 	personInChargeId?: string;
+	parentContractId?: string;
+	manPower?: number;
 
 	metadata?: any;
 }
