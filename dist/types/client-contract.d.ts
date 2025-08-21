@@ -1,4 +1,3 @@
-import { ICoords } from "./coords";
 import { IDayOfWeek } from "./day-of-week";
 
 export interface IClientContract {
@@ -14,7 +13,6 @@ export interface IClientContract {
 	endDate?: string;
 	duration?: number | "ONGOING";
 
-	geolocation: ICoords;
 	coverage: IDayOfWeek[];
 	nationalities: string[];
 	requirements: string[];
