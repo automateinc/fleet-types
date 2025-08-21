@@ -28,6 +28,7 @@ export interface IClientContract {
 	supplementalAgreementId?: string;
 	personInChargeId?: string;
 	parentContractId?: string;
+	manPower?: number;
 
 	metadata?: any;
 }
