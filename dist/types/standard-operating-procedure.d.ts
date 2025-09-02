@@ -4,7 +4,10 @@ export interface IStandardOperatingProcedure {
 	createdAt: Date;
 
 	procedures: Array<{
-		values: string[];
+		values: Array<{
+			title: string;
+			content: string;
+		}>;
 		locale: string;
 	}>;
 
