@@ -1,7 +1,10 @@
 export interface IEmployeeStatus {
-	createdAt: Date;
 	id: string;
+	createdAt: string;
+	updatedAt: string;
 	name: string;
-	updatedAt: Date;
+	default: boolean;
+	weight: number;
+	regionId: string;
 	metadata?: any;
 }
