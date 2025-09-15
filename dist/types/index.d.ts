@@ -33,6 +33,7 @@ export type PaginatedResponse<T> = {
 	totalPages: number;
 };
 
+export * from "./api-key";
 export * from "./attendance";
 export * from "./attendance-action";
 export * from "./attendance-presence-check";
