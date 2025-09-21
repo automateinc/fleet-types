@@ -17,4 +17,12 @@ export interface IEmployeeMonthlyPayroll {
 			[key: string]: boolean;
 		};
 	};
+	formatted: Record<
+		string,
+		{
+			id: string;
+			title: string;
+			value: any;
+		}
+	>;
 }
