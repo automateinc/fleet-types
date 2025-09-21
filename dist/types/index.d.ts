@@ -3,11 +3,11 @@ import { UseInfiniteQueryOptions, UseMutationOptions, UseQueryOptions } from "@t
 
 type APIError = {
 	error:
-		| string
-		| Array<{
-				message: string;
-				field: string;
-		  }>;
+	| string
+	| Array<{
+		message: string;
+		field: string;
+	}>;
 };
 
 export type MutationOptions<Response, Args = void> = UseMutationOptions<Response, AxiosError<APIError>, Args, any>;
@@ -171,3 +171,4 @@ export * from "./client-contract";
 export * from "./cluster-patrol";
 export * from "./cluster-patrol-point";
 export * from "./attendance-draft";
+export * from "./payment-cycle-config";
