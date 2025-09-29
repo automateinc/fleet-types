@@ -10,5 +10,6 @@ export interface IRequestCategory {
 	createdAt: string;
 	updatedAt: string;
 	allowedRequesters: Array<"USER" | "EMPLOYEE">;
+	hidden: boolean;
 	metadata?: any;
 }
