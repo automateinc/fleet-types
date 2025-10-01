@@ -168,3 +168,5 @@ export * from "./position-template";
 export * from "./position-template-item";
 export * from "./day-of-week";
 export * from "./client-contract";
+export * from "./cluster-patrol";
+export * from "./cluster-patrol-point";

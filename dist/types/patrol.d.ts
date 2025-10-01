@@ -8,6 +8,6 @@ export interface IPatrol {
 	flow: "SEQUENTIAL" | "RANDOM";
 	frequency: number;
 
-	positionId: string;
+	positionId?: string;
 	metadata?: any;
 }
