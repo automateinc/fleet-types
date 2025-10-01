@@ -9,5 +9,6 @@ export interface IPatrol {
 	frequency: number;
 
 	positionId?: string;
+	regionId: string;
 	metadata?: any;
 }
