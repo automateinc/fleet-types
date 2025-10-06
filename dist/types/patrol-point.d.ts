@@ -1,4 +1,4 @@
-export interface IPositionPatrolPoint {
+export interface IPatrolPoint {
 	id: string;
 	createdAt: string;
 	updatedAt?: string;

@@ -1,4 +1,6 @@
-export interface IPositionPatrol {
+import { IDayOfWeek } from "./day-of-week";
+
+export interface IPatrol {
 	id: string;
 	createdAt: string;
 	updatedAt?: string;
@@ -7,7 +9,9 @@ export interface IPositionPatrol {
 	description?: string;
 	flow: "SEQUENTIAL" | "RANDOM";
 	frequency: number;
+	days: IDayOfWeek[];
 
-	positionId: string;
+	positionId?: string;
+	regionId: string;
 	metadata?: any;
 }

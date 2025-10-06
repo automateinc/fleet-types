@@ -1,10 +1,12 @@
-export interface IAttendancePatrol {
+export interface IClusterPatrol {
 	id: string;
 	createdAt: string;
 	updatedAt?: string;
 
 	patrolId: string;
-	attendanceId: string;
+	date: string;
 	reportId?: string;
+	employeeId: string;
+
 	metadata?: any;
 }

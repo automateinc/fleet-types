@@ -1,4 +1,4 @@
-export interface IAttendancePatrolPoint {
+export interface IClusterPatrolPoint {
 	id: string;
 	createdAt: string;
 	updatedAt?: string;
@@ -8,7 +8,7 @@ export interface IAttendancePatrolPoint {
 	order: number;
 
 	patrolPointId: string;
-	attendancePatrolId: string;
+	clusterPatrolId: string;
 	fileId?: string;
 	reportId?: string;
 
