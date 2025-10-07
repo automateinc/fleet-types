@@ -171,3 +171,4 @@ export * from "./client-contract";
 export * from "./cluster-patrol";
 export * from "./cluster-patrol-point";
 export * from "./payment-cycle-config";
+export * from "./employee-group";
