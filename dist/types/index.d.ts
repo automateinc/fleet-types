@@ -168,3 +168,4 @@ export * from "./position-template-item";
 export * from "./day-of-week";
 export * from "./client-contract";
 export * from "./payment-cycle-config";
+export * from "./employee-group";
