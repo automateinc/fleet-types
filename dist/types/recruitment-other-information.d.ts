@@ -6,4 +6,5 @@ export interface IRecruitmentOtherInformation {
 	updatedAt: string;
 	additionalInformation: IRecruitmentOtherInformationAdditionalInformation[];
 	metadata?: any;
+	initialClientId?: string;
 }
