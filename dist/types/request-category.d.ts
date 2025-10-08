@@ -12,6 +12,6 @@ export interface IRequestCategory {
 	allowedRequesters: Array<"USER" | "EMPLOYEE">;
 	hidden: boolean;
 	info?: string;
-	infoType: "INFO" | "WARNING" | "ERROR";
+	infoType: "INFO" | "WARNING" | "DANGER";
 	metadata?: any;
 }
