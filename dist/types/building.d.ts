@@ -9,6 +9,7 @@ export interface IBuilding {
 		lng: number;
 	};
 	status: "ACTIVE" | "INACTIVE";
+	isInitial: boolean;
 	companyId: string;
 	zoneId: string;
 	metadata?: any;
