@@ -173,3 +173,4 @@ export * from "./cluster-patrol-point";
 export * from "./attendance-draft";
 export * from "./payment-cycle-config";
 export * from "./employee-group";
+export * from "./payroll-config";
