@@ -9,7 +9,5 @@ export type IPayrollConfig = {
 
 	employeeGroupId: string;
 
-	regionId: string;
-
 	metadata?: any;
 };
