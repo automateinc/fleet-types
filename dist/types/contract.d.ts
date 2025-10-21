@@ -12,6 +12,7 @@ export interface IContract {
 	monthlyDaysOff: number;
 	contractDuration: number;
 	overtimeRate: number;
+	commissionRate: number;
 	contractualAllowancesProvided: boolean;
 	paymentType: "TRANSFER" | "CASH" | "CHECK" | "UNPAID" | "FORSA" | "OTHER";
 	metadata?: any;
