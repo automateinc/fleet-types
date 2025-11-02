@@ -170,3 +170,4 @@ export * from "./day-of-week";
 export * from "./client-contract";
 export * from "./cluster-patrol";
 export * from "./cluster-patrol-point";
+export * from "./attendance-draft";

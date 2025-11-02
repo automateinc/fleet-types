@@ -1,4 +1,4 @@
-export interface IScheduleDraft {
+export interface IAttendanceDraft {
 	id: string;
 	createdAt: string;
 	updatedAt: string;
