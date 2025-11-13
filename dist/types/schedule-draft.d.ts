@@ -8,8 +8,6 @@ export interface IScheduleDraft {
 
 	status: "DRAFT" | "PENDING" | "ACCEPTED" | "REJECTED";
 
-	dayOfWeek: "SATURDAY" | "SUNDAY" | "MONDAY" | "TUESDAY" | "WEDNESDAY" | "THURSDAY" | "FRIDAY";
-
 	scheduleId: string;
 
 	employeeId: string;
