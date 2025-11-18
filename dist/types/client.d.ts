@@ -1,5 +1,3 @@
-import { IClientClass, IClientContact, ICompany, IFile } from ".";
-
 export interface IClient {
 	id: string;
 	name: string;
@@ -7,12 +5,8 @@ export interface IClient {
 	createdAt: string;
 	updatedAt: string;
 	deletedAt: string;
-	logo: IFile;
 	logoId: string;
 	folderKey: string;
-	class: IClientClass;
-	classId: string;
-	companies?: ICompany[];
-	contacts?: IClientContact[];
+	classId?: string;
 	metadata?: any;
 }

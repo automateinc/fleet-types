@@ -1,5 +1,3 @@
-import { IEmployee } from ".";
-
 export interface ISchedule {
 	id: string;
 	createdAt: string;
@@ -8,7 +6,6 @@ export interface ISchedule {
 	dayOfWeek: "SATURDAY" | "SUNDAY" | "MONDAY" | "TUESDAY" | "WEDNESDAY" | "THURSDAY" | "FRIDAY";
 	shiftId?: string;
 
-	employee: IEmployee;
 	employeeId?: string;
 	metadata?: any;
 }

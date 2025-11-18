@@ -1,4 +1,4 @@
-export interface IScheduleDraft {
+export interface IAttendanceDraft {
 	id: string;
 	createdAt: string;
 	updatedAt: string;
@@ -7,6 +7,8 @@ export interface IScheduleDraft {
 	date: string;
 
 	status: "DRAFT" | "PENDING" | "ACCEPTED" | "REJECTED";
+
+	dayOfWeek: "SATURDAY" | "SUNDAY" | "MONDAY" | "TUESDAY" | "WEDNESDAY" | "THURSDAY" | "FRIDAY";
 
 	scheduleId: string;
 
