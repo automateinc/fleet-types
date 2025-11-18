@@ -1,5 +1,3 @@
-import { IClient, IClientClass, IClientContact, IScheduleSite } from ".";
-
 export interface IClientSite {
 	id: string;
 	createdAt: string;
@@ -7,13 +5,8 @@ export interface IClientSite {
 	name: string;
 	address?: string;
 	geolocation?: { lat: number; lng: number };
-	class: IClientClass;
-	classId: string;
-	client: IClient;
+	classId?: string;
 	clientId: string;
-	contact?: IClientContact;
 	contactId?: string;
-	scheduleSite?: IScheduleSite;
-	// Add Zones later
 	metadata?: any;
 }

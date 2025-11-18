@@ -7,6 +7,6 @@ export interface IClient {
 	deletedAt: string;
 	logoId: string;
 	folderKey: string;
-	classId: string;
+	classId?: string;
 	metadata?: any;
 }
