@@ -19,10 +19,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # OIDC authentication for npm trusted publishers
       - uses: actions/setup-node@v4
         with:
           node-version: '20.x'
           registry-url: 'https://registry.npmjs.org'
+
+      - name: Verify OIDC authentication
+        run: npm whoami
 
       - run: npm install -g semver
 
