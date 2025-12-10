@@ -4,11 +4,12 @@ export interface IAttendanceDraft {
 	updatedAt: string;
 	deletedAt?: string;
 
+	acceptedAt?: string;
+	rejectedAt?: string;
+
 	date: string;
 
 	status: "DRAFT" | "PENDING" | "ACCEPTED" | "REJECTED";
-
-	dayOfWeek: "SATURDAY" | "SUNDAY" | "MONDAY" | "TUESDAY" | "WEDNESDAY" | "THURSDAY" | "FRIDAY";
 
 	scheduleId: string;
 
