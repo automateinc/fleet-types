@@ -3,7 +3,7 @@ export interface IAttendancePatrol {
 	createdAt: string;
 	updatedAt?: string;
 
-	status?: 'PENDING' | 'COMPLETED' | 'ON_HOLD';
+	status?: "PENDING" | "COMPLETED" | "ON_HOLD";
 
 	patrolId: string;
 	attendanceId: string;
