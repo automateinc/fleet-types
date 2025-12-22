@@ -130,6 +130,7 @@ export * from "./patrol-point";
 export * from "./payment-cycle";
 export * from "./payment-cycle-config";
 export * from "./payment-cycle-config";
+export * from "./payment-cycle-document";
 export * from "./payroll-config";
 export * from "./payroll-config";
 export * from "./permission";
