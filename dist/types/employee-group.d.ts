@@ -4,7 +4,6 @@ export interface IEmployeeGroup {
 	updatedAt?: string;
 
 	title: string;
-	nationalities: string[];
 
 	regionId: string;
 	metadata?: any;
