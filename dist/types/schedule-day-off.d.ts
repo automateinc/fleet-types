@@ -5,7 +5,7 @@ export type IScheduleDayOff = {
 	createdAt: string;
 	updatedAt?: string;
 
-	dayOfWeek: IDayOfWeek
+	dayOfWeek: IDayOfWeek;
 	employeeId: string;
 
 	metadata?: any;

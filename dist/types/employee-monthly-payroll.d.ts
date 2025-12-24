@@ -1,62 +1,28 @@
-interface Value<T = number> {
-	format?: string;
-	value: T;
-	postfix?: string;
-	defaultHidden?: boolean;
-}
-
 export interface IEmployeeMonthlyPayroll {
-	status: Value<string>;
-	company: Value<string>;
-	role: Value<string>;
-	salaryHold: Value<boolean>;
-	contractStartDate: Value<string>;
-	contractType: Value<string>;
-	totalAllowances: Value;
-	otherPay: Value;
-	fixedAllowances: Value;
-	foodAllowances: Value;
-	daysOffOvertime: Value;
-	daysOffOvertimeAllowance: Value;
-	siteAllowances: Value;
-	monthlyDays: Value;
-	maxNormalHours: Value;
-	increments: Value;
-	dailyTransportAndRiskAllowances: Value;
-	dailyTeamLeaderAllowance: Value;
-	dailySiteAllowances: Value;
-	dailyShiftAllowances: Value;
-	dailyOtherPay: Value;
-	dailyFixedAllowances: Value;
-	performanceIncrement: Value;
-	otherIncrements: Value;
-	dailyOtherAllowances: Value;
-	basicSalary: Value;
-	totalGrossSalary: Value;
-	totalNetPay: Value;
-	contractualDailyHours: Value;
-	totalAbsentDays: Value;
-	totalWorkedDays: Value;
-	sickLeaveDays: Value;
-	totalHours: Value;
-	normalHours: Value;
-	overtimeHours: Value;
-	dailyRate: Value;
-	hourlyRate: Value;
-	normalPay: Value;
-	overtimePay: Value;
-	normalRatio: Value;
-	overtimeRatio: Value;
-	SIODeductions: Value;
-	adjustmentsPlus: Value;
-	adjustmentsMinus: Value;
-	otherDeductions: Value;
-	totalDeductions: Value;
-	contractTotalSalary: Value;
-	iban: Value<string>;
-	retired: Value<boolean>;
-	bankTransfer: Value;
-	bankUpload1: Value;
-	bankUpload2: Value;
-	cashPayment: Value;
+	id: string;
+	updatedAt: string;
+	createdAt: string;
+
+	status: "PENDING" | "APPROVED" | "PROCESSED";
+
+	metadata?: any;
+	payroll: {
+		outputs: {
+			[key: string]: any;
+		};
+		metrics: {
+			[key: string]: any;
+		};
+		warnings: {
+			[key: string]: boolean;
+		};
+	};
+	formatted: Record<
+		string,
+		{
+			id: string;
+			title: string;
+			value: any;
+		}
+	>;
 }

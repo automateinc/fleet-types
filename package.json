@@ -1,60 +1,56 @@
 {
-  "name": "@automateinc/fleet-types",
-  "private": false,
-  "version": "0.0.0",
-  "description": "Reusable TypeScript types and interfaces for Fleet API.",
-  "main": "dist/index.js",
-  "types": "dist/types/index.d.ts",
-  "scripts": {
-    "prepare": "husky install",
-    "build": "tsc && cp -R src/types dist/",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "eslintConfig": {
-    "extends": "@404-software/eslint-config"
-  },
-  "keywords": [
-    "typescript",
-    "types",
-    "interfaces",
-    "api"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/automateinc/fleet-types.git"
-  },
-  "author": "Automate Inc. <hello@automate.bh> (https://automate.bh)",
-  "license": "MIT",
-  "devDependencies": {
-    "@404-software/eslint-config": "^1.0.20",
-    "@tanstack/react-query": "^4.36.1",
-    "axios": "^1.7.9",
-    "eslint": "^8.18.0",
-    "husky": "^9.1.7",
-    "prettier": "^2.7.1",
-    "typescript": "5.1.6"
-  },
-  "lint-staged": {
-    "src/**/*.ts": [
-      "eslint --fix"
-    ]
-  },
-  "dependencies": {
-    "asynckit": "^0.4.0",
-    "combined-stream": "^1.0.8",
-    "delayed-stream": "^1.0.0",
-    "follow-redirects": "^1.15.9",
-    "form-data": "^4.0.1",
-    "js-tokens": "^4.0.0",
-    "loose-envify": "^1.4.0",
-    "mime-db": "^1.52.0",
-    "mime-types": "^2.1.35",
-    "proxy-from-env": "^1.1.0",
-    "react": "^18.3.1",
-    "use-sync-external-store": "^1.4.0"
-  },
-  "bugs": {
-    "url": "https://github.com/automateinc/fleet-types/issues"
-  },
-  "homepage": "https://github.com/automateinc/fleet-types#readme"
+	"author": "Automate Inc. <hello@automate.bh> (https://automate.bh)",
+	"bugs": {
+		"url": "https://github.com/automateinc/fleet-types/issues"
+	},
+	"dependencies": {
+		"asynckit": "^0.4.0",
+		"combined-stream": "^1.0.8",
+		"delayed-stream": "^1.0.0",
+		"follow-redirects": "^1.15.9",
+		"form-data": "^4.0.1",
+		"js-tokens": "^4.0.0",
+		"loose-envify": "^1.4.0",
+		"mime-db": "^1.52.0",
+		"mime-types": "^2.1.35",
+		"proxy-from-env": "^1.1.0",
+		"react": "^18.3.1",
+		"use-sync-external-store": "^1.4.0"
+	},
+	"description": "Reusable TypeScript types and interfaces for Fleet API.",
+	"devDependencies": {
+		"@automateinc/biomejs": "^0.4.3",
+		"@biomejs/biome": "^2.3.8",
+		"@tanstack/react-query": "^4.36.1",
+		"axios": "^1.7.9",
+		"husky": "^9.1.7",
+		"typescript": "5.1.6"
+	},
+	"homepage": "https://github.com/automateinc/fleet-types#readme",
+	"keywords": [
+		"typescript",
+		"types",
+		"interfaces",
+		"api"
+	],
+	"license": "MIT",
+	"lint-staged": {
+		"src/**/*.ts": [
+			"biome ci"
+		]
+	},
+	"main": "dist/index.js",
+	"name": "@automateinc/fleet-types",
+	"private": false,
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/automateinc/fleet-types.git"
+	},
+	"scripts": {
+		"build": "tsc && cp -R src/types dist/",
+		"prepare": "husky install",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"types": "dist/types/index.d.ts",
+	"version": "0.0.0"
 }

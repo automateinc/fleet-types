@@ -37,4 +37,6 @@ export interface IEmployee {
 			[key: PropertyKey]: any;
 		};
 	};
+
+	metadata?: any;
 }
