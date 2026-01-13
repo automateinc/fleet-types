@@ -59,6 +59,7 @@ export * from "./client-class";
 export * from "./client-contact";
 export * from "./client-contract";
 export * from "./client-site";
+export * from "./cluster";
 export * from "./cluster-patrol";
 export * from "./cluster-patrol-point";
 export * from "./company";
