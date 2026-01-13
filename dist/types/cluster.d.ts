@@ -4,6 +4,7 @@ export interface ICluster {
 	updatedAt: string;
 	deletedAt?: string;
 
+	primaryKey?: string;
 	regionId: string;
 
 	metadata?: any;
