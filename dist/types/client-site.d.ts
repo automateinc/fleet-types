@@ -3,7 +3,7 @@ export interface IClientSite {
 	createdAt: string;
 	updatedAt: string;
 	name: string;
-	address?: string;
+	address?: any;
 	geolocation?: { lat: number; lng: number };
 	classId?: string;
 	clientId: string;
