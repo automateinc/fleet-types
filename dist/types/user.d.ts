@@ -1,5 +1,3 @@
-import { IFile } from ".";
-
 export interface IUser {
 	id: string;
 	email: string;
@@ -9,9 +7,6 @@ export interface IUser {
 	firstName: string;
 	lastName: string;
 	folderKey: string;
-	profilePicture?: IFile;
-	teamRole: string;
-	signature?: IFile;
 	name: string;
 	teamId: string;
 	createdAt: string;

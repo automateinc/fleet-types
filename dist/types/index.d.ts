@@ -171,3 +171,4 @@ export * from "./vehicle-status";
 export * from "./vendor";
 export * from "./vendor-contact";
 export * from "./zone";
+export * from "./zone-supervisor";

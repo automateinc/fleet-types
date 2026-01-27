@@ -17,5 +17,7 @@ export interface IScheduleDraft {
 
 	generatedById?: string;
 
+	verified: boolean;
+
 	metadata?: any;
 }
