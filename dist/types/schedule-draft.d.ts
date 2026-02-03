@@ -9,6 +9,7 @@ export interface IScheduleDraft {
 
 	date: string;
 
+	acceptedBy?: "EMPLOYEE" | "SYSTEM";
 	status: "DRAFT" | "PENDING" | "ACCEPTED" | "REJECTED";
 
 	scheduleId: string;
