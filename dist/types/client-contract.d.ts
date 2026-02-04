@@ -10,19 +10,19 @@ export interface IClientContract {
 	clientId: string;
 	companyId: string;
 	startDate: string;
-	endDate?: string;
-	duration?: number | "ONGOING";
+	endDate: string;
+	duration: number;
 
 	coverage: IDayOfWeek[];
 	nationalities: string[];
-	requirements: string[];
-	costPerHead: number;
+	requirements?: string;
+	costPerHead?: number;
 	shiftCoverage: number;
-	monthlyAmount: number;
-	paymentDate: string;
-	performanceBondAmount: number;
+	shiftSchedule: "DAY" | "NIGHT";
+	monthlyAmount?: number;
+	performanceBondAmount?: number;
 	thirdPartyLiabilityInsurance: boolean;
-	notes: string;
+	notes?: string;
 	supplementalAgreementId?: string;
 	personInChargeId?: string;
 	parentContractId?: string;
