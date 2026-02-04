@@ -18,7 +18,7 @@ export interface IClientContract {
 	requirements?: string;
 	costPerHead?: number;
 	shiftCoverage: number;
-	shiftSchedule: "DAY" | "NIGHT";
+	shiftSchedule?: "DAY" | "NIGHT";
 	monthlyAmount?: number;
 	performanceBondAmount?: number;
 	thirdPartyLiabilityInsurance: boolean;
