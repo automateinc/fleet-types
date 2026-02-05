@@ -10,8 +10,8 @@ export interface IClientContract {
 	clientId: string;
 	companyId: string;
 	startDate: string;
-	endDate: string;
-	duration: number;
+	endDate?: string;
+	duration: string | number;
 
 	coverage: IDayOfWeek[];
 	nationalities: string[];
