@@ -58,6 +58,8 @@ export * from "./client";
 export * from "./client-class";
 export * from "./client-contact";
 export * from "./client-contract";
+export * from "./client-comment";
+export * from "./client-comment-reaction";
 export * from "./client-site";
 export * from "./cluster-patrol";
 export * from "./cluster-patrol-point";
