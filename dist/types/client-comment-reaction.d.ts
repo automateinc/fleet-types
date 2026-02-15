@@ -8,5 +8,7 @@ export interface IClientCommentReaction {
 
   userId: string;
 
+  reaction: string;
+
   metadata?: any;
 }
