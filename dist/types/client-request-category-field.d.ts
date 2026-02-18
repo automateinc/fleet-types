@@ -9,6 +9,8 @@ export interface IClientRequestCategoryField {
 
 	required: boolean;
 
+	name: string;
+
 	valueType:
 		| "STRING"
 		| "NUMBER"
