@@ -1,15 +1,15 @@
 export interface IClientComment {
 	id: string;
 	createdAt: string;
-  updatedAt: string;
-  deletedAt?: string;
+	updatedAt: string;
+	deletedAt?: string;
 
-  clientId: string;
-  siteId?: string;
+	clientId: string;
+	siteId?: string;
 
-  userId: string;
+	userId: string;
 
-  comment: string;
+	comment: string;
 
-  metadata?: any;
+	metadata?: any;
 }
