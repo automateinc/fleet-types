@@ -8,6 +8,7 @@ export interface IClientRequestCategoryField {
 	categoryId: string;
 
 	required: boolean;
+	order: number;
 
 	name: string;
 

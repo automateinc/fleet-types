@@ -7,6 +7,8 @@ export interface IClientRequestAction {
 	operation: "HTTP";
 	type: "VERIFICATION" | "APPROVAL" | "REJECTION" | "CREATION";
 
+	categoryId: string;
+
 	config: Record<string, any>;
 	order: number;
 

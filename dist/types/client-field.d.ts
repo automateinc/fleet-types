@@ -23,10 +23,13 @@ export interface IClientField {
 	updatedAt?: string;
 	regionId: string;
 
-	employeeId?: string;
+	order: number;
 
 	name: string;
-	category?: string;
+	categoryId: string;
+
+	requestCategoryFieldId?: string;
+
 	type: "METADATA" | "REQUEST" | "CLIENT";
 	config?: ClientFieldInput;
 
