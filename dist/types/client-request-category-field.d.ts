@@ -12,7 +12,7 @@ export interface IClientRequestCategoryField {
 
 	name: string;
 
-	valueType:
+	type:
 		| "STRING"
 		| "NUMBER"
 		| "BOOLEAN"
