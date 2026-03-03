@@ -1,3 +1,5 @@
+import { ITagColor } from "./tag-color";
+
 export interface IClientStatus {
 	id: string;
 	createdAt: string;
@@ -6,5 +8,7 @@ export interface IClientStatus {
 	default: boolean;
 	weight: number;
 	regionId: string;
+	darkColors?: ITagColor | null;
+	lightColors?: ITagColor;
 	metadata?: any;
 }
