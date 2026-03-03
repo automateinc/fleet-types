@@ -5,6 +5,7 @@ export interface IClientStatusCheckRequirement {
 
 	optional: boolean;
 	order: number;
+	tooltip?: string;
 
 	statusCheckId: string;
 	categoryId: string;
