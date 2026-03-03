@@ -72,6 +72,8 @@ export * from "./client-request-value";
 export * from "./client-request-verification";
 export * from "./client-site";
 export * from "./client-status";
+export * from "./client-status-check";
+export * from "./client-status-check-requirement";
 export * from "./cluster-patrol";
 export * from "./cluster-patrol-point";
 export * from "./company";
