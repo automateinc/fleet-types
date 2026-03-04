@@ -4,7 +4,7 @@ export interface IClientRequestAction {
 	updatedAt: Date;
 
 	name: string;
-	operation: "HTTP";
+	operation: "HTTP" | "FUNCTION";
 	type: "VERIFICATION" | "APPROVAL" | "REJECTION" | "CREATION";
 
 	categoryId: string;
