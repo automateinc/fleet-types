@@ -9,6 +9,7 @@ export interface IClientStatus {
 	weight: number;
 	regionId: string;
 	darkColors?: ITagColor | null;
-	lightColors?: ITagColor;
+	lightColors?: ITagColor | null;
+	clientActive: boolean;
 	metadata?: any;
 }
