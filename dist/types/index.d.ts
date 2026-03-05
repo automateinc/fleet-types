@@ -62,6 +62,8 @@ export * from "./client-contact";
 export * from "./client-contract";
 export * from "./client-field";
 export * from "./client-field-value";
+export * from "./client-quotation";
+export * from "./client-quotation-line";
 export * from "./client-request";
 export * from "./client-request-action";
 export * from "./client-request-action-execution";

@@ -45,6 +45,8 @@ export type IModel =
 	| "zone"
 	| "siteClass"
 	| "clientSite"
+	| "clientQuotation"
+	| "clientQuotationLine"
 	| "position"
 	| "positionVersion"
 	| "shiftType"
