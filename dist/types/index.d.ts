@@ -60,6 +60,7 @@ export * from "./client-comment";
 export * from "./client-comment-reaction";
 export * from "./client-contact";
 export * from "./client-contract";
+export * from "./client-document-definition";
 export * from "./client-field";
 export * from "./client-field-value";
 export * from "./client-quotation";
