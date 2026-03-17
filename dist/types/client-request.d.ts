@@ -5,10 +5,7 @@ export interface IClientRequest {
 	deletedAt?: string;
 
 	archivedAt?: string;
-	approvedAt?: string;
 	withdrawnAt?: string;
-	verifiedAt?: string;
-	rejectedAt?: string;
 
 	typeId: string;
 	categoryId: string;
