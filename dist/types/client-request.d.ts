@@ -14,7 +14,6 @@ export interface IClientRequest {
 
 	verifiedById?: string;
 	rejectedById?: string;
-	folderKey?: string | null;
 
 	status: "PENDING_APPROVAL" | "APPROVED" | "REJECTED" | "WITHDRAWN" | "PENDING_VERIFICATION" | "ARCHIVED";
 	actionsExecutionStatus: "PENDING" | "COMPLETED" | "PROCESSING" | "FAILED" | "SKIPPED";
