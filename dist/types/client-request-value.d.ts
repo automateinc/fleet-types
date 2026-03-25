@@ -9,9 +9,9 @@ export interface IClientRequestValue {
 	name: string;
 	value: any;
 
-	type: IClientRequestCategoryField["valueType"];
+	type: IClientRequestCategoryField["type"];
 
-	fieldId?: string;
+	categoryFieldId?: string;
 
 	requestId: string;
 
