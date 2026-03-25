@@ -30,6 +30,8 @@ export interface IClientField {
 
 	requestCategoryFieldId?: string;
 
+	generationOnly: boolean;
+
 	type: "METADATA" | "REQUEST" | "CLIENT";
 	config?: ClientFieldInput;
 
