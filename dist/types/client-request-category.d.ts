@@ -6,6 +6,9 @@ export interface IClientRequestCategory {
 	name: string;
 	systemReserved: boolean;
 	weight: number;
+	hidden: boolean;
+	infoType: "INFO" | "DANGER" | "WARNING";
+	info?: string;
 
 	typeId: string;
 
