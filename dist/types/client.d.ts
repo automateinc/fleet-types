@@ -1,12 +1,16 @@
 export interface IClient {
 	id: string;
-	name: string;
-	status: "ACTIVE" | "INACTIVE";
 	createdAt: string;
-	updatedAt: string;
-	deletedAt: string;
+	updatedAt?: string;
+	deletedAt?: string;
+
+	name: string;
+	primaryId: string;
+	primaryKey: string;
+
 	logoId: string;
 	folderKey: string;
 	classId?: string;
+	statusId: string;
 	metadata?: any;
 }

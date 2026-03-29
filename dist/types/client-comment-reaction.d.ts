@@ -1,14 +1,14 @@
 export interface IClientCommentReaction {
 	id: string;
 	createdAt: string;
-  updatedAt: string;
-  deletedAt?: string;
+	updatedAt: string;
+	deletedAt?: string;
 
-  commentId: string;
+	commentId: string;
 
-  userId: string;
+	userId: string;
 
-  reaction: string;
+	reaction: string;
 
-  metadata?: any;
+	metadata?: any;
 }
