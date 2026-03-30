@@ -10,5 +10,10 @@ export interface IClientStatusCheckRequirement {
 	statusCheckId: string;
 	categoryId: string;
 
+	categoryFieldId?: string;
+	
+	optionalWhenCategoryId?: string;
+	optionalWhenCategoryFieldId?: string;
+
 	metadata?: any;
 }
