@@ -4,6 +4,7 @@ export interface IContractCost {
 	updatedAt: string;
 
   name: string;
+  value: number;
 
   recurrence: "ONE_TIME" | "RECURRING";
 
