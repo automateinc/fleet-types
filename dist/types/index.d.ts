@@ -88,6 +88,7 @@ export * from "./contract";
 export * from "./contract-allowance";
 export * from "./contract-benefit";
 export * from "./contract-deduction";
+export * from "./contract-cost";
 export * from "./coords";
 export * from "./day-of-week";
 export * from "./dispatch";
