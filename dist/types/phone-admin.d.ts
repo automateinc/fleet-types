@@ -19,6 +19,10 @@ export interface IPhoneAdminAgent {
 	sipProfileId: string | null;
 	sipProfileName?: string | null;
 	metadata?: Record<string, string | undefined>;
+	localEntityId?: string;
+	syncStatus?: string | null;
+	syncError?: string | null;
+	syncedAt?: string | null;
 	createdAt: string;
 }
 
@@ -36,6 +40,12 @@ export interface IPhoneAdminQueue {
 	onRejectFile: string;
 	onNoAnswerFile: string;
 	onEndFile: string;
+	localQueueId?: string;
+	zoneId?: string;
+	employeeGroupId?: string;
+	syncStatus?: string | null;
+	syncError?: string | null;
+	syncedAt?: string | null;
 	createdAt: string;
 }
 
@@ -46,6 +56,10 @@ export interface IPhoneAdminSummary {
 	defaultQueueId: string | null;
 	phoneConfigured: boolean;
 	resolveAgentUrlConfigured: boolean;
+	reconcileActionsEnabled?: boolean;
+	syncedAgentCount?: number;
+	syncedUserCount?: number;
+	syncedQueueCount?: number;
 }
 
 export interface IPhoneAdminSnapshot {
