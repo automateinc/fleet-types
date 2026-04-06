@@ -128,6 +128,7 @@ export * from "./payment-cycle-document";
 export * from "./payroll-config";
 export * from "./permission";
 export * from "./permission-group";
+export * from "./phone-admin";
 export * from "./phone-line";
 export * from "./phone-line-commitment";
 export * from "./phone-line-contract";
