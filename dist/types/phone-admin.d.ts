@@ -4,6 +4,38 @@ export interface IPhoneAdminAssignedQueue {
 	name: string;
 }
 
+export interface IPhoneAdminQueueWorkingHoursDay {
+	enabled: boolean;
+	startTime: string;
+	endTime: string;
+}
+
+export interface IPhoneAdminQueueWorkingHours {
+	monday: IPhoneAdminQueueWorkingHoursDay;
+	tuesday: IPhoneAdminQueueWorkingHoursDay;
+	wednesday: IPhoneAdminQueueWorkingHoursDay;
+	thursday: IPhoneAdminQueueWorkingHoursDay;
+	friday: IPhoneAdminQueueWorkingHoursDay;
+	saturday: IPhoneAdminQueueWorkingHoursDay;
+	sunday: IPhoneAdminQueueWorkingHoursDay;
+}
+
+export interface IPhoneAdminPromptFields {
+	onGreetingBusinessHoursFile: string;
+	onGreetingAfterHoursFile: string;
+	onQueueEntryFile: string;
+	onHoldLoopFile: string;
+	onQueueMessagePeriodicFile: string;
+	onQueuePositionFile: string;
+	onConnectingFile: string;
+	onTransferFile: string;
+	onRingbackFile: string;
+	onBusyUnavailableFile: string;
+	onNoAnswerFile: string;
+	onAnnouncementFile: string;
+	onGoodbyeEndCallFile: string;
+}
+
 export interface IPhoneAdminAgent {
 	id: string;
 	orgId: string;
@@ -26,20 +58,16 @@ export interface IPhoneAdminAgent {
 	createdAt: string;
 }
 
-export interface IPhoneAdminQueue {
+export interface IPhoneAdminQueue extends IPhoneAdminPromptFields {
 	id: string;
 	orgId: string;
 	key: string;
 	name: string;
 	sipProfileId: string | null;
-	onCallFile: string;
-	onCallLoopFile: string;
-	onAnswerFile: string;
-	onHoldFile: string;
-	onTransferFile: string;
-	onRejectFile: string;
-	onNoAnswerFile: string;
-	onEndFile: string;
+	noAnswerTimeoutSeconds: number;
+	workingHoursEnabled: boolean;
+	workingHoursTimezone: string;
+	workingHours: IPhoneAdminQueueWorkingHours;
 	localQueueId?: string;
 	zoneId?: string;
 	employeeGroupId?: string;
@@ -47,6 +75,12 @@ export interface IPhoneAdminQueue {
 	syncError?: string | null;
 	syncedAt?: string | null;
 	createdAt: string;
+}
+
+export interface IPhoneAdminSystemConfig extends IPhoneAdminPromptFields {
+	id: string;
+	orgId: string;
+	updatedAt: string;
 }
 
 export interface IPhoneAdminSummary {
@@ -66,5 +100,8 @@ export interface IPhoneAdminSnapshot {
 	agents: IPhoneAdminAgent[];
 	users: IPhoneAdminAgent[];
 	queues: IPhoneAdminQueue[];
+	sipProfiles?: unknown[];
+	promptAudio?: unknown[];
+	systemConfig?: IPhoneAdminSystemConfig | null;
 	summary: IPhoneAdminSummary;
 }
