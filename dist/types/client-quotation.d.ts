@@ -13,6 +13,7 @@ export interface IClientQuotation {
 	approvedAt?: string;
 
 	previousVersionId?: string;
+	taxRate: number;
 
 	metadata?: any;
 }
