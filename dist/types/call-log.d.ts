@@ -4,7 +4,7 @@ export interface ICallLog {
 	updatedAt: string;
 	deletedAt?: string;
 
-	type: "BUILDING" | "CLIENT" | "EMPLOYEE" | "OTHER" | null;
+	type: "BUILDING" | "CLIENT" | "EMPLOYEE" | "OTHER" | "USER" | null;
 
 	direction: "INCOMING" | "OUTGOING";
 
