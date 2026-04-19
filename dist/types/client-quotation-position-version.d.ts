@@ -27,6 +27,7 @@ export interface IClientQuotationPositionVersion {
 	coversFriday: boolean;
 
 	dailyHours: number;
+	dailyCoverage: string;
 	gender?: IGender | null;
 
 	metadata?: any;
