@@ -3,7 +3,7 @@ export interface IPositionVersion {
 	updatedAt: Date;
 	createdAt: Date;
 
-	status: "UNVERIFIED" | "PENDING_VERIFICATION" | "VERIFIED" | "REJECTED" | "CHANGES_NEEDED";
+	status: "UNVERIFIED" | "PENDING_VERIFICATION" | "VERIFIED" | "REJECTED";
 	version: number;
 	coversSaturday: boolean;
 	coversSunday: boolean;
@@ -15,8 +15,6 @@ export interface IPositionVersion {
 	dailyHours: number;
 	dailyCoverage: string;
 	weeklyCoverage: string;
-
-	reason?: string;
 
 	positionId: string;
 	activePositionId: string;
