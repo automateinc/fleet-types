@@ -10,6 +10,7 @@ export interface IContract {
 	updatedAt: Date;
 	dailyHours: number;
 	monthlyDaysOff: number;
+	workingDaysPerWeek: number;
 	contractDuration: number;
 	overtimeRate: number;
 	commissionRate: number;
