@@ -66,6 +66,8 @@ export * from "./client-field-category";
 export * from "./client-field-value";
 export * from "./client-quotation";
 export * from "./client-quotation-line";
+export * from "./client-quotation-position-version";
+export * from "./client-quotation-site-draft";
 export * from "./client-request";
 export * from "./client-request-action";
 export * from "./client-request-action-execution";
