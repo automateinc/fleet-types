@@ -1,13 +1,14 @@
 export interface IContract {
 	basicSalary: number;
 	companyId: string;
-	createdAt: Date;
+	createdAt: string;
+	deletedAt?: string;
 	id: string;
 	type: "FULL_TIME" | "PART_TIME" | "FREELANCE";
 	roleId: string;
 	primaryKey: string;
 	totalSalary: number;
-	updatedAt: Date;
+	updatedAt: string;
 	dailyHours: number;
 	monthlyDaysOff: number;
 	workingDaysPerWeek: number;

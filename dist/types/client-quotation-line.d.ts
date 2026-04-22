@@ -5,6 +5,7 @@ export interface IClientQuotationLine {
 
 	quotationId: string;
 	employeeGroupId: string;
+	employeeGroupSnapshotId: string;
 	employeeContractId: string;
 	employeeContractSnapshotId: string;
 	employeeCompanyId: string;
