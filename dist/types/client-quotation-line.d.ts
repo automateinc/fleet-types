@@ -12,7 +12,6 @@ export interface IClientQuotationLine {
 	roleId: string;
 
 	headcount: number;
-	pricePerHead: number;
 
 	metadata?: any;
 }
