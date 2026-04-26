@@ -11,6 +11,7 @@ export interface IClientRequestCategoryField {
 	order: number;
 
 	name: string;
+	cardinality: "SINGLE" | "MULTI";
 
 	type:
 		| "STRING"

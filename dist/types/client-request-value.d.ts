@@ -15,7 +15,7 @@ export interface IClientRequestValue {
 
 	requestId: string;
 
-	relationValue?: string;
+	relationValue?: string | string[];
 	file?: IFile;
 
 	config?: {
