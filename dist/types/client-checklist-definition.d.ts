@@ -1,7 +1,3 @@
-import { IClientRequestCategoryField } from "./client-request-category-field";
-import { IClientStatus } from "./client-status";
-import { IClientChecklistItem } from "./client-checklist-item";
-
 export type IClientChecklistDefinitionScope = "REGION" | "CLIENT";
 
 export interface IClientChecklistDefinition {
