@@ -56,6 +56,8 @@ export * from "./call-log";
 export * from "./ceiling";
 export * from "./client";
 export * from "./client-class";
+export * from "./client-checklist-definition";
+export * from "./client-checklist-item";
 export * from "./client-comment";
 export * from "./client-comment-reaction";
 export * from "./client-contact";

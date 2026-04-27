@@ -42,6 +42,8 @@ export type IModel =
 	| "ceiling"
 	| "tag"
 	| "client"
+	| "clientChecklistDefinition"
+	| "clientChecklistItem"
 	| "clientStatus"
 	| "clientStatusCheck"
 	| "clientStatusCheckRequirement"
