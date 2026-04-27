@@ -16,7 +16,6 @@ export interface IClientChecklistDefinition {
 	clientId?: string | null;
 	createdById?: string | null;
 
-	visibleUntilStatusId?: string | null;
 	visibleWhenFieldId?: string | null;
 	visibleWhenValueString?: string | null;
 
