@@ -8,6 +8,7 @@ export interface IClientChecklistDefinition {
 	title: string;
 	description?: string | null;
 	order: number;
+	requiresAttachment: boolean;
 
 	systemGenerated: boolean;
 	scope: IClientChecklistDefinitionScope;
