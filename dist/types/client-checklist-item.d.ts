@@ -5,6 +5,7 @@ export interface IClientChecklistItem {
 
 	definitionId: string;
 	clientId: string;
+	companyId?: string | null;
 
 	done: boolean;
 	completedAt?: string | null;

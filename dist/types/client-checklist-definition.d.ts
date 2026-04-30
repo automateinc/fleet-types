@@ -15,6 +15,7 @@ export interface IClientChecklistDefinition {
 
 	regionId: string;
 	clientId?: string | null;
+	companyId?: string | null;
 	createdById?: string | null;
 
 	visibleWhenFieldId?: string | null;
