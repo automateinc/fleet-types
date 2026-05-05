@@ -1,11 +1,11 @@
-export interface IEmployeeGroup {
+export interface IEmployeeGroupSnapshot {
 	id: string;
 	createdAt: string;
 	updatedAt?: string;
-	deletedAt?: string;
 
+	employeeGroupId: string;
 	title: string;
-
 	regionId: string;
+
 	metadata?: any;
 }

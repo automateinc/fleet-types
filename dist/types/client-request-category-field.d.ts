@@ -1,5 +1,29 @@
 import { IModel } from "./models";
 
+export interface IClientRequestFieldVisibilityRule {
+	id: string;
+	action: "SHOW" | "HIDE";
+	operator: "EQUALS" | "NOT_EQUALS" | "CONTAINS" | "NOT_CONTAINS" | "IS_EMPTY" | "IS_NOT_EMPTY";
+	sourceFieldId: string;
+	targetFieldId: string;
+	order: number;
+	compareValueString?: string;
+	compareValueNumber?: number;
+	compareValueBoolean?: boolean;
+	compareValueDate?: string;
+	metadata?: any;
+	sourceField?: {
+		id: string;
+		name: string;
+		type?: IClientRequestCategoryField["type"];
+	};
+	targetField?: {
+		id: string;
+		name: string;
+		type?: IClientRequestCategoryField["type"];
+	};
+}
+
 export interface IClientRequestCategoryField {
 	id: string;
 	createdAt: string;
@@ -11,6 +35,7 @@ export interface IClientRequestCategoryField {
 	order: number;
 
 	name: string;
+	cardinality: "SINGLE" | "MULTI";
 
 	type:
 		| "STRING"
@@ -35,4 +60,7 @@ export interface IClientRequestCategoryField {
 		hasDependency?: boolean;
 		variant?: string;
 	};
+
+	visibilityRulesAsSource?: IClientRequestFieldVisibilityRule[];
+	visibilityRulesAsTarget?: IClientRequestFieldVisibilityRule[];
 }

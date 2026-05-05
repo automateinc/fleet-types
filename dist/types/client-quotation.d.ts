@@ -3,7 +3,7 @@ export interface IClientQuotation {
 	createdAt: string;
 	updatedAt: string;
 
-	status: "DRAFT" | "PENDING_APPROVAL" | "APPROVED";
+	status: "DRAFT" | "PENDING_APPROVAL" | "APPROVED" | "REJECTED" | "CHANGES_NEEDED";
 
 	clientId: string;
 	createdById?: string;
@@ -13,6 +13,9 @@ export interface IClientQuotation {
 	approvedAt?: string;
 
 	previousVersionId?: string;
+	taxRate: number;
+
+	reason?: string;
 
 	metadata?: any;
 }
