@@ -43,7 +43,6 @@ export interface IClientStatusCheckRequirement {
 	compareValueDate?: string;
 	compareValueNumber?: number;
 	compareValueString?: string;
-	optionalConditionGroups?: IClientStatusCheckRequirementConditionGroup[];
 
 	metadata?: any;
 }
