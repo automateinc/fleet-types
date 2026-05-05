@@ -81,6 +81,8 @@ export * from "./client-request-verification";
 export * from "./client-site";
 export * from "./client-status";
 export * from "./client-status-check";
+export * from "./client-status-check-requirement-condition";
+export * from "./client-status-check-requirement-condition-group";
 export * from "./client-status-check-requirement";
 export * from "./cluster-patrol";
 export * from "./cluster-patrol-point";
