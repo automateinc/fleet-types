@@ -189,6 +189,7 @@ export * from "./shift";
 export * from "./shift-type";
 export * from "./signing-mode";
 export * from "./standard-operating-procedure";
+export * from "./structured-content";
 export * from "./tag";
 export * from "./tag-color";
 export * from "./team";
