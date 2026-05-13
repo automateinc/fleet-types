@@ -10,7 +10,22 @@ export interface IStructuredContentTableColumn {
 
 export interface IStructuredContentNodeBase {
 	id: string;
-	type: "LINK" | "SPACE" | "TABLE" | "TEXT";
+	type: "COLLAPSE" | "FILES" | "LINK" | "SPACE" | "TABLE" | "TEXT";
+}
+
+export interface IStructuredContentCollapseNode extends IStructuredContentNodeBase {
+	children?: IStructuredContentNode[];
+	config?: {
+		title?: string;
+	};
+	type: "COLLAPSE";
+}
+
+export interface IStructuredContentFilesNode extends IStructuredContentNodeBase {
+	config?: {
+		source?: "HISTORY";
+	};
+	type: "FILES";
 }
 
 export interface IStructuredContentSpaceNode extends IStructuredContentNodeBase {
@@ -40,6 +55,8 @@ export interface IStructuredContentTableNode extends IStructuredContentNodeBase 
 }
 
 export type IStructuredContentNode =
+	| IStructuredContentCollapseNode
+	| IStructuredContentFilesNode
 	| IStructuredContentLinkNode
 	| IStructuredContentSpaceNode
 	| IStructuredContentTableNode
