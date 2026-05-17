@@ -26,6 +26,10 @@ export interface IStructuredContentTableToolbar {
 	search?: boolean;
 }
 
+export interface IStructuredContentTablePagination {
+	pageSize?: number;
+}
+
 export interface IStructuredContentTableColumn {
 	id: string;
 	name: string;
@@ -77,6 +81,7 @@ export interface IStructuredContentLinkNode extends IStructuredContentNodeBase {
 export interface IStructuredContentTableNode extends IStructuredContentNodeBase {
 	config?: {
 		columns?: IStructuredContentTableColumn[];
+		pagination?: IStructuredContentTablePagination;
 		toolbar?: IStructuredContentTableToolbar;
 	};
 	type: "TABLE";
