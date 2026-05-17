@@ -1,15 +1,42 @@
 export type StructuredContentTextVariant = "H1" | "H2" | "H3" | "H4" | "H5" | "H6" | "PARAGRAPH" | "TEXT";
 export type StructuredContentLinkVariant = "BUTTON" | "LINK";
 export type StructuredContentTableColumnType = "BOOLEAN" | "DATE" | "DATETIME" | "LINK" | "NUMBER" | "TEXT" | "TIME";
+export type StructuredContentTableSortType = "date" | "number" | "string";
+export type StructuredContentLayoutWidth = "auto" | "full" | "half" | "third";
+export type StructuredContentLayoutAlign = "center" | "end" | "start";
+export type StructuredContentLayoutSpacing = "lg" | "md" | "none" | "sm";
+
+export interface IStructuredContentNodeLayout {
+	align?: StructuredContentLayoutAlign;
+	gap?: StructuredContentLayoutSpacing;
+	hidden?: boolean;
+	marginBottom?: StructuredContentLayoutSpacing;
+	marginTop?: StructuredContentLayoutSpacing;
+	paddingX?: StructuredContentLayoutSpacing;
+	paddingY?: StructuredContentLayoutSpacing;
+	width?: StructuredContentLayoutWidth;
+}
+
+export interface IStructuredContentTableToolbarFilter {
+	columnKey: string;
+}
+
+export interface IStructuredContentTableToolbar {
+	filters?: IStructuredContentTableToolbarFilter[];
+	search?: boolean;
+}
 
 export interface IStructuredContentTableColumn {
 	id: string;
 	name: string;
+	sortType?: StructuredContentTableSortType;
+	sortable?: boolean;
 	type: StructuredContentTableColumnType;
 }
 
 export interface IStructuredContentNodeBase {
 	id: string;
+	layout?: IStructuredContentNodeLayout;
 	type: "COLLAPSE" | "FILES" | "LINK" | "SPACE" | "TABLE" | "TEXT";
 }
 
@@ -50,6 +77,7 @@ export interface IStructuredContentLinkNode extends IStructuredContentNodeBase {
 export interface IStructuredContentTableNode extends IStructuredContentNodeBase {
 	config?: {
 		columns?: IStructuredContentTableColumn[];
+		toolbar?: IStructuredContentTableToolbar;
 	};
 	type: "TABLE";
 }
