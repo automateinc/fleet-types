@@ -2,9 +2,11 @@ export type StructuredContentTextVariant = "H1" | "H2" | "H3" | "H4" | "H5" | "H
 export type StructuredContentLinkVariant = "BUTTON" | "LINK";
 export type StructuredContentTableColumnType = "BOOLEAN" | "DATE" | "DATETIME" | "LINK" | "NUMBER" | "TEXT" | "TIME";
 export type StructuredContentTableSortType = "date" | "number" | "string";
+export type StructuredContentTableToolbarFilterType = "DATE_RANGE" | "SELECT";
 export type StructuredContentLayoutWidth = "auto" | "full" | "half" | "third";
 export type StructuredContentLayoutAlign = "center" | "end" | "start";
 export type StructuredContentLayoutSpacing = "lg" | "md" | "none" | "sm";
+export type StructuredContentTagTone = "danger" | "default" | "info" | "success" | "warning";
 
 export interface IStructuredContentNodeLayout {
 	align?: StructuredContentLayoutAlign;
@@ -19,6 +21,7 @@ export interface IStructuredContentNodeLayout {
 
 export interface IStructuredContentTableToolbarFilter {
 	columnKey: string;
+	type?: StructuredContentTableToolbarFilterType;
 }
 
 export interface IStructuredContentTableToolbar {
@@ -41,7 +44,7 @@ export interface IStructuredContentTableColumn {
 export interface IStructuredContentNodeBase {
 	id: string;
 	layout?: IStructuredContentNodeLayout;
-	type: "COLLAPSE" | "FILES" | "LINK" | "SPACE" | "TABLE" | "TEXT";
+	type: "COLLAPSE" | "FILES" | "LINK" | "SPACE" | "TABLE" | "TAG" | "TEXT";
 }
 
 export interface IStructuredContentCollapseNode extends IStructuredContentNodeBase {
@@ -71,6 +74,13 @@ export interface IStructuredContentTextNode extends IStructuredContentNodeBase {
 	type: "TEXT";
 }
 
+export interface IStructuredContentTagNode extends IStructuredContentNodeBase {
+	config?: {
+		tone?: StructuredContentTagTone;
+	};
+	type: "TAG";
+}
+
 export interface IStructuredContentLinkNode extends IStructuredContentNodeBase {
 	config?: {
 		variant?: StructuredContentLinkVariant;
@@ -92,6 +102,7 @@ export type IStructuredContentNode =
 	| IStructuredContentFilesNode
 	| IStructuredContentLinkNode
 	| IStructuredContentSpaceNode
+	| IStructuredContentTagNode
 	| IStructuredContentTableNode
 	| IStructuredContentTextNode;
 
