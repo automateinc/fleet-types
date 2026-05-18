@@ -1,12 +1,17 @@
 export type StructuredContentTextVariant = "H1" | "H2" | "H3" | "H4" | "H5" | "H6" | "PARAGRAPH" | "TEXT";
 export type StructuredContentLinkVariant = "BUTTON" | "LINK";
-export type StructuredContentTableColumnType = "BOOLEAN" | "DATE" | "DATETIME" | "LINK" | "NUMBER" | "TEXT" | "TIME";
+export type StructuredContentTableColumnType = "BOOLEAN" | "DATE" | "DATETIME" | "LINK" | "NUMBER" | "TAG" | "TEXT" | "TIME";
 export type StructuredContentTableSortType = "date" | "number" | "string";
 export type StructuredContentTableToolbarFilterType = "DATE_RANGE" | "SELECT";
 export type StructuredContentLayoutWidth = "auto" | "full" | "half" | "third";
 export type StructuredContentLayoutAlign = "center" | "end" | "start";
 export type StructuredContentLayoutSpacing = "lg" | "md" | "none" | "sm";
 export type StructuredContentTagTone = "danger" | "default" | "info" | "success" | "warning";
+
+export interface IStructuredContentTagValue {
+	label: string;
+	tone?: StructuredContentTagTone;
+}
 
 export interface IStructuredContentNodeLayout {
 	align?: StructuredContentLayoutAlign;
@@ -113,9 +118,11 @@ export interface IStructuredContentLinkValue {
 }
 
 export type StructuredContentPrimitiveValue = boolean | number | string | null;
-export type IStructuredContentTableRow = Record<string, IStructuredContentLinkValue | StructuredContentPrimitiveValue>;
+export type StructuredContentTaggableValue = IStructuredContentTagValue | StructuredContentPrimitiveValue;
+export type IStructuredContentTableRow = Record<string, IStructuredContentLinkValue | StructuredContentTaggableValue>;
 export type StructuredContentDataValue =
 	| IStructuredContentLinkValue
+	| IStructuredContentTagValue
 	| IStructuredContentTableRow[]
 	| StructuredContentPrimitiveValue;
 export type IStructuredContentData = Record<string, StructuredContentDataValue>;
