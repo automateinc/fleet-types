@@ -1,3 +1,5 @@
+import { IModel } from "./models";
+
 export type StructuredContentTextVariant = "H1" | "H2" | "H3" | "H4" | "H5" | "H6" | "PARAGRAPH" | "TEXT";
 export type StructuredContentLinkVariant = "BUTTON" | "LINK";
 export type StructuredContentTableColumnType = "BOOLEAN" | "DATE" | "DATETIME" | "LINK" | "NUMBER" | "TAG" | "TEXT" | "TIME";
@@ -131,9 +133,11 @@ export interface IStructuredContent {
 	createdAt: string;
 	data: IStructuredContentData;
 	id: string;
+	key: string;
 	metadata?: unknown;
-	relation: string;
-	relationId: number | string;
+	rawData: unknown;
+	relation: IModel;
+	relationId: string;
 	structure: IStructuredContentNode[];
 	updatedAt?: string;
 }
