@@ -2,7 +2,16 @@ import { IModel } from "./models";
 
 export type StructuredContentTextVariant = "H1" | "H2" | "H3" | "H4" | "H5" | "H6" | "PARAGRAPH" | "TEXT";
 export type StructuredContentLinkVariant = "BUTTON" | "LINK";
-export type StructuredContentTableColumnType = "BOOLEAN" | "DATE" | "DATETIME" | "LINK" | "NUMBER" | "TAG" | "TEXT" | "TIME";
+export type StructuredContentTableColumnType =
+	| "BOOLEAN"
+	| "DATE"
+	| "DATETIME"
+	| "DEFAULT_AVATAR"
+	| "LINK"
+	| "NUMBER"
+	| "TAG"
+	| "TEXT"
+	| "TIME";
 export type StructuredContentTableSortType = "date" | "number" | "string";
 export type StructuredContentTableToolbarFilterType = "DATE_RANGE" | "SELECT";
 export type StructuredContentLayoutWidth = "auto" | "full" | "half" | "third";
@@ -13,6 +22,12 @@ export type StructuredContentTagTone = "danger" | "default" | "info" | "success"
 export interface IStructuredContentTagValue {
 	label: string;
 	tone?: StructuredContentTagTone;
+}
+
+export interface IStructuredContentDefaultAvatarValue {
+	inactive?: boolean;
+	onLeave?: boolean;
+	src: string;
 }
 
 export interface IStructuredContentNodeLayout {
@@ -41,6 +56,9 @@ export interface IStructuredContentTablePagination {
 }
 
 export interface IStructuredContentTableColumn {
+	config?: {
+		size?: number;
+	};
 	id: string;
 	name: string;
 	sortType?: StructuredContentTableSortType;
@@ -51,7 +69,7 @@ export interface IStructuredContentTableColumn {
 export interface IStructuredContentNodeBase {
 	id: string;
 	layout?: IStructuredContentNodeLayout;
-	type: "COLLAPSE" | "FILES" | "LINK" | "SPACE" | "TABLE" | "TAG" | "TEXT";
+	type: "COLLAPSE" | "DEFAULT_AVATAR" | "FILES" | "LINK" | "SPACE" | "TABLE" | "TAG" | "TEXT";
 }
 
 export interface IStructuredContentCollapseNode extends IStructuredContentNodeBase {
@@ -67,6 +85,13 @@ export interface IStructuredContentFilesNode extends IStructuredContentNodeBase 
 		source?: "HISTORY";
 	};
 	type: "FILES";
+}
+
+export interface IStructuredContentDefaultAvatarNode extends IStructuredContentNodeBase {
+	config?: {
+		size?: number;
+	};
+	type: "DEFAULT_AVATAR";
 }
 
 export interface IStructuredContentSpaceNode extends IStructuredContentNodeBase {
@@ -106,6 +131,7 @@ export interface IStructuredContentTableNode extends IStructuredContentNodeBase 
 
 export type IStructuredContentNode =
 	| IStructuredContentCollapseNode
+	| IStructuredContentDefaultAvatarNode
 	| IStructuredContentFilesNode
 	| IStructuredContentLinkNode
 	| IStructuredContentSpaceNode
@@ -120,9 +146,14 @@ export interface IStructuredContentLinkValue {
 }
 
 export type StructuredContentPrimitiveValue = boolean | number | string | null;
+export type StructuredContentAvatarValue = IStructuredContentDefaultAvatarValue;
 export type StructuredContentTaggableValue = IStructuredContentTagValue | StructuredContentPrimitiveValue;
-export type IStructuredContentTableRow = Record<string, IStructuredContentLinkValue | StructuredContentTaggableValue>;
+export type IStructuredContentTableRow = Record<
+	string,
+	IStructuredContentLinkValue | StructuredContentAvatarValue | StructuredContentTaggableValue
+>;
 export type StructuredContentDataValue =
+	| IStructuredContentDefaultAvatarValue
 	| IStructuredContentLinkValue
 	| IStructuredContentTagValue
 	| IStructuredContentTableRow[]
