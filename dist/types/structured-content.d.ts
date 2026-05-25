@@ -165,7 +165,7 @@ export interface IStructuredContent {
 	data: IStructuredContentData;
 	id: string;
 	key: string;
-	metadata?: unknown;
+	metadata?: Record<string, any>;
 	rawData: unknown;
 	relation: IModel;
 	relationId: string;
