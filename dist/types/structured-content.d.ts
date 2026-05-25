@@ -60,7 +60,7 @@ export interface IStructuredContentTableColumn {
 		size?: number;
 	};
 	id: string;
-	name: string;
+	name?: string;
 	sortType?: StructuredContentTableSortType;
 	sortable?: boolean;
 	type: StructuredContentTableColumnType;
