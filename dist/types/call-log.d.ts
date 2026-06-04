@@ -10,10 +10,7 @@ export interface ICallLog {
 
 	status: "MISSED" | "ANSWERED" | "REJECTED" | "FAILED" | "NO_ANSWER";
 
-	employeeContactId?: string;
-	clientContactId?: string;
-
-	otherCaller?: string;
+	callEntityId?: string;
 
 	userId?: string;
 

@@ -131,6 +131,7 @@ export type IModel =
 	| "report"
 	| "reportComment"
 	| "reportCommentReaction"
+	| "callEntity"
 	| "callLog"
 	| "notificationToken"
 	| "notification"
