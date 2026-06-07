@@ -52,6 +52,7 @@ export * from "./building-contact";
 export * from "./building-lease";
 export * from "./building-lease-payment";
 export * from "./bunk";
+export * from "./call-entity";
 export * from "./call-log";
 export * from "./ceiling";
 export * from "./client";

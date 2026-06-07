@@ -3,15 +3,15 @@ export interface IContractCost {
 	createdAt: string;
 	updatedAt: string;
 
-  name: string;
-  value: number;
+	name: string;
+	value: number;
 
-  recurrence: "ONE_TIME" | "RECURRING";
+	recurrence: "ONE_TIME" | "RECURRING";
 
-  duration?: number;
-  durationType?: "DAY" | "WEEK" | "MONTH" | "YEAR";
+	duration?: number;
+	durationType?: "DAY" | "WEEK" | "MONTH" | "YEAR";
 
-  contractId: string;
+	contractId: string;
 
-  metadata?: any;
+	metadata?: any;
 }
