@@ -69,7 +69,7 @@ export interface IStructuredContentTableColumn {
 export interface IStructuredContentNodeBase {
 	id: string;
 	layout?: IStructuredContentNodeLayout;
-	type: "COLLAPSE" | "DEFAULT_AVATAR" | "FILES" | "LINK" | "SPACE" | "TABLE" | "TAG" | "TEXT";
+	type: "COLLAPSE" | "DEFAULT_AVATAR" | "LINK" | "SPACE" | "TABLE" | "TAG" | "TEXT";
 }
 
 export interface IStructuredContentCollapseNode extends IStructuredContentNodeBase {
@@ -78,13 +78,6 @@ export interface IStructuredContentCollapseNode extends IStructuredContentNodeBa
 		title?: string;
 	};
 	type: "COLLAPSE";
-}
-
-export interface IStructuredContentFilesNode extends IStructuredContentNodeBase {
-	config?: {
-		source?: "HISTORY";
-	};
-	type: "FILES";
 }
 
 export interface IStructuredContentDefaultAvatarNode extends IStructuredContentNodeBase {
@@ -132,7 +125,6 @@ export interface IStructuredContentTableNode extends IStructuredContentNodeBase 
 export type IStructuredContentNode =
 	| IStructuredContentCollapseNode
 	| IStructuredContentDefaultAvatarNode
-	| IStructuredContentFilesNode
 	| IStructuredContentLinkNode
 	| IStructuredContentSpaceNode
 	| IStructuredContentTagNode
