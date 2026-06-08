@@ -41,10 +41,42 @@ export interface IStructuredContentNodeLayout {
 	width?: StructuredContentLayoutWidth;
 }
 
-export interface IStructuredContentTableToolbarFilter {
+export interface IStructuredContentTableToolbarFilterBase {
 	columnKey: string;
-	type?: StructuredContentTableToolbarFilterType;
 }
+
+export interface IStructuredContentTableSelectFilter extends IStructuredContentTableToolbarFilterBase {
+	config?: {
+		initialValue?: string;
+	};
+	type?: "SELECT";
+}
+
+export interface IStructuredContentDateRangeFilterConstraints {
+	disableFuture?: boolean;
+	disablePast?: boolean;
+	disabledDates?: string[];
+	disabledWeekdays?: number[];
+	maxDate?: string;
+	minDate?: string;
+}
+
+export interface IStructuredContentDateRangeFilterInitialValue {
+	endDate?: string;
+	startDate?: string;
+}
+
+export interface IStructuredContentTableDateRangeFilter extends IStructuredContentTableToolbarFilterBase {
+	config?: {
+		constraints?: IStructuredContentDateRangeFilterConstraints;
+		initialValue?: IStructuredContentDateRangeFilterInitialValue;
+	};
+	type: "DATE_RANGE";
+}
+
+export type IStructuredContentTableToolbarFilter =
+	| IStructuredContentTableDateRangeFilter
+	| IStructuredContentTableSelectFilter;
 
 export interface IStructuredContentTableToolbar {
 	advancedFilters?: boolean;
@@ -57,16 +89,77 @@ export interface IStructuredContentTablePagination {
 	pageSize?: number;
 }
 
-export interface IStructuredContentTableColumn {
+export interface IStructuredContentTableColumnSortConfig {
+	sortType?: StructuredContentTableSortType;
+	sortable?: boolean;
+}
+
+export interface IStructuredContentTableColumnBase {
+	id: string;
+	type: StructuredContentTableColumnType;
+}
+
+export interface IStructuredContentTableNamedColumnBase extends IStructuredContentTableColumnBase {
+	name: string;
+}
+
+export interface IStructuredContentTableDefaultAvatarColumn extends IStructuredContentTableColumnBase {
 	config?: {
 		size?: number;
 	};
-	id: string;
-	name?: string;
-	sortType?: StructuredContentTableSortType;
-	sortable?: boolean;
-	type: StructuredContentTableColumnType;
+	type: "DEFAULT_AVATAR";
 }
+
+export interface IStructuredContentTableBooleanColumn extends IStructuredContentTableNamedColumnBase {
+	config?: IStructuredContentTableColumnSortConfig;
+	type: "BOOLEAN";
+}
+
+export interface IStructuredContentTableDateColumn extends IStructuredContentTableNamedColumnBase {
+	config?: IStructuredContentTableColumnSortConfig;
+	type: "DATE";
+}
+
+export interface IStructuredContentTableDateTimeColumn extends IStructuredContentTableNamedColumnBase {
+	config?: IStructuredContentTableColumnSortConfig;
+	type: "DATETIME";
+}
+
+export interface IStructuredContentTableLinkColumn extends IStructuredContentTableNamedColumnBase {
+	config?: IStructuredContentTableColumnSortConfig;
+	type: "LINK";
+}
+
+export interface IStructuredContentTableNumberColumn extends IStructuredContentTableNamedColumnBase {
+	config?: IStructuredContentTableColumnSortConfig;
+	type: "NUMBER";
+}
+
+export interface IStructuredContentTableTagColumn extends IStructuredContentTableNamedColumnBase {
+	config?: IStructuredContentTableColumnSortConfig;
+	type: "TAG";
+}
+
+export interface IStructuredContentTableTextColumn extends IStructuredContentTableNamedColumnBase {
+	config?: IStructuredContentTableColumnSortConfig;
+	type: "TEXT";
+}
+
+export interface IStructuredContentTableTimeColumn extends IStructuredContentTableNamedColumnBase {
+	config?: IStructuredContentTableColumnSortConfig;
+	type: "TIME";
+}
+
+export type IStructuredContentTableColumn =
+	| IStructuredContentTableBooleanColumn
+	| IStructuredContentTableDateColumn
+	| IStructuredContentTableDateTimeColumn
+	| IStructuredContentTableDefaultAvatarColumn
+	| IStructuredContentTableLinkColumn
+	| IStructuredContentTableNumberColumn
+	| IStructuredContentTableTagColumn
+	| IStructuredContentTableTextColumn
+	| IStructuredContentTableTimeColumn;
 
 export interface IStructuredContentNodeBase {
 	id: string;
