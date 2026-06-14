@@ -3,6 +3,7 @@ export interface IRecruitmentPersonalInformation {
 	createdAt: string;
 	updatedAt: string;
 
+	educationLevel?: string;
 	firstName?: string;
 	middleNames?: string;
 	fatherName?: string;

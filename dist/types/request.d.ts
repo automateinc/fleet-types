@@ -1,7 +1,6 @@
 import { IRequestCategory, IRequestType, IRequestValue } from ".";
 
 export interface IRequest {
-	approvedAt: Date;
 	createdAt: string;
 	updatedAt: string;
 	id: string;
@@ -10,13 +9,12 @@ export interface IRequest {
 	createdById?: string;
 	employeeCreatedById?: string;
 	rejectionReason: null;
-	requestForId: string;
 	type: IRequestType;
 	typeId: string;
 	values: IRequestValue[];
-	verifiedAt: Date;
 	verifiedById?: string;
 	rejectedById?: string;
+	linkedRequestId?: string;
 	withdrawnAt?: string;
 	folderKey?: string | null;
 	archivedAt?: string | null;
