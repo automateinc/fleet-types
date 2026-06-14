@@ -17,9 +17,28 @@ export type StructuredContentTableToolbarFilterType = "DATE_RANGE" | "SELECT";
 export type StructuredContentLayoutWidth = "auto" | "full" | "half" | "third";
 export type StructuredContentLayoutAlign = "center" | "end" | "start";
 export type StructuredContentLayoutSpacing = "lg" | "md" | "none" | "sm";
-export type StructuredContentTagTone = "danger" | "default" | "info" | "success" | "warning";
+export type StructuredContentTagTone =
+	| "blue"
+	| "cyan"
+	| "danger"
+	| "default"
+	| "geekblue"
+	| "gold"
+	| "green"
+	| "info"
+	| "lime"
+	| "magenta"
+	| "orange"
+	| "pink"
+	| "purple"
+	| "red"
+	| "success"
+	| "volcano"
+	| "warning"
+	| "yellow";
 
 export interface IStructuredContentTagValue {
+	color?: string;
 	label: string;
 	tone?: StructuredContentTagTone;
 }
