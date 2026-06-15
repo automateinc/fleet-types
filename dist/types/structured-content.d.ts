@@ -106,18 +106,14 @@ export interface IStructuredContentTableToolbar {
 
 export type StructuredContentTableSortOrder = "asc" | "desc";
 
-export interface IStructuredContentTableSort {
-	columnId: string;
-	order: StructuredContentTableSortOrder;
+export interface IStructuredContentTableColumnSortConfig {
+	sortOrder?: StructuredContentTableSortOrder;
+	sortType?: StructuredContentTableSortType;
+	sortable?: boolean;
 }
 
 export interface IStructuredContentTablePagination {
 	pageSize?: number;
-}
-
-export interface IStructuredContentTableColumnSortConfig {
-	sortType?: StructuredContentTableSortType;
-	sortable?: boolean;
 }
 
 export interface IStructuredContentTableColumnBase {
@@ -237,7 +233,6 @@ export interface IStructuredContentLinkNode extends IStructuredContentNodeBase {
 export interface IStructuredContentTableNode extends IStructuredContentNodeBase {
 	config?: {
 		columns?: IStructuredContentTableColumn[];
-		defaultSort?: IStructuredContentTableSort;
 		pagination?: IStructuredContentTablePagination;
 		toolbar?: IStructuredContentTableToolbar;
 	};
