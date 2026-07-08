@@ -214,6 +214,7 @@ export * from "./todo-list";
 export * from "./todo-space";
 export * from "./todo-status";
 export * from "./todo-tag";
+export * from "./todo-view";
 export * from "./vendor";
 export * from "./vendor-contact";
 export * from "./zone";
