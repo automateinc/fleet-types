@@ -7,6 +7,7 @@ export interface IRequestCategory {
 	fields: IRequestCategoryField[];
 	requiresVerification: boolean;
 	requiresApproval: boolean;
+	requiresOTP: boolean;
 	createdAt: string;
 	updatedAt: string;
 	allowedRequesters: Array<"USER" | "EMPLOYEE">;
