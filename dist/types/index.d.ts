@@ -210,6 +210,7 @@ export * from "./todo-activity";
 export * from "./todo-comment";
 export * from "./todo-custom-field";
 export * from "./todo-document";
+export * from "./todo-folder";
 export * from "./todo-list";
 export * from "./todo-space";
 export * from "./todo-status";
