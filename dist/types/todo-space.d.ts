@@ -28,4 +28,17 @@ export interface ITodoSpaceMember {
 	metadata?: any;
 }
 
-export type TodoSpaceMemberRole = "OWNER" | "ADMIN" | "MEMBER" | "VIEWER";
+export type TodoSpaceMemberRole = "OWNER" | "ADMIN" | "EDITOR" | "VIEWER";
+
+export interface ITodoListMember {
+	id: string;
+	createdAt: string;
+	updatedAt?: string;
+
+	listId: string;
+	userId: string;
+
+	role: TodoSpaceMemberRole;
+
+	metadata?: any;
+}
