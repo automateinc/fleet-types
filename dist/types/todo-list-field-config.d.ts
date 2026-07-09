@@ -11,7 +11,9 @@ export interface ITodoListFieldConfig {
 export interface ITodoListFieldEntry {
 	key: string;
 	label: string;
-	visible: boolean;
+	visible: boolean; // legacy, kept for backward compat
+	enabled: boolean; // whether the field is active on this list (shows in detail modal)
+	showInList: boolean; // whether the field shows as a column in list/table row views
 	order: number;
 	type: "system" | "custom";
 	fieldId?: string; // for custom fields

@@ -50,8 +50,7 @@ jobs:
       - run: npm ci
 
       - name: Publish to npm
-        run: npm install -g npm@latest
-      - run: npm publish --provenance --access public --tag $( [[ "${{ github.ref_name }}" == "main" ]] && echo "latest" || echo "dev" )
+        run: npm publish --provenance --access public --tag $( [[ "${{ github.ref_name }}" == "main" ]] && echo "latest" || echo "dev" )
 
       - name: Output Published Version
         run: 'echo "📦 Published version: ${{ steps.bump.outputs.version }}"'
