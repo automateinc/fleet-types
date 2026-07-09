@@ -14,16 +14,22 @@ export interface ITodo {
 	spaceId: string;
 
 	createdById: string;
+	closedById?: string;
 
 	startDate?: string;
 	dueDate?: string;
 	completedAt?: string;
+	closedAt?: string;
 
 	sortOrder: number;
 
 	parentId?: string;
 
 	estimatedHours?: number;
+	sprintPoints?: number;
+	timeEstimate?: number; // seconds
+	recurringSettings?: any; // { frequency, interval, days, endDate }
+	taskType?: string;
 
 	metadata?: any;
 }

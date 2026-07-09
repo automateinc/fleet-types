@@ -26,6 +26,7 @@ export interface ITodoCustomFieldOption {
 
 export type TodoCustomFieldType =
 	| "TEXT"
+	| "LONG_TEXT"
 	| "NUMBER"
 	| "DATE"
 	| "DROPDOWN"
@@ -36,4 +37,15 @@ export type TodoCustomFieldType =
 	| "URL"
 	| "CURRENCY"
 	| "RATING"
-	| "PROGRESS";
+	| "PROGRESS"
+	| "MONEY"
+	| "LABELS"
+	| "PEOPLE"
+	| "FILES"
+	| "TASKS"
+	| "RELATIONSHIPS"
+	| "ROLLUP"
+	| "PROGRESS_MANUAL"
+	| "PROGRESS_AUTO"
+	| "VOTING"
+	| "LOCATION";

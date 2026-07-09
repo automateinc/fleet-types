@@ -9,8 +9,13 @@ export interface ITodoList {
 	color?: string;
 
 	spaceId: string;
+	folderId?: string;
 
 	sortOrder: number;
 
+	fieldConfig?: ITodoListFieldConfig;
+
 	metadata?: any;
 }
+
+import { ITodoListFieldConfig } from "./todo-list-field-config";
