@@ -5,5 +5,6 @@ export interface ITodoChecklist {
 	name: string;
 	todoId: string;
 	sortOrder: number;
+	version: number;
 	metadata?: Record<string, unknown>;
 }

@@ -1,4 +1,24 @@
-import { IModel } from "./models";
+import type { IStructuredContentTagValue } from "./structured-content-tag-value";
+import type { IStructuredContentDefaultAvatarValue } from "./structured-content-default-avatar-value";
+import type { IStructuredContentTableSelectFilter } from "./structured-content-table-select-filter";
+import type { IStructuredContentTableDateRangeFilter } from "./structured-content-table-date-range-filter";
+import type { IStructuredContentTableDefaultAvatarColumn } from "./structured-content-table-default-avatar-column";
+import type { IStructuredContentTableBooleanColumn } from "./structured-content-table-boolean-column";
+import type { IStructuredContentTableDateColumn } from "./structured-content-table-date-column";
+import type { IStructuredContentTableDateTimeColumn } from "./structured-content-table-date-time-column";
+import type { IStructuredContentTableLinkColumn } from "./structured-content-table-link-column";
+import type { IStructuredContentTableNumberColumn } from "./structured-content-table-number-column";
+import type { IStructuredContentTableTagColumn } from "./structured-content-table-tag-column";
+import type { IStructuredContentTableTextColumn } from "./structured-content-table-text-column";
+import type { IStructuredContentTableTimeColumn } from "./structured-content-table-time-column";
+import type { IStructuredContentCollapseNode } from "./structured-content-collapse-node";
+import type { IStructuredContentDefaultAvatarNode } from "./structured-content-default-avatar-node";
+import type { IStructuredContentSpaceNode } from "./structured-content-space-node";
+import type { IStructuredContentTextNode } from "./structured-content-text-node";
+import type { IStructuredContentTagNode } from "./structured-content-tag-node";
+import type { IStructuredContentLinkNode } from "./structured-content-link-node";
+import type { IStructuredContentTableNode } from "./structured-content-table-node";
+import type { IStructuredContentLinkValue } from "./structured-content-link-value";
 
 export type StructuredContentTextVariant = "H1" | "H2" | "H3" | "H4" | "H5" | "H6" | "PARAGRAPH" | "TEXT";
 export type StructuredContentLinkVariant = "BUTTON" | "LINK";
@@ -37,140 +57,11 @@ export type StructuredContentTagTone =
 	| "warning"
 	| "yellow";
 
-export interface IStructuredContentTagValue {
-	color?: string;
-	label: string;
-	tone?: StructuredContentTagTone;
-}
-
-export interface IStructuredContentDefaultAvatarValue {
-	inactive?: boolean;
-	onLeave?: boolean;
-	src: string;
-}
-
-export interface IStructuredContentNodeLayout {
-	align?: StructuredContentLayoutAlign;
-	gap?: StructuredContentLayoutSpacing;
-	hidden?: boolean;
-	marginBottom?: StructuredContentLayoutSpacing;
-	marginTop?: StructuredContentLayoutSpacing;
-	paddingX?: StructuredContentLayoutSpacing;
-	paddingY?: StructuredContentLayoutSpacing;
-	width?: StructuredContentLayoutWidth;
-}
-
-export interface IStructuredContentTableToolbarFilterBase {
-	columnKey: string;
-}
-
-export interface IStructuredContentTableSelectFilter extends IStructuredContentTableToolbarFilterBase {
-	config?: {
-		initialValue?: string;
-	};
-	type?: "SELECT";
-}
-
-export interface IStructuredContentDateRangeFilterConstraints {
-	disableFuture?: boolean;
-	disablePast?: boolean;
-	disabledDates?: string[];
-	disabledWeekdays?: number[];
-	maxDate?: string;
-	minDate?: string;
-}
-
-export interface IStructuredContentDateRangeFilterInitialValue {
-	endDate?: string;
-	startDate?: string;
-}
-
-export interface IStructuredContentTableDateRangeFilter extends IStructuredContentTableToolbarFilterBase {
-	config?: {
-		constraints?: IStructuredContentDateRangeFilterConstraints;
-		initialValue?: IStructuredContentDateRangeFilterInitialValue;
-	};
-	type: "DATE_RANGE";
-}
-
 export type IStructuredContentTableToolbarFilter =
 	| IStructuredContentTableDateRangeFilter
 	| IStructuredContentTableSelectFilter;
 
-export interface IStructuredContentTableToolbar {
-	advancedFilters?: boolean;
-	exportCsv?: boolean;
-	filters?: IStructuredContentTableToolbarFilter[];
-	search?: boolean;
-}
-
 export type StructuredContentTableSortOrder = "asc" | "desc";
-
-export interface IStructuredContentTableColumnSortConfig {
-	sortOrder?: StructuredContentTableSortOrder;
-	sortType?: StructuredContentTableSortType;
-	sortable?: boolean;
-}
-
-export interface IStructuredContentTablePagination {
-	pageSize?: number;
-}
-
-export interface IStructuredContentTableColumnBase {
-	id: string;
-	type: StructuredContentTableColumnType;
-}
-
-export interface IStructuredContentTableNamedColumnBase extends IStructuredContentTableColumnBase {
-	name: string;
-}
-
-export interface IStructuredContentTableDefaultAvatarColumn extends IStructuredContentTableColumnBase {
-	config?: {
-		size?: number;
-	};
-	type: "DEFAULT_AVATAR";
-}
-
-export interface IStructuredContentTableBooleanColumn extends IStructuredContentTableNamedColumnBase {
-	config?: IStructuredContentTableColumnSortConfig;
-	type: "BOOLEAN";
-}
-
-export interface IStructuredContentTableDateColumn extends IStructuredContentTableNamedColumnBase {
-	config?: IStructuredContentTableColumnSortConfig;
-	type: "DATE";
-}
-
-export interface IStructuredContentTableDateTimeColumn extends IStructuredContentTableNamedColumnBase {
-	config?: IStructuredContentTableColumnSortConfig;
-	type: "DATETIME";
-}
-
-export interface IStructuredContentTableLinkColumn extends IStructuredContentTableNamedColumnBase {
-	config?: IStructuredContentTableColumnSortConfig;
-	type: "LINK";
-}
-
-export interface IStructuredContentTableNumberColumn extends IStructuredContentTableNamedColumnBase {
-	config?: IStructuredContentTableColumnSortConfig;
-	type: "NUMBER";
-}
-
-export interface IStructuredContentTableTagColumn extends IStructuredContentTableNamedColumnBase {
-	config?: IStructuredContentTableColumnSortConfig;
-	type: "TAG";
-}
-
-export interface IStructuredContentTableTextColumn extends IStructuredContentTableNamedColumnBase {
-	config?: IStructuredContentTableColumnSortConfig;
-	type: "TEXT";
-}
-
-export interface IStructuredContentTableTimeColumn extends IStructuredContentTableNamedColumnBase {
-	config?: IStructuredContentTableColumnSortConfig;
-	type: "TIME";
-}
 
 export type IStructuredContentTableColumn =
 	| IStructuredContentTableBooleanColumn
@@ -183,62 +74,6 @@ export type IStructuredContentTableColumn =
 	| IStructuredContentTableTextColumn
 	| IStructuredContentTableTimeColumn;
 
-export interface IStructuredContentNodeBase {
-	id: string;
-	layout?: IStructuredContentNodeLayout;
-	type: "COLLAPSE" | "DEFAULT_AVATAR" | "LINK" | "SPACE" | "TABLE" | "TAG" | "TEXT";
-}
-
-export interface IStructuredContentCollapseNode extends IStructuredContentNodeBase {
-	children?: IStructuredContentNode[];
-	config?: {
-		title?: string;
-	};
-	type: "COLLAPSE";
-}
-
-export interface IStructuredContentDefaultAvatarNode extends IStructuredContentNodeBase {
-	config?: {
-		size?: number;
-	};
-	type: "DEFAULT_AVATAR";
-}
-
-export interface IStructuredContentSpaceNode extends IStructuredContentNodeBase {
-	children?: IStructuredContentNode[];
-	type: "SPACE";
-}
-
-export interface IStructuredContentTextNode extends IStructuredContentNodeBase {
-	config?: {
-		variant?: StructuredContentTextVariant;
-	};
-	type: "TEXT";
-}
-
-export interface IStructuredContentTagNode extends IStructuredContentNodeBase {
-	config?: {
-		tone?: StructuredContentTagTone;
-	};
-	type: "TAG";
-}
-
-export interface IStructuredContentLinkNode extends IStructuredContentNodeBase {
-	config?: {
-		variant?: StructuredContentLinkVariant;
-	};
-	type: "LINK";
-}
-
-export interface IStructuredContentTableNode extends IStructuredContentNodeBase {
-	config?: {
-		columns?: IStructuredContentTableColumn[];
-		pagination?: IStructuredContentTablePagination;
-		toolbar?: IStructuredContentTableToolbar;
-	};
-	type: "TABLE";
-}
-
 export type IStructuredContentNode =
 	| IStructuredContentCollapseNode
 	| IStructuredContentDefaultAvatarNode
@@ -247,12 +82,6 @@ export type IStructuredContentNode =
 	| IStructuredContentTagNode
 	| IStructuredContentTableNode
 	| IStructuredContentTextNode;
-
-export interface IStructuredContentLinkValue {
-	href: string;
-	target?: string;
-	title: string;
-}
 
 export type StructuredContentPrimitiveValue = boolean | number | string | null;
 export type StructuredContentAvatarValue = IStructuredContentDefaultAvatarValue;
@@ -268,16 +97,3 @@ export type StructuredContentDataValue =
 	| IStructuredContentTableRow[]
 	| StructuredContentPrimitiveValue;
 export type IStructuredContentData = Record<string, StructuredContentDataValue>;
-
-export interface IStructuredContent {
-	createdAt: string;
-	data: IStructuredContentData;
-	id: string;
-	key: string;
-	metadata?: Record<string, any>;
-	rawData: unknown;
-	relation: IModel;
-	relationId: string;
-	structure: IStructuredContentNode[];
-	updatedAt?: string;
-}

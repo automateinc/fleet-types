@@ -9,5 +9,6 @@ export interface ITodoFolder {
 	spaceId: string;
 	parentId?: string;
 	sortOrder: number;
+	version: number;
 	metadata?: Record<string, unknown>;
 }

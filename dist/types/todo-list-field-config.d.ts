@@ -6,4 +6,6 @@ export interface ITodoListFieldConfig {
 	updatedAt?: string;
 	listId: string;
 	fields: ITodoListFieldEntry[];
+	version: number;
+	configVersion: number;
 }

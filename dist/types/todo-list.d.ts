@@ -12,6 +12,7 @@ export interface ITodoList {
 	folderId?: string;
 
 	sortOrder: number;
+	version: number;
 
 	metadata?: Record<string, unknown>;
 }

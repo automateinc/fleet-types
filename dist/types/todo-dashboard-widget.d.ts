@@ -12,4 +12,6 @@ export interface ITodoDashboardWidget {
 	y: number;
 	w: number;
 	h: number;
+	version: number;
+	configVersion: number;
 }

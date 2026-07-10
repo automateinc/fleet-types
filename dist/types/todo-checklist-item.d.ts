@@ -6,5 +6,6 @@ export interface ITodoChecklistItem {
 	isChecked: boolean;
 	checklistId: string;
 	sortOrder: number;
+	version: number;
 	metadata?: Record<string, unknown>;
 }

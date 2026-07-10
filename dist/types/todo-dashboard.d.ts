@@ -7,4 +7,6 @@ export interface ITodoDashboard {
 	spaceId: string;
 	listId?: string;
 	config: TodoJsonObject;
+	version: number;
+	configVersion: number;
 }

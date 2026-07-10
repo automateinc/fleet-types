@@ -8,6 +8,7 @@ export interface ITodoTag {
 	color: string;
 
 	spaceId: string;
+	version: number;
 
 	metadata?: Record<string, unknown>;
 }

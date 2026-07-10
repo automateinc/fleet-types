@@ -11,5 +11,6 @@ export interface ITodoSpace {
 	regionId: string;
 	visibility: TodoSpaceVisibility;
 	sortOrder: number;
+	version: number;
 	metadata?: Record<string, unknown>;
 }

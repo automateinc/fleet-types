@@ -3,6 +3,7 @@ export interface ITodoComment {
 	createdAt: string;
 	updatedAt?: string;
 	deletedAt?: string;
+	version: number;
 	body: string;
 	todoId: string;
 	userId: string;

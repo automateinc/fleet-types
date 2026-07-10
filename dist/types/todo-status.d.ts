@@ -13,6 +13,7 @@ export interface ITodoStatus {
 	sortOrder: number;
 	isDefault: boolean;
 	isCompletedStatus: boolean;
+	version: number;
 
 	metadata?: Record<string, unknown>;
 }

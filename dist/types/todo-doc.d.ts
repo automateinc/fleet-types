@@ -11,5 +11,7 @@ export interface ITodoDoc {
 	folderId?: string;
 	createdById: string;
 	sortOrder: number;
+	version: number;
+	contentVersion: number;
 	metadata?: Record<string, unknown>;
 }

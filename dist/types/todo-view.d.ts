@@ -19,5 +19,7 @@ export interface ITodoView {
 	columnConfig?: TodoJsonValue;
 	viewConfig?: TodoJsonValue;
 	sortOrder: number;
+	version: number;
+	configVersion: number;
 	metadata?: Record<string, unknown>;
 }
