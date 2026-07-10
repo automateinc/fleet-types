@@ -1,4 +1,4 @@
-import type { TodoJsonObject } from "./todo-json";
+import type { TodoJsonObject } from "./todo-json-object";
 
 export interface ITodoActivity {
 	id: string;

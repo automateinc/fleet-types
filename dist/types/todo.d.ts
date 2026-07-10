@@ -1,4 +1,5 @@
-import type { TodoJsonValue } from "./todo-json";
+import type { TodoPriority } from "./todo-priority";
+import type { TodoRecurrenceSettings } from "./todo-recurrence-settings";
 
 export interface ITodo {
 	id: string;
@@ -6,109 +7,24 @@ export interface ITodo {
 	updatedAt?: string;
 	deletedAt?: string;
 	version: number;
-
 	title: string;
 	description?: string;
-
 	statusId: string;
 	priority: TodoPriority;
-
 	listId: string;
 	spaceId: string;
-
 	createdById: string;
 	closedById?: string;
-
 	startDate?: string;
 	dueDate?: string;
 	completedAt?: string;
 	closedAt?: string;
-
 	sortOrder: number;
-
 	parentId?: string;
-
 	estimatedHours?: number;
 	sprintPoints?: number;
-	timeEstimate?: number; // seconds
+	timeEstimate?: number;
 	recurringSettings?: TodoRecurrenceSettings;
 	taskType?: string;
-
 	metadata?: Record<string, unknown>;
 }
-
-export interface ITodoAssignee {
-	id: string;
-	createdAt: string;
-
-	todoId: string;
-	userId?: string;
-	employeeId?: string;
-
-	metadata?: Record<string, unknown>;
-}
-
-export interface ITodoWatcher {
-	id: string;
-	createdAt: string;
-
-	todoId: string;
-	userId: string;
-}
-
-export interface ITodoDependency {
-	id: string;
-	createdAt: string;
-
-	todoId: string;
-	dependsOnId: string;
-
-	type: TodoDependencyType;
-
-	createdById: string;
-}
-
-export interface ITodoCustomFieldValue {
-	id: string;
-	createdAt: string;
-	updatedAt?: string;
-
-	todoId: string;
-	fieldId: string;
-
-	value: TodoJsonValue;
-
-	metadata?: Record<string, unknown>;
-}
-
-export interface ITodoListItem {
-	id: string;
-	createdAt: string;
-
-	todoId: string;
-	listId: string;
-
-	addedById: string;
-
-	sortOrder: number;
-}
-
-export interface ITodoTagAssignment {
-	id: string;
-	createdAt: string;
-
-	todoId: string;
-	tagId: string;
-}
-
-export type TodoPriority = "URGENT" | "HIGH" | "NORMAL" | "LOW";
-
-export interface TodoRecurrenceSettings {
-	frequency: "DAILY" | "WEEKLY" | "MONTHLY" | "YEARLY";
-	interval: number;
-	days?: number[];
-	endDate?: string;
-	timezone?: string;
-}
-
-export type TodoDependencyType = "FINISH_TO_START" | "START_TO_START" | "FINISH_TO_FINISH" | "START_TO_FINISH";

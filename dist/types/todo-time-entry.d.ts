@@ -1,11 +1,12 @@
-export interface ITodoComment {
+export interface ITodoTimeEntry {
 	id: string;
 	createdAt: string;
 	updatedAt?: string;
-	deletedAt?: string;
-	body: string;
 	todoId: string;
 	userId: string;
-	parentId?: string;
+	startedAt: string;
+	stoppedAt?: string;
+	duration?: number;
+	description?: string;
 	metadata?: Record<string, unknown>;
 }

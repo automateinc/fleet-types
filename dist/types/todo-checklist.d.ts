@@ -1,13 +1,9 @@
-export interface ITodoFolder {
+export interface ITodoChecklist {
 	id: string;
 	createdAt: string;
 	updatedAt?: string;
-	deletedAt?: string;
 	name: string;
-	icon?: string;
-	color?: string;
-	spaceId: string;
-	parentId?: string;
+	todoId: string;
 	sortOrder: number;
 	metadata?: Record<string, unknown>;
 }
