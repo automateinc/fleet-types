@@ -9,10 +9,11 @@ export interface ITodoSpace {
 	color?: string;
 
 	regionId: string;
+	visibility: TodoSpaceVisibility;
 
 	sortOrder: number;
 
-	metadata?: any;
+	metadata?: Record<string, unknown>;
 }
 
 export interface ITodoSpaceMember {
@@ -25,10 +26,11 @@ export interface ITodoSpaceMember {
 
 	role: TodoSpaceMemberRole;
 
-	metadata?: any;
+	metadata?: Record<string, unknown>;
 }
 
 export type TodoSpaceMemberRole = "OWNER" | "ADMIN" | "EDITOR" | "VIEWER";
+export type TodoSpaceVisibility = "PUBLIC" | "PRIVATE";
 
 export interface ITodoListMember {
 	id: string;
@@ -40,5 +42,5 @@ export interface ITodoListMember {
 
 	role: TodoSpaceMemberRole;
 
-	metadata?: any;
+	metadata?: Record<string, unknown>;
 }

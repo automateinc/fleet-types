@@ -11,7 +11,7 @@ export interface ITodoComment {
 
 	parentId?: string;
 
-	metadata?: any;
+	metadata?: Record<string, unknown>;
 }
 
 export interface ITodoCommentReaction {

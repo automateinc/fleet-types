@@ -7,5 +7,5 @@ export interface ITodoDocument {
 
 	addedById: string;
 
-	metadata?: any;
+	metadata?: Record<string, unknown>;
 }

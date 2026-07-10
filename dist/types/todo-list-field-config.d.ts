@@ -1,3 +1,5 @@
+import type { TodoJsonValue } from "./todo-json";
+
 export interface ITodoListFieldConfig {
 	id: string;
 	createdAt: string;
@@ -17,7 +19,7 @@ export interface ITodoListFieldEntry {
 	order: number;
 	type: "system" | "custom";
 	fieldId?: string; // for custom fields
-	config?: Record<string, any>;
+	config?: Record<string, TodoJsonValue>;
 }
 
 /** Default system fields available for list configuration */

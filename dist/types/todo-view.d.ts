@@ -1,3 +1,5 @@
+import type { TodoJsonObject, TodoJsonValue } from "./todo-json";
+
 export interface ITodoView {
 	id: string;
 	createdAt: string;
@@ -15,15 +17,15 @@ export interface ITodoView {
 	isShared: boolean;
 	isDefault: boolean;
 
-	filters?: any;
-	sortConfig?: any;
+	filters?: TodoJsonValue;
+	sortConfig?: TodoJsonValue;
 	groupBy?: string;
-	columnConfig?: any;
-	viewConfig?: any;
+	columnConfig?: TodoJsonValue;
+	viewConfig?: TodoJsonValue;
 
 	sortOrder: number;
 
-	metadata?: any;
+	metadata?: Record<string, unknown>;
 }
 
 export type TodoViewType = "LIST" | "BOARD" | "GANTT" | "TIMELINE" | "TABLE" | "CALENDAR";
@@ -36,9 +38,7 @@ export interface ITodoDashboard {
 	spaceId: string;
 	listId?: string;
 
-	config: any;
-
-	widgets?: ITodoDashboardWidget[];
+	config: TodoJsonObject;
 }
 
 export interface ITodoDashboardWidget {
@@ -48,7 +48,7 @@ export interface ITodoDashboardWidget {
 
 	dashboardId: string;
 	type: TodoDashboardWidgetType;
-	config: any;
+	config: TodoJsonObject;
 
 	x: number;
 	y: number;
@@ -83,5 +83,5 @@ export interface ITodoTimeEntry {
 
 	description?: string;
 
-	metadata?: any;
+	metadata?: Record<string, unknown>;
 }

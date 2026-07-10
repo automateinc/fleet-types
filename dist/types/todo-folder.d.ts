@@ -1,3 +1,5 @@
+import type { TodoJsonValue } from "./todo-json";
+
 export interface ITodoFolder {
 	id: string;
 	createdAt: string;
@@ -9,10 +11,11 @@ export interface ITodoFolder {
 	color?: string;
 
 	spaceId: string;
+	parentId?: string;
 
 	sortOrder: number;
 
-	metadata?: any;
+	metadata?: Record<string, unknown>;
 }
 
 export interface ITodoDoc {
@@ -22,7 +25,7 @@ export interface ITodoDoc {
 	deletedAt?: string;
 
 	title: string;
-	content?: any;
+	content?: TodoJsonValue;
 
 	spaceId: string;
 	folderId?: string;
@@ -31,7 +34,7 @@ export interface ITodoDoc {
 
 	sortOrder: number;
 
-	metadata?: any;
+	metadata?: Record<string, unknown>;
 }
 
 export interface ITodoChecklist {
@@ -45,9 +48,7 @@ export interface ITodoChecklist {
 
 	sortOrder: number;
 
-	items?: ITodoChecklistItem[];
-
-	metadata?: any;
+	metadata?: Record<string, unknown>;
 }
 
 export interface ITodoChecklistItem {
@@ -62,5 +63,5 @@ export interface ITodoChecklistItem {
 
 	sortOrder: number;
 
-	metadata?: any;
+	metadata?: Record<string, unknown>;
 }

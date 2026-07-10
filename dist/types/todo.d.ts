@@ -1,8 +1,11 @@
+import type { TodoJsonValue } from "./todo-json";
+
 export interface ITodo {
 	id: string;
 	createdAt: string;
 	updatedAt?: string;
 	deletedAt?: string;
+	version: number;
 
 	title: string;
 	description?: string;
@@ -28,10 +31,10 @@ export interface ITodo {
 	estimatedHours?: number;
 	sprintPoints?: number;
 	timeEstimate?: number; // seconds
-	recurringSettings?: any; // { frequency, interval, days, endDate }
+	recurringSettings?: TodoRecurrenceSettings;
 	taskType?: string;
 
-	metadata?: any;
+	metadata?: Record<string, unknown>;
 }
 
 export interface ITodoAssignee {
@@ -42,7 +45,7 @@ export interface ITodoAssignee {
 	userId?: string;
 	employeeId?: string;
 
-	metadata?: any;
+	metadata?: Record<string, unknown>;
 }
 
 export interface ITodoWatcher {
@@ -73,9 +76,9 @@ export interface ITodoCustomFieldValue {
 	todoId: string;
 	fieldId: string;
 
-	value: any;
+	value: TodoJsonValue;
 
-	metadata?: any;
+	metadata?: Record<string, unknown>;
 }
 
 export interface ITodoListItem {
@@ -99,5 +102,13 @@ export interface ITodoTagAssignment {
 }
 
 export type TodoPriority = "URGENT" | "HIGH" | "NORMAL" | "LOW";
+
+export interface TodoRecurrenceSettings {
+	frequency: "DAILY" | "WEEKLY" | "MONTHLY" | "YEARLY";
+	interval: number;
+	days?: number[];
+	endDate?: string;
+	timezone?: string;
+}
 
 export type TodoDependencyType = "FINISH_TO_START" | "START_TO_START" | "FINISH_TO_FINISH" | "START_TO_FINISH";

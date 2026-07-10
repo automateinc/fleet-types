@@ -13,9 +13,5 @@ export interface ITodoList {
 
 	sortOrder: number;
 
-	fieldConfig?: ITodoListFieldConfig;
-
-	metadata?: any;
+	metadata?: Record<string, unknown>;
 }
-
-import { ITodoListFieldConfig } from "./todo-list-field-config";

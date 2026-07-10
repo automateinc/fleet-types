@@ -1,3 +1,5 @@
+import type { TodoJsonObject } from "./todo-json";
+
 export interface ITodoActivity {
 	id: string;
 	createdAt: string;
@@ -7,9 +9,9 @@ export interface ITodoActivity {
 
 	action: TodoActivityAction;
 
-	changes?: any;
+	changes?: TodoJsonObject;
 
-	metadata?: any;
+	metadata?: Record<string, unknown>;
 }
 
 export type TodoActivityAction =

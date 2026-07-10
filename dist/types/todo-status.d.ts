@@ -8,13 +8,13 @@ export interface ITodoStatus {
 	color: string;
 	type: TodoStatusType;
 
-	spaceId: string;
+	listId: string;
 
 	sortOrder: number;
 	isDefault: boolean;
 	isCompletedStatus: boolean;
 
-	metadata?: any;
+	metadata?: Record<string, unknown>;
 }
 
 export type TodoStatusType = "OPEN" | "IN_PROGRESS" | "DONE" | "CLOSED" | "CUSTOM";

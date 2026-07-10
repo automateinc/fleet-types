@@ -9,5 +9,5 @@ export interface ITodoTag {
 
 	spaceId: string;
 
-	metadata?: any;
+	metadata?: Record<string, unknown>;
 }

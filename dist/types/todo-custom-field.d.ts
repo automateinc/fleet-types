@@ -1,3 +1,4 @@
+import type { TodoJsonValue } from "./todo-json";
 export interface ITodoCustomField {
 	id: string;
 	createdAt: string;
@@ -10,12 +11,12 @@ export interface ITodoCustomField {
 	spaceId: string;
 
 	options?: ITodoCustomFieldOption[];
-	defaultValue?: any;
+	defaultValue?: TodoJsonValue;
 
 	sortOrder: number;
 	required: boolean;
 
-	metadata?: any;
+	metadata?: Record<string, unknown>;
 }
 
 export interface ITodoCustomFieldOption {
@@ -41,6 +42,7 @@ export type TodoCustomFieldType =
 	| "MONEY"
 	| "LABELS"
 	| "PEOPLE"
+	| "USER"
 	| "FILES"
 	| "TASKS"
 	| "RELATIONSHIPS"
