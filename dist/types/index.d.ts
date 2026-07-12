@@ -262,7 +262,6 @@ export * from "./todo-list-field-entry";
 export * from "./todo-list-item";
 export * from "./todo-list-member";
 export * from "./todo-people-field-options";
-export * from "./todo-priority";
 export * from "./todo-recurrence-settings";
 export * from "./todo-space";
 export * from "./todo-space-member";

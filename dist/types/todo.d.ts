@@ -1,4 +1,3 @@
-import type { TodoPriority } from "./todo-priority";
 import type { TodoRecurrenceSettings } from "./todo-recurrence-settings";
 
 export interface ITodo {
@@ -10,7 +9,6 @@ export interface ITodo {
 	title: string;
 	description?: string;
 	statusId: string;
-	priority: TodoPriority;
 	listId: string;
 	spaceId: string;
 	createdById: string;
@@ -21,10 +19,6 @@ export interface ITodo {
 	closedAt?: string;
 	sortOrder: number;
 	parentId?: string;
-	estimatedHours?: number;
-	sprintPoints?: number;
-	timeEstimate?: number;
 	recurringSettings?: TodoRecurrenceSettings;
-	taskType?: string;
 	metadata?: Record<string, unknown>;
 }
