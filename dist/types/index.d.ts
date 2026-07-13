@@ -34,6 +34,7 @@ export type PaginatedResponse<T> = {
 };
 
 export * from "./api-key";
+export * from "./ai";
 export * from "./asset";
 export * from "./asset-category";
 export * from "./asset-category-field";
