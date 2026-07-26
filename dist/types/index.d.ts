@@ -190,6 +190,7 @@ export * from "./request-type";
 export * from "./request-value";
 export * from "./request-verification";
 export * from "./restriction";
+export * from "./scheduling-requirement";
 export * from "./role";
 export * from "./schedule";
 export * from "./schedule-attendance";
