@@ -19,6 +19,7 @@ export interface IScheduleDraft {
 	generatedById?: string;
 
 	verified: boolean;
+	isOvertime: boolean;
 
 	metadata?: any;
 }
