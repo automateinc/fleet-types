@@ -1,5 +1,5 @@
-import type { IStructuredContentNodeBase } from "./structured-content-node-base";
 import type { StructuredContentLinkVariant } from "./structured-content";
+import type { IStructuredContentNodeBase } from "./structured-content-node-base";
 
 export interface IStructuredContentLinkNode extends IStructuredContentNodeBase {
 	config?: {

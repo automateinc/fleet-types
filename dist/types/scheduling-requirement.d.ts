@@ -1,6 +1,6 @@
-import { IGender } from "./gender";
 import type { IEmployeeGroup } from "./employee-group";
 import type { IEmployeeLabel } from "./employee-label";
+import { IGender } from "./gender";
 import type { IRole } from "./role";
 
 export interface ISchedulingRequirement {
