@@ -7,6 +7,7 @@ export interface IAttendance {
 
 	verified: boolean;
 	approved: boolean;
+	isOvertime: boolean;
 	absenceType?: "DAY_OFF" | "SICK_LEAVE" | "NO_SHOW" | "LEAVE";
 
 	checkInImage?: IFile;

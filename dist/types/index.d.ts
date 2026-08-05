@@ -192,6 +192,7 @@ export * from "./request-verification";
 export * from "./restriction";
 export * from "./role";
 export * from "./schedule";
+export * from "./schedule-assignment-policy";
 export * from "./schedule-attendance";
 export * from "./schedule-day-off";
 export * from "./schedule-draft";
