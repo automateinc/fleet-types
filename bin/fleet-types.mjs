@@ -92,7 +92,7 @@ async function generateTypes() {
 		);
 		await writeFile(
 			serviceProviderShimPath,
-			"export declare class ServiceProvider { static getEncryptionService(): { decodeId(encodedId: string, prefix: string): number }; }\n",
+			"export declare class ServiceProvider { static getAuthenticationService(): { login(email: string, password: string, tokenExpiry?: string): Promise<string> }; static getEncryptionService(): { decodeId(encodedId: string, prefix: string): number }; }\n",
 		);
 		await writeFile(
 			declarationTsconfigPath,
@@ -107,6 +107,7 @@ async function generateTypes() {
 						outDir: declarationOutputDirectory,
 						paths: {
 							"@/*": [path.join(apiRoot, "src/*")],
+							"@/providers": [serviceProviderShimPath],
 							"@/providers/service.provider": [serviceProviderShimPath],
 						},
 						tsBuildInfoFile: path.join(temporaryDirectory, "tsconfig.tsbuildinfo"),
@@ -132,7 +133,9 @@ async function generateTypes() {
 			throw new Error(`TypeScript declaration generation failed with exit code ${typeScriptResult.status}.`);
 		}
 
-		const emittedPath = path.join(declarationOutputDirectory, "services/trpc.service.d.ts");
+		const emittedPath = path
+			.join(declarationOutputDirectory, path.relative(path.join(apiRoot, "src"), routerSourcePath))
+			.replace(/\.ts$/, ".d.ts");
 		const emittedDeclaration = await readFile(emittedPath, "utf8");
 		const sourceFile = ts.createSourceFile(emittedPath, emittedDeclaration, ts.ScriptTarget.Latest, true);
 		const statements = sourceFile.statements.filter(
