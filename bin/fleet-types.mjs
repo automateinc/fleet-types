@@ -2,9 +2,8 @@
 
 import { spawnSync } from "node:child_process";
 import { existsSync } from "node:fs";
-import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
+import { mkdir, writeFile } from "node:fs/promises";
 import { createRequire } from "node:module";
-import { tmpdir } from "node:os";
 import path from "node:path";
 import { loadEnvFile } from "node:process";
 import { fileURLToPath } from "node:url";
@@ -51,184 +50,128 @@ async function generateTypes() {
 	const apiRoot = path.resolve(callerRoot, fleetApiPath);
 	const outputPath = path.resolve(callerRoot, fleetApiTypesPath);
 	const routerSourcePath = path.join(apiRoot, "src/routers/trpc/index.ts");
-	const prismaTypesPath = path.join(apiRoot, "prisma/types.d.ts");
+	const apiTsconfigPath = path.join(apiRoot, "tsconfig.json");
 	const executableExtension = process.platform === "win32" ? ".cmd" : "";
-	const apiTscPath = path.join(apiRoot, `node_modules/.bin/tsc${executableExtension}`);
 	const callerBiomePath = path.join(callerRoot, `node_modules/.bin/biome${executableExtension}`);
 	const packageBiomePath = path.join(packageRoot, `node_modules/.bin/biome${executableExtension}`);
 	const biomePath = existsSync(callerBiomePath) ? callerBiomePath : packageBiomePath;
-	const temporaryDirectory = await mkdtemp(path.join(tmpdir(), "fleet-trpc-types-"));
-	const declarationOutputDirectory = path.join(temporaryDirectory, "declarations");
-	const declarationTsconfigPath = path.join(temporaryDirectory, "tsconfig.json");
-	const prismaJsonShimPath = path.join(temporaryDirectory, "prisma-json.d.ts");
-	const serviceProviderShimPath = path.join(temporaryDirectory, "service-provider.d.ts");
 	const requireFromPackage = createRequire(path.join(packageRoot, "package.json"));
 	const ts = requireFromPackage("typescript");
+	const configResult = ts.readConfigFile(apiTsconfigPath, ts.sys.readFile);
 
-	try {
-		const prismaTypesContent = await readFile(prismaTypesPath, "utf8");
-		const prismaTypesSource = ts.createSourceFile(prismaTypesPath, prismaTypesContent, ts.ScriptTarget.Latest, true);
-		let coordsType;
-		const findCoordsType = node => {
-			if (ts.isModuleDeclaration(node) && ts.isIdentifier(node.name) && node.name.text === "PrismaJson") {
-				const body = node.body;
-				if (body && ts.isModuleBlock(body)) {
-					coordsType = body.statements.find(
-						statement => ts.isTypeAliasDeclaration(statement) && statement.name.text === "Coords",
-					);
-				}
-			}
-			ts.forEachChild(node, findCoordsType);
-		};
-		findCoordsType(prismaTypesSource);
-		if (!coordsType) {
-			throw new Error(`PrismaJson.Coords was not found in ${prismaTypesPath}.`);
-		}
-		const coordsTypeDeclaration = ts
-			.createPrinter({ newLine: ts.NewLineKind.LineFeed })
-			.printNode(ts.EmitHint.Unspecified, coordsType, prismaTypesSource);
+	if (configResult.error) {
+		throw new Error(formatTypeScriptDiagnostics(ts, [configResult.error], apiRoot));
+	}
 
-		await writeFile(
-			prismaJsonShimPath,
-			`export {};\ndeclare global { namespace PrismaJson { ${coordsTypeDeclaration} } }\n`,
-		);
-		await writeFile(
-			serviceProviderShimPath,
-			`interface Permission {
-	name: string;
-}
+	const parsedConfig = ts.parseJsonConfigFileContent(
+		configResult.config,
+		ts.sys,
+		apiRoot,
+		{
+			declaration: true,
+			declarationMap: false,
+			emitDeclarationOnly: true,
+			incremental: false,
+			noEmit: false,
+			noEmitOnError: false,
+		},
+		apiTsconfigPath,
+	);
 
-interface AuthenticatedUser {
-	id: number;
-	dailyHours: number | null;
-	permissionGroups: { permissions: Permission[] }[];
-	permissions: Permission[];
-	team: { folderKey: string | null; id: number } | null;
-}
+	if (parsedConfig.errors.length > 0) {
+		throw new Error(formatTypeScriptDiagnostics(ts, parsedConfig.errors, apiRoot));
+	}
 
-interface DecodedToken {
-	permissions: string[];
-	type: "USER" | "EMPLOYEE";
-	user: { id: string; role: string };
-}
+	const program = ts.createProgram({
+		options: parsedConfig.options,
+		rootNames: parsedConfig.fileNames,
+	});
+	const routerSource = program.getSourceFile(routerSourcePath);
 
-interface CacheOptions {
-	tags?: string[];
-	ttl?: number;
-}
+	if (!routerSource) {
+		throw new Error(`Unable to load AppRouter source at ${routerSourcePath}.`);
+	}
 
-export declare class ServiceProvider {
-	static getAuthenticationService(): {
-		decodeToken(token: string): DecodedToken;
-		login(email: string, password: string, tokenExpiry?: string): Promise<string>;
-	};
-	static getCachingService(): {
-		fnc<T>(key: string, fn: Promise<T> | (() => Promise<T>), options?: CacheOptions): Promise<T>;
-	};
-	static getDatabaseService(): {
-		getPrisma(): {
-			user: {
-				findFirst(args: unknown): Promise<AuthenticatedUser | null>;
-			};
-			userAttendance: {
-				findFirst(args: unknown): Promise<{ id: number } | null>;
-			};
-		};
-	};
-	static getEncryptionService(): {
-		decodeId(encodedId: string, prefix: string): number;
-	};
-}
-`,
-		);
-		await writeFile(
-			declarationTsconfigPath,
-			`${JSON.stringify(
-				{
-					compilerOptions: {
-						declaration: true,
-						declarationMap: false,
-						emitDeclarationOnly: true,
-						incremental: true,
-						noEmit: false,
-						outDir: declarationOutputDirectory,
-						paths: {
-							"@/*": [path.join(apiRoot, "src/*")],
-							"@/providers": [serviceProviderShimPath],
-							"@/providers/service.provider": [serviceProviderShimPath],
-						},
-						tsBuildInfoFile: path.join(temporaryDirectory, "tsconfig.tsbuildinfo"),
-						typeRoots: [path.join(apiRoot, "node_modules/@types")],
-					},
-					extends: path.join(apiRoot, "tsconfig.json"),
-					files: [routerSourcePath, prismaJsonShimPath],
-				},
-				null,
-				2,
-			)}\n`,
-		);
+	const sourceDiagnostics = [
+		...program.getSyntacticDiagnostics(routerSource),
+		...program.getSemanticDiagnostics(routerSource),
+	].filter(diagnostic => diagnostic.category === ts.DiagnosticCategory.Error);
 
-		const typeScriptResult = spawnSync(apiTscPath, ["--project", declarationTsconfigPath, "--pretty"], {
-			cwd: apiRoot,
+	if (sourceDiagnostics.length > 0) {
+		throw new Error(formatTypeScriptDiagnostics(ts, sourceDiagnostics, apiRoot));
+	}
+
+	let emittedDeclaration;
+	const emitResult = program.emit(
+		routerSource,
+		(fileName, content) => {
+			if (fileName.endsWith(".d.ts")) emittedDeclaration = content;
+		},
+		undefined,
+		true,
+	);
+	const emitDiagnostics = emitResult.diagnostics.filter(
+		diagnostic => diagnostic.category === ts.DiagnosticCategory.Error,
+	);
+
+	if (emitDiagnostics.length > 0) {
+		throw new Error(formatTypeScriptDiagnostics(ts, emitDiagnostics, apiRoot));
+	}
+	if (!emittedDeclaration) {
+		throw new Error(`TypeScript did not emit a declaration for ${routerSourcePath}.`);
+	}
+
+	const emittedPath = routerSourcePath.replace(/\.ts$/, ".d.ts");
+	const sourceFile = ts.createSourceFile(emittedPath, emittedDeclaration, ts.ScriptTarget.Latest, true);
+	const statements = sourceFile.statements.filter(
+		statement =>
+			ts.isImportDeclaration(statement) ||
+			ts.isImportEqualsDeclaration(statement) ||
+			(ts.isVariableStatement(statement) &&
+				statement.declarationList.declarations.some(
+					declaration => ts.isIdentifier(declaration.name) && declaration.name.text === "appRouter",
+				)) ||
+			(ts.isTypeAliasDeclaration(statement) && statement.name.text === "AppRouter"),
+	);
+
+	if (!statements.some(statement => ts.isTypeAliasDeclaration(statement))) {
+		throw new Error("AppRouter was not found in the emitted declaration.");
+	}
+
+	const printer = ts.createPrinter({ newLine: ts.NewLineKind.LineFeed });
+	const appRouterDeclaration = statements
+		.map(statement => printer.printNode(ts.EmitHint.Unspecified, statement, sourceFile))
+		.join("\n")
+		.replace(/^(?: {4})+/gm, indentation => "\t".repeat(indentation.length / 4));
+
+	await mkdir(path.dirname(outputPath), { recursive: true });
+	await writeFile(
+		outputPath,
+		`// Generated by \`npx @automateinc/fleet-types generate\`. Do not edit manually.\n${appRouterDeclaration}\n`,
+	);
+
+	if (existsSync(biomePath)) {
+		const biomeResult = spawnSync(biomePath, ["format", "--write", outputPath], {
+			cwd: callerRoot,
 			stdio: "inherit",
 		});
-
-		if (typeScriptResult.error) {
-			throw typeScriptResult.error;
+		if (biomeResult.error) {
+			throw biomeResult.error;
 		}
-		if (typeScriptResult.status !== 0) {
-			throw new Error(`TypeScript declaration generation failed with exit code ${typeScriptResult.status}.`);
+		if (biomeResult.status !== 0) {
+			throw new Error(`Biome formatting failed with exit code ${biomeResult.status}.`);
 		}
-
-		const emittedPath = path
-			.join(declarationOutputDirectory, path.relative(path.join(apiRoot, "src"), routerSourcePath))
-			.replace(/\.ts$/, ".d.ts");
-		const emittedDeclaration = await readFile(emittedPath, "utf8");
-		const sourceFile = ts.createSourceFile(emittedPath, emittedDeclaration, ts.ScriptTarget.Latest, true);
-		const statements = sourceFile.statements.filter(
-			statement =>
-				ts.isImportDeclaration(statement) ||
-				ts.isImportEqualsDeclaration(statement) ||
-				(ts.isVariableStatement(statement) &&
-					statement.declarationList.declarations.some(
-						declaration => ts.isIdentifier(declaration.name) && declaration.name.text === "appRouter",
-					)) ||
-				(ts.isTypeAliasDeclaration(statement) && statement.name.text === "AppRouter"),
-		);
-
-		if (!statements.some(statement => ts.isTypeAliasDeclaration(statement))) {
-			throw new Error("AppRouter was not found in the emitted declaration.");
-		}
-
-		const printer = ts.createPrinter({ newLine: ts.NewLineKind.LineFeed });
-		const appRouterDeclaration = statements
-			.map(statement => printer.printNode(ts.EmitHint.Unspecified, statement, sourceFile))
-			.join("\n")
-			.replace(/^(?: {4})+/gm, indentation => "\t".repeat(indentation.length / 4));
-
-		await mkdir(path.dirname(outputPath), { recursive: true });
-		await writeFile(
-			outputPath,
-			`// Generated by \`npx @automateinc/fleet-types generate\`. Do not edit manually.\n${appRouterDeclaration}\n`,
-		);
-
-		if (existsSync(biomePath)) {
-			const biomeResult = spawnSync(biomePath, ["format", "--write", outputPath], {
-				cwd: callerRoot,
-				stdio: "inherit",
-			});
-			if (biomeResult.error) {
-				throw biomeResult.error;
-			}
-			if (biomeResult.status !== 0) {
-				throw new Error(`Biome formatting failed with exit code ${biomeResult.status}.`);
-			}
-		}
-
-		console.log(`Generated ${path.relative(callerRoot, outputPath)} from ${routerSourcePath}`);
-	} finally {
-		await rm(temporaryDirectory, { force: true, recursive: true });
 	}
+
+	console.log(`Generated ${path.relative(callerRoot, outputPath)} from ${routerSourcePath}`);
+}
+
+function formatTypeScriptDiagnostics(ts, diagnostics, currentDirectory) {
+	return ts.formatDiagnosticsWithColorAndContext(diagnostics, {
+		getCanonicalFileName: fileName => fileName,
+		getCurrentDirectory: () => currentDirectory,
+		getNewLine: () => "\n",
+	});
 }
 
 function printUsage() {

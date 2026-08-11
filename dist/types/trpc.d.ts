@@ -2,7 +2,7 @@
 export declare const appRouter: import("@trpc/server").TRPCBuiltRouter<
 	{
 		ctx: {
-			client: "FLEET_MOBILE" | "FLEET_MOBILE_USER" | "FLEET_WEB" | undefined;
+			client: "FLEET_WEB" | "FLEET_MOBILE" | "FLEET_MOBILE_USER" | undefined;
 			regionId: string | undefined;
 			request: import("express").Request<
 				import("express-serve-static-core").ParamsDictionary,
@@ -21,7 +21,7 @@ export declare const appRouter: import("@trpc/server").TRPCBuiltRouter<
 		auth: import("@trpc/server").TRPCBuiltRouter<
 			{
 				ctx: {
-					client: "FLEET_MOBILE" | "FLEET_MOBILE_USER" | "FLEET_WEB" | undefined;
+					client: "FLEET_WEB" | "FLEET_MOBILE" | "FLEET_MOBILE_USER" | undefined;
 					regionId: string | undefined;
 					request: import("express").Request<
 						import("express-serve-static-core").ParamsDictionary,
@@ -42,6 +42,13 @@ export declare const appRouter: import("@trpc/server").TRPCBuiltRouter<
 						email: string;
 						password: string;
 					};
+					output: {
+						token: string;
+					};
+					meta: object;
+				}>;
+				refreshToken: import("@trpc/server").TRPCMutationProcedure<{
+					input: void;
 					output: {
 						token: string;
 					};
