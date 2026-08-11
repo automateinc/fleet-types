@@ -50,7 +50,7 @@ async function generateTypes() {
 
 	const apiRoot = path.resolve(callerRoot, fleetApiPath);
 	const outputPath = path.resolve(callerRoot, fleetApiTypesPath);
-	const routerSourcePath = path.join(apiRoot, "src/services/trpc/index.ts");
+	const routerSourcePath = path.join(apiRoot, "src/routers/trpc/index.ts");
 	const prismaTypesPath = path.join(apiRoot, "prisma/types.d.ts");
 	const executableExtension = process.platform === "win32" ? ".cmd" : "";
 	const apiTscPath = path.join(apiRoot, `node_modules/.bin/tsc${executableExtension}`);
