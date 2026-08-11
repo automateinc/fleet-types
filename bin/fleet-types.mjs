@@ -54,7 +54,9 @@ async function generateTypes() {
 	const prismaTypesPath = path.join(apiRoot, "prisma/types.d.ts");
 	const executableExtension = process.platform === "win32" ? ".cmd" : "";
 	const apiTscPath = path.join(apiRoot, `node_modules/.bin/tsc${executableExtension}`);
-	const biomePath = path.join(packageRoot, `node_modules/.bin/biome${executableExtension}`);
+	const callerBiomePath = path.join(callerRoot, `node_modules/.bin/biome${executableExtension}`);
+	const packageBiomePath = path.join(packageRoot, `node_modules/.bin/biome${executableExtension}`);
+	const biomePath = existsSync(callerBiomePath) ? callerBiomePath : packageBiomePath;
 	const temporaryDirectory = await mkdtemp(path.join(tmpdir(), "fleet-trpc-types-"));
 	const declarationOutputDirectory = path.join(temporaryDirectory, "declarations");
 	const declarationTsconfigPath = path.join(temporaryDirectory, "tsconfig.json");
@@ -92,7 +94,52 @@ async function generateTypes() {
 		);
 		await writeFile(
 			serviceProviderShimPath,
-			"export declare class ServiceProvider { static getAuthenticationService(): { login(email: string, password: string, tokenExpiry?: string): Promise<string> }; static getEncryptionService(): { decodeId(encodedId: string, prefix: string): number }; }\n",
+			`interface Permission {
+	name: string;
+}
+
+interface AuthenticatedUser {
+	id: number;
+	dailyHours: number | null;
+	permissionGroups: { permissions: Permission[] }[];
+	permissions: Permission[];
+	team: { folderKey: string | null; id: number } | null;
+}
+
+interface DecodedToken {
+	permissions: string[];
+	type: "USER" | "EMPLOYEE";
+	user: { id: string; role: string };
+}
+
+interface CacheOptions {
+	tags?: string[];
+	ttl?: number;
+}
+
+export declare class ServiceProvider {
+	static getAuthenticationService(): {
+		decodeToken(token: string): DecodedToken;
+		login(email: string, password: string, tokenExpiry?: string): Promise<string>;
+	};
+	static getCachingService(): {
+		fnc<T>(key: string, fn: Promise<T> | (() => Promise<T>), options?: CacheOptions): Promise<T>;
+	};
+	static getDatabaseService(): {
+		getPrisma(): {
+			user: {
+				findFirst(args: unknown): Promise<AuthenticatedUser | null>;
+			};
+			userAttendance: {
+				findFirst(args: unknown): Promise<{ id: number } | null>;
+			};
+		};
+	};
+	static getEncryptionService(): {
+		decodeId(encodedId: string, prefix: string): number;
+	};
+}
+`,
 		);
 		await writeFile(
 			declarationTsconfigPath,
