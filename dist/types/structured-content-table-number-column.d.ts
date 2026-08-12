@@ -6,6 +6,9 @@ export type StructuredContentTableNumberFormat = "PERCENTAGE";
 export interface IStructuredContentTableNumberColumn extends IStructuredContentTableNamedColumnBase {
 	config?: IStructuredContentTableColumnSortConfig & {
 		format?: StructuredContentTableNumberFormat;
+		maximumFractionDigits?: number;
+		minimumFractionDigits?: number;
+		useGrouping?: boolean;
 	};
 	type: "NUMBER";
 }
