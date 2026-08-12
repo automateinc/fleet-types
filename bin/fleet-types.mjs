@@ -155,7 +155,7 @@ async function generateTypes() {
 	const emittedPath = routerSourcePath.replace(/\.ts$/, ".d.ts");
 	const sourceFile = ts.createSourceFile(emittedPath, emittedDeclaration, ts.ScriptTarget.Latest, true);
 	const sanitizedSourceFile = sanitizeBackendTypes(ts, sourceFile);
-	const transformedSourceFile = transformProcedureOutputs(ts, sanitizedSourceFile);
+	const transformedSourceFile = transformProcedures(ts, sanitizedSourceFile);
 	const statements = transformedSourceFile.statements.filter(
 		statement =>
 			ts.isImportDeclaration(statement) ||
@@ -199,7 +199,7 @@ async function generateTypes() {
 	console.log(`Generated ${path.relative(callerRoot, outputPath)} from ${routerSourcePath}`);
 }
 
-function transformProcedureOutputs(ts, sourceFile) {
+function transformProcedures(ts, sourceFile) {
 	const procedureTypes = new Set(["TRPCMutationProcedure", "TRPCQueryProcedure", "TRPCSubscriptionProcedure"]);
 	const transformation = ts.transform(sourceFile, [
 		context => {
@@ -211,15 +211,48 @@ function transformProcedureOutputs(ts, sourceFile) {
 					node.typeArguments?.length
 				) {
 					const [procedureDefinition, ...remainingTypeArguments] = node.typeArguments;
+					const procedureType = node.qualifier.text;
 
 					if (ts.isTypeLiteralNode(procedureDefinition)) {
 						const members = procedureDefinition.members.map(member => {
+							if (!ts.isPropertySignature(member) || !member.type || !ts.isIdentifier(member.name)) return member;
+
 							if (
-								ts.isPropertySignature(member) &&
-								member.type &&
-								ts.isIdentifier(member.name) &&
-								member.name.text === "output"
+								procedureType === "TRPCQueryProcedure" &&
+								member.name.text === "input" &&
+								ts.isTypeLiteralNode(member.type)
 							) {
+								const inputProperties = member.type.members.filter(ts.isPropertySignature);
+								const hasInputProperty = propertyName =>
+									inputProperties.some(property =>
+										ts.isIdentifier(property.name) || ts.isStringLiteral(property.name)
+											? property.name.text === propertyName
+											: false,
+									);
+
+								if (hasInputProperty("skip") && hasInputProperty("take") && !hasInputProperty("cursor")) {
+									const cursorProperty = ts.factory.createPropertySignature(
+										undefined,
+										"cursor",
+										ts.factory.createToken(ts.SyntaxKind.QuestionToken),
+										ts.factory.createKeywordTypeNode(ts.SyntaxKind.UnknownKeyword),
+									);
+									const inputType = ts.factory.updateTypeLiteralNode(member.type, [
+										cursorProperty,
+										...member.type.members,
+									]);
+
+									return ts.factory.updatePropertySignature(
+										member,
+										member.modifiers,
+										member.name,
+										member.questionToken,
+										inputType,
+									);
+								}
+							}
+
+							if (member.name.text === "output") {
 								return ts.factory.updatePropertySignature(
 									member,
 									member.modifiers,
