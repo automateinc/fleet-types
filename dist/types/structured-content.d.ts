@@ -1,9 +1,11 @@
 import type { IStructuredContentCollapseNode } from "./structured-content-collapse-node";
 import type { IStructuredContentDefaultAvatarNode } from "./structured-content-default-avatar-node";
 import type { IStructuredContentDefaultAvatarValue } from "./structured-content-default-avatar-value";
+import type { IStructuredContentGridNode } from "./structured-content-grid-node";
 import type { IStructuredContentLinkNode } from "./structured-content-link-node";
 import type { IStructuredContentLinkValue } from "./structured-content-link-value";
 import type { IStructuredContentSpaceNode } from "./structured-content-space-node";
+import type { IStructuredContentStatisticNode } from "./structured-content-statistic-node";
 import type { IStructuredContentTableBooleanColumn } from "./structured-content-table-boolean-column";
 import type { IStructuredContentTableDateColumn } from "./structured-content-table-date-column";
 import type { IStructuredContentTableDateRangeFilter } from "./structured-content-table-date-range-filter";
@@ -22,6 +24,7 @@ import type { IStructuredContentTextNode } from "./structured-content-text-node"
 
 export type StructuredContentTextVariant = "H1" | "H2" | "H3" | "H4" | "H5" | "H6" | "PARAGRAPH" | "TEXT";
 export type StructuredContentLinkVariant = "BUTTON" | "LINK";
+export type StructuredContentStatisticFormat = "PERCENTAGE";
 export type StructuredContentTableColumnType =
 	| "BOOLEAN"
 	| "DATE"
@@ -77,8 +80,10 @@ export type IStructuredContentTableColumn =
 export type IStructuredContentNode =
 	| IStructuredContentCollapseNode
 	| IStructuredContentDefaultAvatarNode
+	| IStructuredContentGridNode
 	| IStructuredContentLinkNode
 	| IStructuredContentSpaceNode
+	| IStructuredContentStatisticNode
 	| IStructuredContentTagNode
 	| IStructuredContentTableNode
 	| IStructuredContentTextNode;

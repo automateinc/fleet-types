@@ -3,5 +3,5 @@ import type { IStructuredContentNodeLayout } from "./structured-content-node-lay
 export interface IStructuredContentNodeBase {
 	id: string;
 	layout?: IStructuredContentNodeLayout;
-	type: "COLLAPSE" | "DEFAULT_AVATAR" | "LINK" | "SPACE" | "TABLE" | "TAG" | "TEXT";
+	type: "COLLAPSE" | "DEFAULT_AVATAR" | "GRID" | "LINK" | "SPACE" | "STATISTIC" | "TABLE" | "TAG" | "TEXT";
 }
