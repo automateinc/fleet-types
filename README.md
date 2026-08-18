@@ -26,8 +26,10 @@ FLEET_API_PATH=../fleet-api
 FLEET_API_TYPES_PATH=api/types.d.ts
 ```
 
-Both paths are resolved relative to the directory where the command is run. Generate the declaration from Fleet
-API's `AppRouter` with:
+Both paths are resolved relative to the directory where the command is run. The generated declaration includes Fleet
+API's global `PrismaJson` namespace from `prisma/types.d.ts`; backend-only dependencies referenced by that namespace
+are emitted as `unknown` so the declaration remains portable. Generate the declaration from Fleet API's `AppRouter`
+with:
 
 ```bash
 npx @automateinc/fleet-types generate
