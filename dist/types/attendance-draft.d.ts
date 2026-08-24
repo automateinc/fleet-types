@@ -10,6 +10,7 @@ export interface IAttendanceDraft {
 	date: string;
 
 	status: "DRAFT" | "PENDING" | "ACCEPTED" | "REJECTED";
+	isOvertime: boolean;
 
 	scheduleId: string;
 

@@ -1,4 +1,4 @@
-import { IGender } from "./gender";
+import type { ISchedulingRequirement } from "./scheduling-requirement";
 
 export interface IClientQuotationPositionVersion {
 	id: string;
@@ -23,7 +23,7 @@ export interface IClientQuotationPositionVersion {
 
 	dailyHours: number;
 	dailyCoverage: string;
-	gender?: IGender | null;
+	schedulingRequirements?: ISchedulingRequirement[];
 
 	metadata?: any;
 }

@@ -5,6 +5,7 @@ export interface IPosition {
 
 	name: string;
 	primaryKey: string;
+	requiresPresenceChecks: boolean;
 	siteId: string;
 	roleId: string;
 	metadata?: any;

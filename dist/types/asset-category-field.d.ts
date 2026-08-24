@@ -1,5 +1,6 @@
 export interface IAssetCategoryField {
 	name: string;
+	order: number;
 	required: boolean;
 	type:
 		| "STRING"

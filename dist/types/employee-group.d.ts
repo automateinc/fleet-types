@@ -5,6 +5,7 @@ export interface IEmployeeGroup {
 	deletedAt?: string;
 
 	title: string;
+	canBeScheduled: boolean;
 
 	regionId: string;
 	metadata?: any;

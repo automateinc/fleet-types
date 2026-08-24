@@ -1,4 +1,4 @@
-import { IShiftType } from ".";
+import { ISchedulingRequirement, IShiftType } from ".";
 
 export interface IShift {
 	id: string;
@@ -21,5 +21,6 @@ export interface IShift {
 	coversFriday: boolean;
 
 	positionId: string;
+	schedulingRequirements?: ISchedulingRequirement[];
 	metadata?: any;
 }

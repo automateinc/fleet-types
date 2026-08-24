@@ -24,6 +24,8 @@ export interface IEmployee {
 	folderKey: string;
 	recruitmentId?: string;
 
+	preferredOTPMethod?: "EMAIL" | "SMS" | "WHATSAPP";
+
 	primaryId?: string;
 	secondaryId?: string;
 
