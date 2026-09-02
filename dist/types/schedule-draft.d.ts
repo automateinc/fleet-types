@@ -17,6 +17,7 @@ export interface IScheduleDraft {
 	employeeId: string;
 
 	generatedById?: string;
+	deletedById?: string;
 
 	verified: boolean;
 	isOvertime: boolean;
