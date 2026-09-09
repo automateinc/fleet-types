@@ -6,6 +6,7 @@ export interface IClientQuotation {
 	status: "DRAFT" | "PENDING_APPROVAL" | "APPROVED" | "REJECTED" | "CHANGES_NEEDED";
 
 	clientId: string;
+	zoneId: string;
 	createdById?: string;
 	approvedById?: string;
 

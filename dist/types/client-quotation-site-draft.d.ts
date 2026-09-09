@@ -4,8 +4,7 @@ export interface IClientQuotationSiteDraft {
 	updatedAt: string;
 
 	quotationId: string;
-	clientSiteId?: string | null;
-	scheduleSiteId?: string | null;
+	siteId?: string | null;
 
 	name: string;
 
