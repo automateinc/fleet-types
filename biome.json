@@ -1,3 +1,4 @@
 {
-	"extends": ["@automateinc/biomejs/config"]
+	"extends": ["@automateinc/biomejs/config"],
+	"root": false
 }

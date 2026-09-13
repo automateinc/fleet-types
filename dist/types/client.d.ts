@@ -1,3 +1,5 @@
+import type { ISchedulingRequirement } from "./scheduling-requirement";
+
 export interface IClient {
 	id: string;
 	createdAt: string;
@@ -12,5 +14,6 @@ export interface IClient {
 	folderKey: string;
 	classId?: string;
 	statusId: string;
+	schedulingRequirements?: ISchedulingRequirement[];
 	metadata?: any;
 }

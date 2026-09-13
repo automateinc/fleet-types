@@ -1,5 +1,5 @@
-import type { IModel } from "./models";
 import type { IClientRequestFieldVisibilityRule } from "./client-request-field-visibility-rule";
+import type { IModel } from "./models";
 
 export interface IClientRequestCategoryField {
 	id: string;

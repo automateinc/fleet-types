@@ -1,3 +1,5 @@
+import type { ISchedulingRequirement } from "./scheduling-requirement";
+
 export interface IPositionVersion {
 	id: string;
 	updatedAt: Date;
@@ -18,5 +20,6 @@ export interface IPositionVersion {
 
 	positionId: string;
 	activePositionId: string;
+	schedulingRequirements?: ISchedulingRequirement[];
 	metadata?: any;
 }

@@ -1,6 +1,8 @@
-import type { StructuredContentLayoutAlign } from "./structured-content";
-import type { StructuredContentLayoutSpacing } from "./structured-content";
-import type { StructuredContentLayoutWidth } from "./structured-content";
+import type {
+	StructuredContentLayoutAlign,
+	StructuredContentLayoutSpacing,
+	StructuredContentLayoutWidth,
+} from "./structured-content";
 
 export interface IStructuredContentNodeLayout {
 	align?: StructuredContentLayoutAlign;

@@ -1,11 +1,11 @@
-import { IShiftType } from ".";
+import { ISchedulingRequirement, IShiftType } from ".";
 
 export interface IShift {
 	id: string;
 	updatedAt: Date;
 	createdAt: Date;
 
-	class: "MAIN" | "OVERTIME" | "FLEXIBLE";
+	class: "MAIN" | "TEMPORARY" | "FLEXIBLE";
 
 	startTime: number;
 
@@ -21,5 +21,6 @@ export interface IShift {
 	coversFriday: boolean;
 
 	positionId: string;
+	schedulingRequirements?: ISchedulingRequirement[];
 	metadata?: any;
 }

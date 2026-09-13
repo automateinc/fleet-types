@@ -1,7 +1,7 @@
 import type { IPhoneAdminAgent } from "./phone-admin-agent";
 import type { IPhoneAdminQueue } from "./phone-admin-queue";
-import type { IPhoneAdminSystemConfig } from "./phone-admin-system-config";
 import type { IPhoneAdminSummary } from "./phone-admin-summary";
+import type { IPhoneAdminSystemConfig } from "./phone-admin-system-config";
 
 export interface IPhoneAdminSnapshot {
 	agents: IPhoneAdminAgent[];
