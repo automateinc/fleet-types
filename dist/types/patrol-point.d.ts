@@ -6,7 +6,12 @@ export interface IPatrolPoint {
 	name: string;
 	description?: string;
 	order: number;
-	type: "CLOSE_ENDED_QUESTION" | "OPEN_ENDED_QUESTION" | "NO_ACTION" | "PHOTO" | "VIDEO";
+	type:
+		| "CLOSE_ENDED_QUESTION"
+		| "OPEN_ENDED_QUESTION"
+		| "NO_ACTION"
+		| "PHOTO"
+		| "VIDEO";
 	reportNotesTrigger?: string;
 
 	patrolId: string;

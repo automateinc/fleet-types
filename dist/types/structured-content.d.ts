@@ -22,7 +22,15 @@ import type { IStructuredContentTagNode } from "./structured-content-tag-node";
 import type { IStructuredContentTagValue } from "./structured-content-tag-value";
 import type { IStructuredContentTextNode } from "./structured-content-text-node";
 
-export type StructuredContentTextVariant = "H1" | "H2" | "H3" | "H4" | "H5" | "H6" | "PARAGRAPH" | "TEXT";
+export type StructuredContentTextVariant =
+	| "H1"
+	| "H2"
+	| "H3"
+	| "H4"
+	| "H5"
+	| "H6"
+	| "PARAGRAPH"
+	| "TEXT";
 export type StructuredContentLinkVariant = "BUTTON" | "LINK";
 export type StructuredContentStatisticFormat = "PERCENTAGE";
 export type StructuredContentTableColumnType =
@@ -90,10 +98,14 @@ export type IStructuredContentNode =
 
 export type StructuredContentPrimitiveValue = boolean | number | string | null;
 export type StructuredContentAvatarValue = IStructuredContentDefaultAvatarValue;
-export type StructuredContentTaggableValue = IStructuredContentTagValue | StructuredContentPrimitiveValue;
+export type StructuredContentTaggableValue =
+	| IStructuredContentTagValue
+	| StructuredContentPrimitiveValue;
 export type IStructuredContentTableRow = Record<
 	string,
-	IStructuredContentLinkValue | StructuredContentAvatarValue | StructuredContentTaggableValue
+	| IStructuredContentLinkValue
+	| StructuredContentAvatarValue
+	| StructuredContentTaggableValue
 >;
 export type StructuredContentDataValue =
 	| IStructuredContentDefaultAvatarValue

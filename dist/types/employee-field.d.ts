@@ -24,13 +24,21 @@ type EmployeeFieldRecruitment = {
 	recruitmentGroup: EmployeeFieldRecruitmentGroup;
 };
 
-export type EmployeeFieldRequestInput = EmployeeFieldBase & EmployeeFieldRequest;
-export type EmployeeFieldRecruitmentInput = EmployeeFieldBase & EmployeeFieldRecruitment;
-export type EmployeeFieldMetadataInput = Pick<EmployeeFieldBase, "fieldType" | "defaultValue"> & {
+export type EmployeeFieldRequestInput = EmployeeFieldBase &
+	EmployeeFieldRequest;
+export type EmployeeFieldRecruitmentInput = EmployeeFieldBase &
+	EmployeeFieldRecruitment;
+export type EmployeeFieldMetadataInput = Pick<
+	EmployeeFieldBase,
+	"fieldType" | "defaultValue"
+> & {
 	path: string[];
 };
 
-type EmployeeFieldInput = EmployeeFieldRequestInput | EmployeeFieldRecruitmentInput | EmployeeFieldMetadataInput;
+type EmployeeFieldInput =
+	| EmployeeFieldRequestInput
+	| EmployeeFieldRecruitmentInput
+	| EmployeeFieldMetadataInput;
 
 export interface IEmployeeField {
 	id: string;

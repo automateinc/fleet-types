@@ -4,7 +4,13 @@ export interface IClientRequestActionExecution {
 	updatedAt: string;
 
 	actionId: string;
-	status: "PENDING" | "COMPLETED" | "PROCESSING" | "FAILED" | "SKIPPED" | "ON_HOLD";
+	status:
+		| "PENDING"
+		| "COMPLETED"
+		| "PROCESSING"
+		| "FAILED"
+		| "SKIPPED"
+		| "ON_HOLD";
 	startedAt: string | null;
 	endedAt: string | null;
 	failureReason?: string;

@@ -3,7 +3,13 @@ import type { IClientRequestCategoryField } from "./client-request-category-fiel
 export interface IClientRequestFieldVisibilityRule {
 	id: string;
 	action: "SHOW" | "HIDE";
-	operator: "EQUALS" | "NOT_EQUALS" | "CONTAINS" | "NOT_CONTAINS" | "IS_EMPTY" | "IS_NOT_EMPTY";
+	operator:
+		| "EQUALS"
+		| "NOT_EQUALS"
+		| "CONTAINS"
+		| "NOT_CONTAINS"
+		| "IS_EMPTY"
+		| "IS_NOT_EMPTY";
 	sourceFieldId: string;
 	targetFieldId: string;
 	order: number;

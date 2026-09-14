@@ -3,7 +3,12 @@ export interface IClientQuotation {
 	createdAt: string;
 	updatedAt: string;
 
-	status: "DRAFT" | "PENDING_APPROVAL" | "APPROVED" | "REJECTED" | "CHANGES_NEEDED";
+	status:
+		| "DRAFT"
+		| "PENDING_APPROVAL"
+		| "APPROVED"
+		| "REJECTED"
+		| "CHANGES_NEEDED";
 
 	clientId: string;
 	createdById?: string;

@@ -1,5 +1,8 @@
 import type { IModel } from "./models";
-import type { IStructuredContentData, IStructuredContentNode } from "./structured-content";
+import type {
+	IStructuredContentData,
+	IStructuredContentNode,
+} from "./structured-content";
 
 export interface IStructuredContent {
 	createdAt: string;

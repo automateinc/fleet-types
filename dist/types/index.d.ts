@@ -1,4 +1,8 @@
-import { UseInfiniteQueryOptions, UseMutationOptions, UseQueryOptions } from "@tanstack/react-query";
+import {
+	UseInfiniteQueryOptions,
+	UseMutationOptions,
+	UseQueryOptions,
+} from "@tanstack/react-query";
 import { AxiosError } from "axios";
 
 type APIError = {
@@ -10,16 +14,34 @@ type APIError = {
 		  }>;
 };
 
-export type MutationOptions<Response, Args = void> = UseMutationOptions<Response, AxiosError<APIError>, Args, any>;
+export type MutationOptions<Response, Args = void> = UseMutationOptions<
+	Response,
+	AxiosError<APIError>,
+	Args,
+	any
+>;
 
-export type QueryOptions<Response> = UseQueryOptions<Response, AxiosError<APIError>, Response, any>;
+export type QueryOptions<Response> = UseQueryOptions<
+	Response,
+	AxiosError<APIError>,
+	Response,
+	any
+>;
 
 export type InfiniteQueryOptions<Response> = Omit<
-	UseInfiniteQueryOptions<Response, AxiosError<APIError>, Response, Response, any>,
+	UseInfiniteQueryOptions<
+		Response,
+		AxiosError<APIError>,
+		Response,
+		Response,
+		any
+	>,
 	"queryKey" | "queryFn"
 >;
 
-export type FormInputType<T extends (...args: any) => any> = Parameters<ReturnType<T>["mutate"]>[0];
+export type FormInputType<T extends (...args: any) => any> = Parameters<
+	ReturnType<T>["mutate"]
+>[0];
 
 export type PaginatedResponse<T> = {
 	limit: number;
@@ -292,6 +314,8 @@ export * from "./todo-watcher";
 export * from "./unit";
 export * from "./unit-room";
 export * from "./user";
+export * from "./user-attendance";
+export * from "./user-attendance-check-in-location";
 export * from "./vehicle";
 export * from "./vehicle-contract";
 export * from "./vehicle-contract-payment";

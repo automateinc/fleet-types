@@ -10,7 +10,12 @@ export interface IClientQuotationPositionVersion {
 	positionVersionId?: string | null;
 
 	name: string;
-	status: "UNVERIFIED" | "PENDING_VERIFICATION" | "VERIFIED" | "REJECTED" | "CHANGES_NEEDED";
+	status:
+		| "UNVERIFIED"
+		| "PENDING_VERIFICATION"
+		| "VERIFIED"
+		| "REJECTED"
+		| "CHANGES_NEEDED";
 	reason?: string | null;
 
 	coversSaturday: boolean;

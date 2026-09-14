@@ -20,7 +20,18 @@ export interface IRequest {
 	archivedAt?: string | null;
 	allowSigning?: string | null;
 	employeeId: string;
-	status: "PENDING_APPROVAL" | "APPROVED" | "REJECTED" | "WITHDRAWN" | "PENDING_VERIFICATION" | "ARCHIVED";
-	actionsExecutionStatus: "PENDING" | "COMPLETED" | "PROCESSING" | "FAILED" | "SKIPPED";
+	status:
+		| "PENDING_APPROVAL"
+		| "APPROVED"
+		| "REJECTED"
+		| "WITHDRAWN"
+		| "PENDING_VERIFICATION"
+		| "ARCHIVED";
+	actionsExecutionStatus:
+		| "PENDING"
+		| "COMPLETED"
+		| "PROCESSING"
+		| "FAILED"
+		| "SKIPPED";
 	metadata?: any;
 }

@@ -1,7 +1,8 @@
 import type { StructuredContentStatisticFormat } from "./structured-content";
 import type { IStructuredContentNodeBase } from "./structured-content-node-base";
 
-export interface IStructuredContentStatisticNode extends IStructuredContentNodeBase {
+export interface IStructuredContentStatisticNode
+	extends IStructuredContentNodeBase {
 	config: {
 		format?: StructuredContentStatisticFormat;
 		label: string;
