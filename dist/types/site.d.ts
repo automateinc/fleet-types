@@ -8,6 +8,7 @@ export interface ISite {
 	geolocation?: { lat: number; lng: number };
 	classId?: string;
 	clientId: string;
+	zoneId?: string | null;
 	contractId?: string | null;
 	contactId?: string;
 	metadata?: any;
