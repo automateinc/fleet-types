@@ -11,6 +11,7 @@ export interface IClientQuotation {
 		| "CHANGES_NEEDED";
 
 	clientId: string;
+	zoneId: string;
 	createdById?: string;
 	approvedById?: string;
 
