@@ -3,13 +3,7 @@ export interface IRecruitment {
 	createdAt: string;
 	updatedAt: string;
 
-	status:
-		| "DRAFT"
-		| "VERIFIED"
-		| "PENDING"
-		| "CHANGES_NEEDED"
-		| "RECRUITED"
-		| "REJECTED";
+	status: "DRAFT" | "VERIFIED" | "PENDING" | "CHANGES_NEEDED" | "RECRUITED" | "REJECTED";
 	regionId: string;
 	createdById: string;
 	folderKey: string;

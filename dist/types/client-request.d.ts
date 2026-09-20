@@ -15,19 +15,8 @@ export interface IClientRequest {
 	verifiedById?: string;
 	rejectedById?: string;
 
-	status:
-		| "PENDING_APPROVAL"
-		| "APPROVED"
-		| "REJECTED"
-		| "WITHDRAWN"
-		| "PENDING_VERIFICATION"
-		| "ARCHIVED";
-	actionsExecutionStatus:
-		| "PENDING"
-		| "COMPLETED"
-		| "PROCESSING"
-		| "FAILED"
-		| "SKIPPED";
+	status: "PENDING_APPROVAL" | "APPROVED" | "REJECTED" | "WITHDRAWN" | "PENDING_VERIFICATION" | "ARCHIVED";
+	actionsExecutionStatus: "PENDING" | "COMPLETED" | "PROCESSING" | "FAILED" | "SKIPPED";
 
 	metadata?: any;
 }

@@ -11,10 +11,7 @@ type ClientFieldRequest = {
 };
 
 export type ClientFieldRequestInput = ClientFieldBase & ClientFieldRequest;
-export type ClientFieldMetadataInput = Pick<
-	ClientFieldBase,
-	"fieldType" | "defaultValue"
-> & {
+export type ClientFieldMetadataInput = Pick<ClientFieldBase, "fieldType" | "defaultValue"> & {
 	path: string[];
 };
 

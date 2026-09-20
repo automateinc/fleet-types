@@ -1,8 +1,4 @@
-import {
-	UseInfiniteQueryOptions,
-	UseMutationOptions,
-	UseQueryOptions,
-} from "@tanstack/react-query";
+import { UseInfiniteQueryOptions, UseMutationOptions, UseQueryOptions } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 
 type APIError = {
@@ -14,34 +10,16 @@ type APIError = {
 		  }>;
 };
 
-export type MutationOptions<Response, Args = void> = UseMutationOptions<
-	Response,
-	AxiosError<APIError>,
-	Args,
-	any
->;
+export type MutationOptions<Response, Args = void> = UseMutationOptions<Response, AxiosError<APIError>, Args, any>;
 
-export type QueryOptions<Response> = UseQueryOptions<
-	Response,
-	AxiosError<APIError>,
-	Response,
-	any
->;
+export type QueryOptions<Response> = UseQueryOptions<Response, AxiosError<APIError>, Response, any>;
 
 export type InfiniteQueryOptions<Response> = Omit<
-	UseInfiniteQueryOptions<
-		Response,
-		AxiosError<APIError>,
-		Response,
-		Response,
-		any
-	>,
+	UseInfiniteQueryOptions<Response, AxiosError<APIError>, Response, Response, any>,
 	"queryKey" | "queryFn"
 >;
 
-export type FormInputType<T extends (...args: any) => any> = Parameters<
-	ReturnType<T>["mutate"]
->[0];
+export type FormInputType<T extends (...args: any) => any> = Parameters<ReturnType<T>["mutate"]>[0];
 
 export type PaginatedResponse<T> = {
 	limit: number;
@@ -146,10 +124,10 @@ export * from "./employee-group-snapshot";
 export * from "./employee-group-snapshot-cost";
 export * from "./employee-label";
 export * from "./employee-label-assignment";
-export * from "./employee-monthly-payroll";
 export * from "./employee-monthly-pay-review";
 export * from "./employee-monthly-pay-review-event";
 export * from "./employee-monthly-pay-review-field";
+export * from "./employee-monthly-payroll";
 export * from "./employee-status";
 export * from "./file";
 export * from "./gender";

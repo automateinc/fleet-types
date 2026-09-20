@@ -18,9 +18,4 @@ export interface ITodoStatus {
 	metadata?: Record<string, unknown>;
 }
 
-export type TodoStatusType =
-	| "OPEN"
-	| "IN_PROGRESS"
-	| "DONE"
-	| "CLOSED"
-	| "CUSTOM";
+export type TodoStatusType = "OPEN" | "IN_PROGRESS" | "DONE" | "CLOSED" | "CUSTOM";

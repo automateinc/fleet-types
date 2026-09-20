@@ -3,14 +3,7 @@ export interface ISchedule {
 	createdAt: string;
 	updatedAt: string;
 
-	dayOfWeek:
-		| "SATURDAY"
-		| "SUNDAY"
-		| "MONDAY"
-		| "TUESDAY"
-		| "WEDNESDAY"
-		| "THURSDAY"
-		| "FRIDAY";
+	dayOfWeek: "SATURDAY" | "SUNDAY" | "MONDAY" | "TUESDAY" | "WEDNESDAY" | "THURSDAY" | "FRIDAY";
 	shiftId?: string;
 
 	employeeId?: string;

@@ -1,9 +1,4 @@
-import {
-	IMetadataDocuments,
-	IMetadataExpiringDocuments,
-	IMetadataMissingDocuments,
-	IMetadataStatusCheck,
-} from ".";
+import { IMetadataDocuments, IMetadataExpiringDocuments, IMetadataMissingDocuments, IMetadataStatusCheck } from ".";
 
 export interface IMetadata {
 	expiringDocuments?: {

@@ -34,11 +34,7 @@ export interface ISchedulingRequirementsInput {
 }
 
 export type SchedulingRequirementScope = "CLIENT" | "POSITION" | "SHIFT";
-export type SchedulingRequirementKind =
-	| "ROLE"
-	| "EMPLOYEE_GROUP"
-	| "GENDER"
-	| "LABEL";
+export type SchedulingRequirementKind = "ROLE" | "EMPLOYEE_GROUP" | "GENDER" | "LABEL";
 
 export interface ISchedulingRequirementFailure {
 	scope: SchedulingRequirementScope;

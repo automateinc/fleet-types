@@ -58,10 +58,7 @@ if (!command || command === "--help" || command === "-h") {
 
 async function generateTypes() {
 	const callerRoot = process.cwd();
-	const packageRoot = path.resolve(
-		path.dirname(fileURLToPath(import.meta.url)),
-		"..",
-	);
+	const packageRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
 	try {
 		loadEnvFile(path.join(callerRoot, ".env"));
@@ -73,16 +70,12 @@ async function generateTypes() {
 
 	const fleetApiPath = process.env.FLEET_API_PATH;
 	if (!fleetApiPath) {
-		throw new Error(
-			"FLEET_API_PATH is not set. Add it to .env or the process environment.",
-		);
+		throw new Error("FLEET_API_PATH is not set. Add it to .env or the process environment.");
 	}
 
 	const fleetApiTypesPath = process.env.FLEET_API_TYPES_PATH;
 	if (!fleetApiTypesPath) {
-		throw new Error(
-			"FLEET_API_TYPES_PATH is not set. Add it to .env or the process environment.",
-		);
+		throw new Error("FLEET_API_TYPES_PATH is not set. Add it to .env or the process environment.");
 	}
 
 	const apiRoot = path.resolve(callerRoot, fleetApiPath);
@@ -91,27 +84,15 @@ async function generateTypes() {
 	const prismaJsonSourcePath = path.join(apiRoot, "prisma/types.d.ts");
 	const apiTsconfigPath = path.join(apiRoot, "tsconfig.json");
 	const executableExtension = process.platform === "win32" ? ".cmd" : "";
-	const callerBiomePath = path.join(
-		callerRoot,
-		`node_modules/.bin/biome${executableExtension}`,
-	);
-	const packageBiomePath = path.join(
-		packageRoot,
-		`node_modules/.bin/biome${executableExtension}`,
-	);
-	const biomePath = existsSync(callerBiomePath)
-		? callerBiomePath
-		: packageBiomePath;
-	const requireFromPackage = createRequire(
-		path.join(packageRoot, "package.json"),
-	);
+	const callerBiomePath = path.join(callerRoot, `node_modules/.bin/biome${executableExtension}`);
+	const packageBiomePath = path.join(packageRoot, `node_modules/.bin/biome${executableExtension}`);
+	const biomePath = existsSync(callerBiomePath) ? callerBiomePath : packageBiomePath;
+	const requireFromPackage = createRequire(path.join(packageRoot, "package.json"));
 	const ts = requireFromPackage("typescript");
 	const configResult = ts.readConfigFile(apiTsconfigPath, ts.sys.readFile);
 
 	if (configResult.error) {
-		throw new Error(
-			formatTypeScriptDiagnostics(ts, [configResult.error], apiRoot),
-		);
+		throw new Error(formatTypeScriptDiagnostics(ts, [configResult.error], apiRoot));
 	}
 
 	const parsedConfig = ts.parseJsonConfigFileContent(
@@ -130,9 +111,7 @@ async function generateTypes() {
 	);
 
 	if (parsedConfig.errors.length > 0) {
-		throw new Error(
-			formatTypeScriptDiagnostics(ts, parsedConfig.errors, apiRoot),
-		);
+		throw new Error(formatTypeScriptDiagnostics(ts, parsedConfig.errors, apiRoot));
 	}
 
 	const program = ts.createProgram({
@@ -146,20 +125,16 @@ async function generateTypes() {
 		throw new Error(`Unable to load AppRouter source at ${routerSourcePath}.`);
 	}
 	if (!prismaJsonSource) {
-		throw new Error(
-			`Unable to load PrismaJson declarations at ${prismaJsonSourcePath}.`,
-		);
+		throw new Error(`Unable to load PrismaJson declarations at ${prismaJsonSourcePath}.`);
 	}
 
 	const sourceDiagnostics = [
 		...program.getSyntacticDiagnostics(routerSource),
 		...program.getSemanticDiagnostics(routerSource),
-	].filter((diagnostic) => diagnostic.category === ts.DiagnosticCategory.Error);
+	].filter(diagnostic => diagnostic.category === ts.DiagnosticCategory.Error);
 
 	if (sourceDiagnostics.length > 0) {
-		throw new Error(
-			formatTypeScriptDiagnostics(ts, sourceDiagnostics, apiRoot),
-		);
+		throw new Error(formatTypeScriptDiagnostics(ts, sourceDiagnostics, apiRoot));
 	}
 
 	let emittedDeclaration;
@@ -172,65 +147,41 @@ async function generateTypes() {
 		true,
 	);
 	const emitDiagnostics = emitResult.diagnostics.filter(
-		(diagnostic) => diagnostic.category === ts.DiagnosticCategory.Error,
+		diagnostic => diagnostic.category === ts.DiagnosticCategory.Error,
 	);
 
 	if (emitDiagnostics.length > 0) {
 		throw new Error(formatTypeScriptDiagnostics(ts, emitDiagnostics, apiRoot));
 	}
 	if (!emittedDeclaration) {
-		throw new Error(
-			`TypeScript did not emit a declaration for ${routerSourcePath}.`,
-		);
+		throw new Error(`TypeScript did not emit a declaration for ${routerSourcePath}.`);
 	}
 
 	const emittedPath = routerSourcePath.replace(/\.ts$/, ".d.ts");
-	const sourceFile = ts.createSourceFile(
-		emittedPath,
-		emittedDeclaration,
-		ts.ScriptTarget.Latest,
-		true,
-	);
+	const sourceFile = ts.createSourceFile(emittedPath, emittedDeclaration, ts.ScriptTarget.Latest, true);
 	const sanitizedSourceFile = sanitizeBackendTypes(ts, sourceFile);
-	const transformedSourceFile = transformProcedureOutputs(
-		ts,
-		sanitizedSourceFile,
-	);
-	const prismaJsonDeclaration = createPrismaJsonDeclaration(
-		ts,
-		prismaJsonSource,
-	);
+	const transformedSourceFile = transformProcedureOutputs(ts, sanitizedSourceFile);
+	const prismaJsonDeclaration = createPrismaJsonDeclaration(ts, prismaJsonSource);
 	const statements = transformedSourceFile.statements.filter(
-		(statement) =>
+		statement =>
 			ts.isImportDeclaration(statement) ||
 			ts.isImportEqualsDeclaration(statement) ||
 			(ts.isVariableStatement(statement) &&
 				statement.declarationList.declarations.some(
-					(declaration) =>
-						ts.isIdentifier(declaration.name) &&
-						declaration.name.text === "appRouter",
+					declaration => ts.isIdentifier(declaration.name) && declaration.name.text === "appRouter",
 				)) ||
-			(ts.isTypeAliasDeclaration(statement) &&
-				statement.name.text === "AppRouter"),
+			(ts.isTypeAliasDeclaration(statement) && statement.name.text === "AppRouter"),
 	);
 
-	if (!statements.some((statement) => ts.isTypeAliasDeclaration(statement))) {
+	if (!statements.some(statement => ts.isTypeAliasDeclaration(statement))) {
 		throw new Error("AppRouter was not found in the emitted declaration.");
 	}
 
 	const printer = ts.createPrinter({ newLine: ts.NewLineKind.LineFeed });
 	const appRouterDeclaration = statements
-		.map((statement) =>
-			printer.printNode(
-				ts.EmitHint.Unspecified,
-				statement,
-				transformedSourceFile,
-			),
-		)
+		.map(statement => printer.printNode(ts.EmitHint.Unspecified, statement, transformedSourceFile))
 		.join("\n")
-		.replace(/^(?: {4})+/gm, (indentation) =>
-			"\t".repeat(indentation.length / 4),
-		);
+		.replace(/^(?: {4})+/gm, indentation => "\t".repeat(indentation.length / 4));
 
 	await mkdir(path.dirname(outputPath), { recursive: true });
 	await writeFile(
@@ -239,27 +190,19 @@ async function generateTypes() {
 	);
 
 	if (existsSync(biomePath)) {
-		const biomeResult = spawnSync(
-			biomePath,
-			["format", "--write", outputPath],
-			{
-				cwd: callerRoot,
-				stdio: "inherit",
-			},
-		);
+		const biomeResult = spawnSync(biomePath, ["format", "--write", outputPath], {
+			cwd: callerRoot,
+			stdio: "inherit",
+		});
 		if (biomeResult.error) {
 			throw biomeResult.error;
 		}
 		if (biomeResult.status !== 0) {
-			throw new Error(
-				`Biome formatting failed with exit code ${biomeResult.status}.`,
-			);
+			throw new Error(`Biome formatting failed with exit code ${biomeResult.status}.`);
 		}
 	}
 
-	console.log(
-		`Generated ${path.relative(callerRoot, outputPath)} from ${routerSourcePath}`,
-	);
+	console.log(`Generated ${path.relative(callerRoot, outputPath)} from ${routerSourcePath}`);
 }
 
 function createPrismaJsonDeclaration(ts, sourceFile) {
@@ -267,75 +210,49 @@ function createPrismaJsonDeclaration(ts, sourceFile) {
 
 	for (const statement of sourceFile.statements) {
 		if (!ts.isImportDeclaration(statement) || !statement.importClause) continue;
-		if (
-			!ts.isStringLiteral(statement.moduleSpecifier) ||
-			!statement.moduleSpecifier.text.startsWith("@/")
-		)
-			continue;
+		if (!ts.isStringLiteral(statement.moduleSpecifier) || !statement.moduleSpecifier.text.startsWith("@/")) continue;
 
-		if (statement.importClause.name)
-			backendTypeNames.add(statement.importClause.name.text);
+		if (statement.importClause.name) backendTypeNames.add(statement.importClause.name.text);
 
 		const bindings = statement.importClause.namedBindings;
 		if (bindings && ts.isNamespaceImport(bindings)) {
 			backendTypeNames.add(bindings.name.text);
 		} else if (bindings) {
-			for (const element of bindings.elements)
-				backendTypeNames.add(element.name.text);
+			for (const element of bindings.elements) backendTypeNames.add(element.name.text);
 		}
 	}
 
-	const sanitizedSourceFile = sanitizeBackendTypes(
-		ts,
-		sourceFile,
-		backendTypeNames,
-	);
+	const sanitizedSourceFile = sanitizeBackendTypes(ts, sourceFile, backendTypeNames);
 	const globalDeclarations = sanitizedSourceFile.statements.filter(
-		(statement) =>
-			ts.isModuleDeclaration(statement) && statement.name.text === "global",
+		statement => ts.isModuleDeclaration(statement) && statement.name.text === "global",
 	);
 
 	if (globalDeclarations.length === 0) {
-		throw new Error(
-			`PrismaJson global declarations were not found in ${sourceFile.fileName}.`,
-		);
+		throw new Error(`PrismaJson global declarations were not found in ${sourceFile.fileName}.`);
 	}
 
 	const printer = ts.createPrinter({ newLine: ts.NewLineKind.LineFeed });
 
 	return globalDeclarations
-		.map((statement) =>
-			printer.printNode(
-				ts.EmitHint.Unspecified,
-				statement,
-				sanitizedSourceFile,
-			),
-		)
+		.map(statement => printer.printNode(ts.EmitHint.Unspecified, statement, sanitizedSourceFile))
 		.join("\n")
-		.replace(/^(?: {4})+/gm, (indentation) =>
-			"\t".repeat(indentation.length / 4),
-		);
+		.replace(/^(?: {4})+/gm, indentation => "\t".repeat(indentation.length / 4));
 }
 
 function transformProcedureOutputs(ts, sourceFile) {
-	const procedureTypes = new Set([
-		"TRPCMutationProcedure",
-		"TRPCQueryProcedure",
-		"TRPCSubscriptionProcedure",
-	]);
+	const procedureTypes = new Set(["TRPCMutationProcedure", "TRPCQueryProcedure", "TRPCSubscriptionProcedure"]);
 	const transformation = ts.transform(sourceFile, [
-		(context) => {
-			const visit = (node) => {
+		context => {
+			const visit = node => {
 				if (
 					ts.isImportTypeNode(node) &&
 					ts.isIdentifier(node.qualifier) &&
 					procedureTypes.has(node.qualifier.text) &&
 					node.typeArguments?.length
 				) {
-					const [procedureDefinition, ...remainingTypeArguments] =
-						node.typeArguments;
+					const [procedureDefinition, ...remainingTypeArguments] = node.typeArguments;
 					if (ts.isTypeLiteralNode(procedureDefinition)) {
-						const members = procedureDefinition.members.map((member) => {
+						const members = procedureDefinition.members.map(member => {
 							if (
 								ts.isPropertySignature(member) &&
 								member.type &&
@@ -347,18 +264,13 @@ function transformProcedureOutputs(ts, sourceFile) {
 									member.modifiers,
 									member.name,
 									member.questionToken,
-									ts.factory.createTypeReferenceNode("FleetProcedureOutput", [
-										member.type,
-									]),
+									ts.factory.createTypeReferenceNode("FleetProcedureOutput", [member.type]),
 								);
 							}
 
 							return member;
 						});
-						const updatedDefinition = ts.factory.updateTypeLiteralNode(
-							procedureDefinition,
-							members,
-						);
+						const updatedDefinition = ts.factory.updateTypeLiteralNode(procedureDefinition, members);
 
 						return ts.factory.updateImportTypeNode(
 							node,
@@ -374,7 +286,7 @@ function transformProcedureOutputs(ts, sourceFile) {
 				return ts.visitEachChild(node, visit, context);
 			};
 
-			return (rootNode) => ts.visitNode(rootNode, visit);
+			return rootNode => ts.visitNode(rootNode, visit);
 		},
 	]);
 	const transformedSourceFile = transformation.transformed[0];
@@ -386,12 +298,10 @@ function transformProcedureOutputs(ts, sourceFile) {
 
 function sanitizeBackendTypes(ts, sourceFile, backendTypeNames = new Set()) {
 	const transformation = ts.transform(sourceFile, [
-		(context) => {
-			const visit = (node) => {
+		context => {
+			const visit = node => {
 				if (
-					(ts.isTypeReferenceNode(node) ||
-						ts.isIndexedAccessTypeNode(node) ||
-						ts.isTypeQueryNode(node)) &&
+					(ts.isTypeReferenceNode(node) || ts.isIndexedAccessTypeNode(node) || ts.isTypeQueryNode(node)) &&
 					referencesBackendType(ts, node, backendTypeNames)
 				) {
 					return ts.factory.createKeywordTypeNode(ts.SyntaxKind.UnknownKeyword);
@@ -409,7 +319,7 @@ function sanitizeBackendTypes(ts, sourceFile, backendTypeNames = new Set()) {
 				return ts.visitEachChild(node, visit, context);
 			};
 
-			return (rootNode) => ts.visitNode(rootNode, visit);
+			return rootNode => ts.visitNode(rootNode, visit);
 		},
 	]);
 	const transformedSourceFile = transformation.transformed[0];
@@ -428,19 +338,14 @@ function referencesBackendType(ts, node, backendTypeNames) {
 		return ts.isIdentifier(typeName) && backendTypeNames.has(typeName.text);
 	}
 
-	if (ts.isIndexedAccessTypeNode(node))
-		return referencesBackendType(ts, node.objectType, backendTypeNames);
+	if (ts.isIndexedAccessTypeNode(node)) return referencesBackendType(ts, node.objectType, backendTypeNames);
 
 	if (ts.isTypeQueryNode(node)) {
 		let expressionName = node.exprName;
 
-		while (ts.isQualifiedName(expressionName))
-			expressionName = expressionName.left;
+		while (ts.isQualifiedName(expressionName)) expressionName = expressionName.left;
 
-		return (
-			ts.isIdentifier(expressionName) &&
-			backendTypeNames.has(expressionName.text)
-		);
+		return ts.isIdentifier(expressionName) && backendTypeNames.has(expressionName.text);
 	}
 
 	return false;
@@ -448,7 +353,7 @@ function referencesBackendType(ts, node, backendTypeNames) {
 
 function formatTypeScriptDiagnostics(ts, diagnostics, currentDirectory) {
 	return ts.formatDiagnosticsWithColorAndContext(diagnostics, {
-		getCanonicalFileName: (fileName) => fileName,
+		getCanonicalFileName: fileName => fileName,
 		getCurrentDirectory: () => currentDirectory,
 		getNewLine: () => "\n",
 	});

@@ -1,8 +1,1 @@
-export type IDayOfWeek =
-	| "MONDAY"
-	| "TUESDAY"
-	| "WEDNESDAY"
-	| "THURSDAY"
-	| "FRIDAY"
-	| "SATURDAY"
-	| "SUNDAY";
+export type IDayOfWeek = "MONDAY" | "TUESDAY" | "WEDNESDAY" | "THURSDAY" | "FRIDAY" | "SATURDAY" | "SUNDAY";
