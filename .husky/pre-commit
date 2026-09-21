@@ -1,1 +1,1 @@
-npx biome ci
+npx biome ci --colors=off --reporter=summary

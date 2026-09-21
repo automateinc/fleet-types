@@ -5,7 +5,7 @@ export interface IShift {
 	updatedAt: Date;
 	createdAt: Date;
 
-	class: "MAIN" | "OVERTIME" | "FLEXIBLE";
+	class: "MAIN" | "TEMPORARY" | "FLEXIBLE";
 
 	startTime: number;
 

@@ -7,7 +7,7 @@ export interface IRequestAction {
 	categoryId: string;
 	name: string;
 	type: "VERIFICATION" | "APPROVAL" | "REJECTION" | "CREATION";
-	operation: "HTTP";
+	operation: "HTTP" | "GENERATE_DOCUMENT" | "APPLY_SIGNATURE";
 	config: Record<string, any>;
 	order: number;
 	fields: IRequestCategoryField[];
