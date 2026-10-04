@@ -16,6 +16,7 @@ export interface IClientRequestCategoryField {
 
 	type:
 		| "STRING"
+		| "JSON"
 		| "NUMBER"
 		| "BOOLEAN"
 		| "DATE"
