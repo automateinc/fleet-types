@@ -12,6 +12,7 @@ export interface IAttendance {
 
 	checkInImage?: IFile;
 	checkInImageId?: string;
+	siteLocation?: ICoords;
 	checkInLocation?: ICoords;
 	checkInTime?: string;
 	checkOutLocation?: ICoords;
