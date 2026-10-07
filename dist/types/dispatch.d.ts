@@ -6,6 +6,9 @@ export interface IDispatch {
 	status: "PENDING" | "FLEET_CHECK" | "FLEET_CHECK_COMPLETE" | "IN_PROGRESS" | "COMPLETE" | "INTERRUPTED" | "NOT_SET";
 	statusUpdatedAt: string;
 	date: string;
+	startedAt: string | null;
+	completedAt: string | null;
+	actualDurationSeconds: number | null;
 	verified: boolean;
 	// timeOnSite: number;
 	fleetCheckTime: string;
