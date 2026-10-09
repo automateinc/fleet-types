@@ -253,6 +253,7 @@ export * from "./structured-content-table-toolbar-filter-base";
 export * from "./structured-content-tag-node";
 export * from "./structured-content-tag-value";
 export * from "./structured-content-text-node";
+export * from "./structured-data";
 export * from "./tag";
 export * from "./tag-color";
 export * from "./team";
