@@ -12,7 +12,7 @@ export interface IVehicle {
 	plateNumber: string;
 	vehicleIdentificationNumber: string;
 	type: string;
-	seats: number;
+	seats?: number | null;
 
 	companyId: string;
 	operatingCompanyId?: string;

@@ -12,7 +12,7 @@ export interface IDispatch {
 	verified: boolean;
 	// timeOnSite: number;
 	fleetCheckTime: string;
-	vehicleId?: string;
+	vehicleId?: string | null;
 	primaryKey: string;
 	metadata?: any;
 }
