@@ -4,6 +4,7 @@ export interface ISite {
 	updatedAt: string;
 	deletedAt?: string | null;
 	name: string;
+	requiresSupervisorAttendance: boolean;
 	address?: any;
 	geolocation?: { lat: number; lng: number };
 	classId?: string;
