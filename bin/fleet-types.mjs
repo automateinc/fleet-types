@@ -23,7 +23,9 @@ type FleetSerializeOutput<T> = FleetIsAny<T> extends true
 \t? T
 \t: T extends (...args: never[]) => unknown
 \t\t? never
-\t\t: T extends Date
+\t\t: T extends AsyncIterable<infer TChunk>
+\t\t\t? AsyncIterable<FleetSerializeOutput<TChunk>>
+\t\t\t: T extends Date
 \t\t\t? string
 \t\t\t: T extends readonly (infer TItem)[]
 \t\t\t\t? FleetSerializeOutput<TItem>[]
