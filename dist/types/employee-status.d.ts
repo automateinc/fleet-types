@@ -4,6 +4,7 @@ export interface IEmployeeStatus {
 	updatedAt: string;
 	name: string;
 	default: boolean;
+	employeeActive: boolean;
 	weight: number;
 	regionId: string;
 	metadata?: any;
