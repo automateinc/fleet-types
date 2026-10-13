@@ -4,6 +4,7 @@ export interface IEmployee {
 	id: string;
 	createdAt: string;
 	updatedAt: string;
+	deactivatedAt: string | null;
 	primaryKey: string;
 	companyId: string;
 	contractId: string;
