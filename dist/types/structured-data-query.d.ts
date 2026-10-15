@@ -5,6 +5,7 @@ export interface StructuredDataQuery {
 	search?: { value: string; fields?: string[]; employee?: boolean };
 	where?: StructuredDataWhere;
 	filters?: StructuredDataFilter[];
+	includeRawData?: boolean;
 	sort?: { field: string; direction: "asc" | "desc" }[];
 	page?: number;
 	limit?: number;

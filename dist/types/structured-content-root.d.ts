@@ -1,15 +1,14 @@
-import type { IModel } from "./models";
-import type { IStructuredContentData, IStructuredContentNode } from "./structured-content";
+import type { IStructuredContentNode } from "./structured-content";
+import type { StructuredJson } from "./structured-json";
 
 export interface IStructuredContent {
-	createdAt: string;
-	data: IStructuredContentData;
 	id: string;
+	createdAt: string;
+	updatedAt: string | null;
 	key: string;
-	metadata?: Record<string, any>;
-	rawData: unknown;
-	relation: IModel;
-	relationId: string;
 	structure: IStructuredContentNode[];
-	updatedAt?: string;
+	bindings: StructuredJson;
+	metadata?: Record<string, StructuredJson>;
+	regionId: string | null;
+	datasetId: string | null;
 }

@@ -1,7 +1,6 @@
 import type { StructuredJson } from "./structured-json";
 
 export interface IStructuredData {
-	calculationVersion: string | null;
 	id: string;
 	datasetId: string;
 	key: string;

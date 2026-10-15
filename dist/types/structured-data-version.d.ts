@@ -1,7 +1,6 @@
 import type { StructuredJson } from "./structured-json";
 
 export interface IStructuredDataVersion {
-	calculationVersion: string | null;
 	id: string;
 	recordId: string;
 	employeeId: string | null;
@@ -10,8 +9,6 @@ export interface IStructuredDataVersion {
 	rawData: StructuredJson;
 	deletedAt: string | null;
 	revision: number;
-	recordedAt: string;
+	createdAt: string;
 	observedAt: string;
-	definitionVersion: number;
-	operationKey: string;
 }

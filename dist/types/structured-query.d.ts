@@ -5,7 +5,6 @@ export interface IStructuredQuery {
 	regionId: string;
 	key: string;
 	name: string;
-	revision: number;
 	definition: StructuredJson;
 	createdAt: string;
 	updatedAt: string;
