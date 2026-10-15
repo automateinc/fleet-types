@@ -23,7 +23,9 @@ type FleetSerializeOutput<T> = FleetIsAny<T> extends true
 \t? T
 \t: T extends (...args: never[]) => unknown
 \t\t? never
-\t\t: T extends Date
+\t\t: T extends AsyncIterable<infer TChunk>
+\t\t\t? AsyncIterable<FleetSerializeOutput<TChunk>>
+\t\t\t: T extends Date
 \t\t\t? string
 \t\t\t: T extends readonly (infer TItem)[]
 \t\t\t\t? FleetSerializeOutput<TItem>[]
@@ -159,9 +161,27 @@ async function generateTypes() {
 
 	const emittedPath = routerSourcePath.replace(/\.ts$/, ".d.ts");
 	const sourceFile = ts.createSourceFile(emittedPath, emittedDeclaration, ts.ScriptTarget.Latest, true);
-	const sanitizedSourceFile = sanitizeBackendTypes(ts, sourceFile);
+	const enumTypes = new Map();
+	const prismaSource = program.getSourceFile(path.join(apiRoot, "src/generated/prisma/index.d.ts"));
+	const checker = program.getTypeChecker();
+	if (prismaSource) {
+		for (const declaration of prismaSource.statements) {
+			if (!ts.isTypeAliasDeclaration(declaration)) continue;
+			const type = checker.getTypeAtLocation(declaration);
+			const members = type.isUnion() ? type.types : [type];
+			if (members.length && members.every(member => member.isStringLiteral())) {
+				enumTypes.set(
+					declaration.name.text,
+					ts.factory.createUnionTypeNode(
+						members.map(member => ts.factory.createLiteralTypeNode(ts.factory.createStringLiteral(member.value))),
+					),
+				);
+			}
+		}
+	}
+	const sanitizedSourceFile = sanitizeBackendTypes(ts, sourceFile, new Set(), enumTypes);
 	const transformedSourceFile = transformProcedureOutputs(ts, sanitizedSourceFile);
-	const prismaJsonDeclaration = createPrismaJsonDeclaration(ts, prismaJsonSource);
+	const prismaJsonDeclaration = createPrismaJsonDeclaration(ts, prismaJsonSource, enumTypes);
 	const statements = transformedSourceFile.statements.filter(
 		statement =>
 			ts.isImportDeclaration(statement) ||
@@ -205,7 +225,7 @@ async function generateTypes() {
 	console.log(`Generated ${path.relative(callerRoot, outputPath)} from ${routerSourcePath}`);
 }
 
-function createPrismaJsonDeclaration(ts, sourceFile) {
+function createPrismaJsonDeclaration(ts, sourceFile, enumTypes) {
 	const backendTypeNames = new Set();
 
 	for (const statement of sourceFile.statements) {
@@ -222,7 +242,7 @@ function createPrismaJsonDeclaration(ts, sourceFile) {
 		}
 	}
 
-	const sanitizedSourceFile = sanitizeBackendTypes(ts, sourceFile, backendTypeNames);
+	const sanitizedSourceFile = sanitizeBackendTypes(ts, sourceFile, backendTypeNames, enumTypes);
 	const globalDeclarations = sanitizedSourceFile.statements.filter(
 		statement => ts.isModuleDeclaration(statement) && statement.name.text === "global",
 	);
@@ -296,7 +316,7 @@ function transformProcedureOutputs(ts, sourceFile) {
 	return transformedSourceFile;
 }
 
-function sanitizeBackendTypes(ts, sourceFile, backendTypeNames = new Set()) {
+function sanitizeBackendTypes(ts, sourceFile, backendTypeNames = new Set(), enumTypes = new Map()) {
 	const transformation = ts.transform(sourceFile, [
 		context => {
 			const visit = node => {
@@ -304,6 +324,8 @@ function sanitizeBackendTypes(ts, sourceFile, backendTypeNames = new Set()) {
 					(ts.isTypeReferenceNode(node) || ts.isIndexedAccessTypeNode(node) || ts.isTypeQueryNode(node)) &&
 					referencesBackendType(ts, node, backendTypeNames)
 				) {
+					if (ts.isTypeReferenceNode(node) && ts.isIdentifier(node.typeName) && enumTypes.has(node.typeName.text))
+						return enumTypes.get(node.typeName.text);
 					return ts.factory.createKeywordTypeNode(ts.SyntaxKind.UnknownKeyword);
 				}
 
@@ -313,6 +335,10 @@ function sanitizeBackendTypes(ts, sourceFile, backendTypeNames = new Set()) {
 					ts.isStringLiteral(node.argument.literal) &&
 					node.argument.literal.text.startsWith("@/")
 				) {
+					const qualifier = node.qualifier;
+					const name = qualifier && (ts.isIdentifier(qualifier) ? qualifier.text : qualifier.right.text);
+					if (node.argument.literal.text.includes("generated/prisma") && enumTypes.has(name))
+						return enumTypes.get(name);
 					return ts.factory.createKeywordTypeNode(ts.SyntaxKind.UnknownKeyword);
 				}
 

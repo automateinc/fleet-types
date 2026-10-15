@@ -8,7 +8,6 @@ export interface IUser {
 	lastName: string;
 	folderKey: string;
 	name: string;
-	teamId: string;
 	createdAt: string;
 	updatedAt: string;
 	metadata?: { [key: PropertyKey]: any };
