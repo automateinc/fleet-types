@@ -1,7 +1,6 @@
 export interface ILoanPayment {
 	id: string;
 	createdAt: string;
-	loanId: string;
 	amount: number;
 	paidAt: string;
 	source: "MANUAL" | "PAYROLL" | "LEGACY";
