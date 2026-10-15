@@ -140,6 +140,7 @@ export * from "./leave-event";
 export * from "./leave-type";
 export * from "./loan";
 export * from "./loan-installment";
+export * from "./loan-payment";
 export * from "./metadata";
 export * from "./metadata-documents";
 export * from "./metadata-expiring-documents";

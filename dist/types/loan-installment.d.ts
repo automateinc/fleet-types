@@ -9,6 +9,8 @@ export interface ILoanInstallment {
 	dueDate: string;
 
 	amount: number;
+	paidAmount: number;
+	remainingAmount: number;
 
 	loanId: string;
 	metadata?: any;
