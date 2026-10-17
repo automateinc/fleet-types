@@ -3,6 +3,7 @@ import type { StructuredJson } from "./structured-json";
 
 export interface IStructuredContent {
 	id: string;
+	teamId: string;
 	createdAt: string;
 	updatedAt: string | null;
 	key: string;
@@ -11,4 +12,7 @@ export interface IStructuredContent {
 	metadata?: Record<string, StructuredJson>;
 	regionId: string | null;
 	datasetId: string | null;
+	navigationId: string | null;
+	urlOverride: string | null;
+	previousUrls: string[];
 }

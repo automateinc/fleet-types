@@ -233,6 +233,7 @@ export * from "./structured-content-default-avatar-value";
 export * from "./structured-content-grid-node";
 export * from "./structured-content-link-node";
 export * from "./structured-content-link-value";
+export * from "./structured-content-navigation";
 export * from "./structured-content-node-base";
 export * from "./structured-content-node-layout";
 export * from "./structured-content-root";
