@@ -116,7 +116,37 @@ async function generateTypes() {
 		throw new Error(formatTypeScriptDiagnostics(ts, parsedConfig.errors, apiRoot));
 	}
 
+	// Emit one root module per declaration so large applications stay below TypeScript's per-node serialization limit.
+	const host = ts.createCompilerHost(parsedConfig.options);
+	const originalReadFile = host.readFile.bind(host);
+	const sourceText = originalReadFile(routerSourcePath);
+	const originalSource = ts.createSourceFile(routerSourcePath, sourceText, ts.ScriptTarget.Latest, true);
+	const rootDeclaration = originalSource.statements
+		.flatMap(statement => (ts.isVariableStatement(statement) ? [...statement.declarationList.declarations] : []))
+		.find(declaration => ts.isIdentifier(declaration.name) && declaration.name.text === "appRouter");
+	const routerOptions =
+		rootDeclaration?.initializer && ts.isCallExpression(rootDeclaration.initializer)
+			? rootDeclaration.initializer.arguments[0]
+			: undefined;
+	if (!routerOptions || !ts.isObjectLiteralExpression(routerOptions))
+		throw new Error("AppRouter must be created from an object of routers.");
+	const rootProperties = routerOptions.properties;
+	const imports = originalSource.statements
+		.filter(ts.isImportDeclaration)
+		.map(statement => statement.getText(originalSource))
+		.join("\n");
+	const moduleSource =
+		imports +
+		"\n" +
+		rootProperties
+			.map(
+				(property, index) =>
+					`export const fleetRouter${index} = createTRPCRouter({${property.getText(originalSource)}});`,
+			)
+			.join("\n");
+	host.readFile = fileName => (path.resolve(fileName) === routerSourcePath ? moduleSource : originalReadFile(fileName));
 	const program = ts.createProgram({
+		host,
 		options: parsedConfig.options,
 		rootNames: parsedConfig.fileNames,
 	});
@@ -160,7 +190,37 @@ async function generateTypes() {
 	}
 
 	const emittedPath = routerSourcePath.replace(/\.ts$/, ".d.ts");
-	const sourceFile = ts.createSourceFile(emittedPath, emittedDeclaration, ts.ScriptTarget.Latest, true);
+	const moduleDeclarations = ts.createSourceFile(emittedPath, emittedDeclaration, ts.ScriptTarget.Latest, true);
+	const moduleTypes = moduleDeclarations.statements
+		.flatMap(statement => (ts.isVariableStatement(statement) ? [...statement.declarationList.declarations] : []))
+		.filter(declaration => ts.isIdentifier(declaration.name) && declaration.name.text.startsWith("fleetRouter"))
+		.map(declaration => declaration.type);
+	if (!moduleTypes.length || moduleTypes.some(type => !ts.isImportTypeNode(type) || !type.typeArguments?.[1]))
+		throw new Error("Unable to combine root router declarations.");
+	const baseType = moduleTypes[0];
+	const decoratedRecord = baseType.typeArguments[1];
+	const records = moduleTypes.map(type => type.typeArguments[1]);
+	if (records.some(record => !ts.isImportTypeNode(record) || !ts.isTypeLiteralNode(record.typeArguments?.[0])))
+		throw new Error("Unable to combine root router records.");
+	const combinedRecord = ts.factory.updateImportTypeNode(
+		decoratedRecord,
+		decoratedRecord.argument,
+		decoratedRecord.attributes,
+		decoratedRecord.qualifier,
+		[ts.factory.createTypeLiteralNode(records.flatMap(record => [...record.typeArguments[0].members]))],
+		decoratedRecord.isTypeOf,
+	);
+	const combinedType = ts.factory.updateImportTypeNode(
+		baseType,
+		baseType.argument,
+		baseType.attributes,
+		baseType.qualifier,
+		[baseType.typeArguments[0], combinedRecord],
+		baseType.isTypeOf,
+	);
+	const declarationPrinter = ts.createPrinter({ newLine: ts.NewLineKind.LineFeed });
+	const combinedText = `export declare const appRouter: ${declarationPrinter.printNode(ts.EmitHint.Unspecified, combinedType, moduleDeclarations)};\nexport type AppRouter = typeof appRouter;`;
+	const sourceFile = ts.createSourceFile(emittedPath, combinedText, ts.ScriptTarget.Latest, true);
 	const enumTypes = new Map();
 	const prismaSource = program.getSourceFile(path.join(apiRoot, "src/generated/prisma/index.d.ts"));
 	const checker = program.getTypeChecker();
@@ -210,7 +270,7 @@ async function generateTypes() {
 	);
 
 	if (existsSync(biomePath)) {
-		const biomeResult = spawnSync(biomePath, ["format", "--write", outputPath], {
+		const biomeResult = spawnSync(biomePath, ["format", "--write", "--no-errors-on-unmatched", outputPath], {
 			cwd: callerRoot,
 			stdio: "inherit",
 		});
