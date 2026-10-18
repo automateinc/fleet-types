@@ -3,7 +3,6 @@ import type { StructuredJson } from "./structured-json";
 
 export interface IStructuredContent {
 	id: string;
-	teamId: string;
 	createdAt: string;
 	updatedAt: string | null;
 	key: string;
