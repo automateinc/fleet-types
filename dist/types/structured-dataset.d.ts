@@ -7,5 +7,7 @@ export interface IStructuredDataset {
 	createdAt: string;
 	updatedAt: string;
 	lastObservedAt: string | null;
+	lastOperationKey: string | null;
+	lastOperationHash: string | null;
 	committedAt: string | null;
 }

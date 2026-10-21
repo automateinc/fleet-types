@@ -1,11 +1,11 @@
-import type { StructuredJson } from "./structured-json";
+import type { StructuredQueryDefinition } from "./structured-query-definition";
 
 export interface IStructuredQuery {
 	id: string;
 	regionId: string;
 	key: string;
 	name: string;
-	definition: StructuredJson;
+	definition: StructuredQueryDefinition;
 	createdAt: string;
 	updatedAt: string;
 }

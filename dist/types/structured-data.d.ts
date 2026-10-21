@@ -9,6 +9,7 @@ export interface IStructuredData {
 	data: Record<string, StructuredJson>;
 	rawData: StructuredJson;
 	deletedAt: string | null;
+	contentHash: string;
 	revision: number;
 	createdAt: string;
 	updatedAt: string;
