@@ -128,6 +128,7 @@ export type StructuredViewNode = { visibleWhen?: StructuredViewCondition; size?:
 				columns: StructuredViewColumn[];
 			};
 			detail?: {
+				history?: { field: string; valueField: string };
 				mode?: "drawer" | "expand";
 				columnTitle?: string;
 				columnWidth?: number;
