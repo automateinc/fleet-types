@@ -1,6 +1,17 @@
 type ClientFieldBase = {
 	field: string;
-	fieldType: "STRING" | "NUMBER" | "DATE" | "BOOLEAN" | "DATETIME" | "TIME";
+	fieldType:
+		| "STRING"
+		| "NUMBER"
+		| "DATE"
+		| "BOOLEAN"
+		| "DATETIME"
+		| "TIME"
+		| "UPLOAD"
+		| "RELATION"
+		| "SINGLE_SELECT"
+		| "JSON"
+		| "EMPTY";
 	defaultValue?: any;
 };
 
@@ -29,8 +40,6 @@ export interface IClientField {
 	categoryId: string;
 
 	requestCategoryFieldId?: string;
-
-	generationOnly: boolean;
 
 	type: "METADATA" | "REQUEST" | "CLIENT";
 	config?: ClientFieldInput;

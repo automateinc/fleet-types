@@ -6,6 +6,5 @@ export interface ISchedule {
 	dayOfWeek: "SATURDAY" | "SUNDAY" | "MONDAY" | "TUESDAY" | "WEDNESDAY" | "THURSDAY" | "FRIDAY";
 	shiftId?: string;
 
-	employeeId?: string;
 	metadata?: any;
 }

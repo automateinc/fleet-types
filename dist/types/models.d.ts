@@ -39,7 +39,6 @@ export type IModel =
 	| "contact"
 	| "signingMode"
 	| "restriction"
-	| "ceiling"
 	| "tag"
 	| "client"
 	| "clientChecklistDefinition"
