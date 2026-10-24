@@ -16,4 +16,5 @@ export interface IStructuredContent {
 	navigationId: string | null;
 	urlOverride: string | null;
 	previousUrls: string[];
+	presentationForId: string | null;
 }

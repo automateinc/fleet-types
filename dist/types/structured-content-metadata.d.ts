@@ -1,7 +1,4 @@
-import type { StructuredContentPlacement } from "./structured-content-placement";
 import type { StructuredJson } from "./structured-json";
 
-export type StructuredContentMetadata = { placement?: StructuredContentPlacement } & Record<
-	string,
-	StructuredJson | undefined
->;
+/** Additional annotations only. Placement and presentation settings are separate records. */
+export type StructuredContentMetadata = Record<string, StructuredJson | undefined>;

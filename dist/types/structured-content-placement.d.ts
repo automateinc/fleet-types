@@ -1,3 +1,4 @@
+/** Placement response shape; the persisted model is IStructuredContentPlacement. */
 export interface StructuredContentPlacement {
 	type: "PAGE" | "TAB" | "SECTION" | "LAYOUT";
 	area?: string;
