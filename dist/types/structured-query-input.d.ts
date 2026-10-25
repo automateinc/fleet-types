@@ -4,7 +4,7 @@ import type { StructuredDataWhere } from "./structured-data-where";
 import type { StructuredQueryParameterValue } from "./structured-query-parameter-value";
 
 export interface StructuredQueryInput {
-	history?: { field: string; value: string | number | boolean };
+	history?: { field: string; value: string | number | boolean; recordKey?: string };
 	aggregate?: {
 		groupBy: string[];
 		metrics: StructuredAggregateMetric[];
