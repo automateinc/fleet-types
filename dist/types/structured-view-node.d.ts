@@ -121,13 +121,18 @@ export type StructuredViewNode = { visibleWhen?: StructuredViewCondition; size?:
 			showSizeChanger?: boolean | "auto";
 			showTotal?: boolean;
 			dateColumns?: {
-				fromParameter: string;
-				days: number;
+				fromParameter?: string;
+				days?: number;
+				rangeParameter?: string;
+				display?: "cards" | "plain";
+				headerFormat?: string;
+				width?: number;
 				field: string;
 				dateField: string;
 				columns: StructuredViewColumn[];
 			};
 			detail?: {
+				visibleWhen?: StructuredViewCondition;
 				history?: { field: string; valueField: string };
 				mode?: "drawer" | "expand";
 				columnTitle?: string;
