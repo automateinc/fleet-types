@@ -3,7 +3,9 @@ export interface IEmployeeMonthlyPayroll {
 	updatedAt: string;
 	createdAt: string;
 
-	status: "PENDING" | "APPROVED" | "PROCESSED";
+	payrollConfigVersionId?: string | null;
+	payingCompanyId?: string | null;
+	status: "PENDING" | "HOLD" | "APPROVED" | "PROCESSED" | "ARCHIVED";
 
 	metadata?: any;
 	payroll: {

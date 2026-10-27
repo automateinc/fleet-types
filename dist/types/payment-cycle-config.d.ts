@@ -3,6 +3,6 @@ export interface IPaymentCycleConfig {
 	createdAt: Date;
 	from: number;
 	to: number;
-	companyId: string;
+	regionId: string;
 	metadata?: any;
 }
