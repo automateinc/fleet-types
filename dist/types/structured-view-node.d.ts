@@ -133,7 +133,8 @@ export type StructuredViewNode = { visibleWhen?: StructuredViewCondition; size?:
 			};
 			detail?: {
 				visibleWhen?: StructuredViewCondition;
-				history?: { field: string; valueField: string };
+				/** Omit datasetKeys to show changes from all sources used by the query. */
+				history?: { field: string; valueField: string; datasetKeys?: string[] };
 				mode?: "drawer" | "expand";
 				columnTitle?: string;
 				columnWidth?: number;
