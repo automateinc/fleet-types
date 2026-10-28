@@ -1,6 +1,6 @@
 export interface IStructuredContentLayoutVisibilityRule {
 	id: string;
-	contentId: string;
+	versionId: string;
 	nodeId: string;
 	entryKey: string;
 	path: string;

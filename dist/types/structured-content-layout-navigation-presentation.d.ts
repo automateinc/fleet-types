@@ -2,7 +2,7 @@ import type { StructuredContentNavigationStyle } from "./structured-content-navi
 
 export interface IStructuredContentLayoutNavigationPresentation {
 	id: string;
-	contentId: string;
+	versionId: string;
 	nodeId: string;
 	style: StructuredContentNavigationStyle;
 	columns: number;

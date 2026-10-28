@@ -1,6 +1,6 @@
 export interface IStructuredContentLayoutNavigationIcon {
 	id: string;
-	contentId: string;
+	versionId: string;
 	nodeId: string;
 	key: string;
 	icon: string;

@@ -11,6 +11,7 @@ export interface StructuredQueryBinding {
 	parameterBindings?: Record<string, string>;
 	filters?: StructuredDataFilter[];
 	queryKey: string;
+	queryVersion?: number;
 	output: string;
 	parameters: Record<string, StructuredQueryParameterValue>;
 }

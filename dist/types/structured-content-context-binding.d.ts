@@ -1,6 +1,6 @@
 export interface IStructuredContentContextBinding {
 	id: string;
-	contentId: string;
+	versionId: string;
 	key: string;
 	source: string;
 }
