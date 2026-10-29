@@ -10,6 +10,7 @@ export interface StructuredViewColumn {
 	showAvatar?: boolean;
 	linkTarget?: "_self" | "_blank";
 	width?: number;
+	ellipsis?: boolean;
 	fixed?: "left" | "right";
 	align?: "left" | "center" | "right";
 

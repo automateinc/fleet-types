@@ -5,6 +5,10 @@ import type { StructuredViewCondition, StructuredViewValue } from "./structured-
 export interface StructuredPresentation {
 	whiteSpace?: "normal" | "pre-line";
 	buttonType?: "default" | "link" | "text" | "primary";
+	countButton?: {
+		activeWhen: StructuredViewCondition;
+		colors: Record<"light" | "dark", { primary: string; hover: string; text: string; textHover: string }>;
+	};
 	fontSize?: number;
 	icon?: "location" | "check-circle" | "warning-circle" | "close-circle" | "calendar";
 	className?: string;
