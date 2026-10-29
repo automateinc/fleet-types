@@ -11,6 +11,7 @@ export type ILeave = {
 
 	duration: number;
 	status: "ACTIVE" | "UPCOMING" | "ENDED";
+	approvalStatus: "PENDING" | "APPROVED" | "REJECTED";
 
 	notes?: string;
 	metadata?: any;
