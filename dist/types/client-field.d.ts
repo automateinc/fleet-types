@@ -9,7 +9,7 @@ type ClientFieldBase = {
 		| "TIME"
 		| "UPLOAD"
 		| "RELATION"
-		| "SINGLE_SELECT"
+		| "SELECT"
 		| "JSON"
 		| "EMPTY";
 	defaultValue?: any;

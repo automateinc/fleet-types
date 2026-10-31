@@ -24,7 +24,7 @@ export interface IClientRequestCategoryField {
 		| "TIME"
 		| "UPLOAD"
 		| "RELATION"
-		| "SINGLE_SELECT"
+		| "SELECT"
 		| "RELATION";
 
 	metadata?: any;
