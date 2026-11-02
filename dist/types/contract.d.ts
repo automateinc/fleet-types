@@ -1,6 +1,5 @@
 export interface IContract {
 	basicSalary: number;
-	companyId: string;
 	createdAt: string;
 	deletedAt?: string;
 	id: string;
