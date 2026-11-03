@@ -6,7 +6,6 @@ export interface IEmployeeGroup {
 
 	title: string;
 	canBeScheduled: boolean;
-	payrollDisputeCutoffDays: number;
 
 	regionId: string;
 	metadata?: any;
