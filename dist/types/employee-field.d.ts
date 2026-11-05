@@ -1,13 +1,3 @@
-export enum EmployeeFieldRecruitmentGroup {
-	PERSONAL = "personalInformation",
-	EMPLOYMENT = "employmentInformation",
-	PASSPORT = "passportInformation",
-	NATIONAL_CARD = "nationalCardInformation",
-	VISA = "visaInformation",
-	MEDICAL = "medicalInformation",
-	OTHER = "otherInformation",
-}
-
 type EmployeeFieldBase = {
 	field: string;
 	fieldType: "STRING" | "NUMBER" | "DATE" | "BOOLEAN" | "DATETIME" | "TIME";
@@ -21,11 +11,12 @@ type EmployeeFieldRequest = {
 };
 
 type EmployeeFieldRecruitment = {
-	recruitmentGroup: EmployeeFieldRecruitmentGroup;
+	path?: string[];
 };
 
 export type EmployeeFieldRequestInput = EmployeeFieldBase & EmployeeFieldRequest;
-export type EmployeeFieldRecruitmentInput = EmployeeFieldBase & EmployeeFieldRecruitment;
+export type EmployeeFieldRecruitmentInput = Pick<EmployeeFieldBase, "fieldType" | "defaultValue"> &
+	EmployeeFieldRecruitment;
 export type EmployeeFieldMetadataInput = Pick<EmployeeFieldBase, "fieldType" | "defaultValue"> & {
 	path: string[];
 };
@@ -33,6 +24,7 @@ export type EmployeeFieldMetadataInput = Pick<EmployeeFieldBase, "fieldType" | "
 type EmployeeFieldInput = EmployeeFieldRequestInput | EmployeeFieldRecruitmentInput | EmployeeFieldMetadataInput;
 
 export interface IEmployeeField {
+	recruitmentFieldId?: string | null;
 	id: string;
 	createdAt: string;
 	updatedAt?: string;
@@ -42,7 +34,7 @@ export interface IEmployeeField {
 
 	name: string;
 	category?: string;
-	type: "METADATA" | "REQUEST" | "RECRUITMENT";
+	type: "METADATA" | "REQUEST" | "RECRUITMENT" | "EMPLOYEE";
 	config?: EmployeeFieldInput;
 
 	fallbackId?: string;

@@ -12,7 +12,6 @@ export interface IScheduleAssignmentPolicy {
 
 	contractDailyHours?: number | null;
 	gender?: IGender | null;
-	retired?: boolean | null;
 
 	regularHoursLimit?: number | null;
 	maximumDailyHours: number;
