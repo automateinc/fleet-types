@@ -10,7 +10,7 @@ export interface IRecruitmentPersonalInformation {
 	middleNames?: string;
 	fatherName?: string;
 	lastName?: string;
-	gender?: "MALE" | "FEMALE";
+	gender?: string | null;
 	nationality?: string;
 	nationalNumber: string;
 	dateOfBirth?: string;

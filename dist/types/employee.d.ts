@@ -11,7 +11,7 @@ export interface IEmployee {
 	dateOfBirth: string;
 	firstName: string;
 	fullName: string;
-	gender: string;
+	gender: string | null;
 	lastName: string;
 	middleNames: string;
 	name: string;

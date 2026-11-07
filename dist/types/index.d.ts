@@ -133,7 +133,6 @@ export * from "./employee-monthly-pay-review-field";
 export * from "./employee-monthly-payroll";
 export * from "./employee-status";
 export * from "./file";
-export * from "./gender";
 export * from "./leave";
 export * from "./leave-event";
 export * from "./leave-type";
