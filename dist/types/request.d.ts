@@ -14,7 +14,6 @@ export interface IRequest {
 	values: IRequestValue[];
 	verifiedById?: string;
 	rejectedById?: string;
-	linkedRequestId?: string;
 	withdrawnAt?: string;
 	folderKey?: string | null;
 	archivedAt?: string | null;
