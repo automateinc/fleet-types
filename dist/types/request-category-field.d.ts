@@ -2,6 +2,7 @@ import { IModel } from "./models";
 
 export interface IRequestCategoryField {
 	name: string;
+	hidden?: boolean;
 	required: boolean;
 	type: "STRING" | "NUMBER" | "BOOLEAN" | "DATE" | "DATETIME" | "TIME" | "UPLOAD" | "RELATION" | "SELECT" | "SIGNATURE";
 	model?: IModel;

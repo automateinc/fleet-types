@@ -1,6 +1,7 @@
 export interface IAssetCategoryField {
 	name: string;
 	order: number;
+	hidden?: boolean;
 	required: boolean;
 	type: "STRING" | "NUMBER" | "BOOLEAN" | "DATE" | "DATETIME" | "TIME" | "UPLOAD" | "RELATION" | "SELECT" | "SIGNATURE";
 	model?: "contract" | "company" | "contact";
