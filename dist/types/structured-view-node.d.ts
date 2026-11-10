@@ -75,6 +75,7 @@ export type StructuredViewNode = { visibleWhen?: StructuredViewCondition; size?:
 	| {
 			id: string;
 			type: "QUERY_TABLE";
+			infiniteScroll?: boolean;
 			rowGroup?: string;
 			binding: string;
 			columns: StructuredViewColumn[];
