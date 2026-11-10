@@ -339,8 +339,6 @@ export * from "./todo-time-entry";
 export * from "./todo-view";
 export * from "./todo-view-type";
 export * from "./todo-watcher";
-export * from "./unit";
-export * from "./unit-room";
 export * from "./user";
 export * from "./user-attendance";
 export * from "./user-attendance-check-in-location";
