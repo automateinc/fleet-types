@@ -1,9 +1,9 @@
 export interface IBunk {
 	id: string;
-	createdAt: Date;
-	updatedAt: Date;
-	name: string;
-	roomId: string;
-	employeeId: string;
+	createdAt: string;
+	updatedAt: string | null;
+	buildingId: string;
+	addressFlatNumber: string | null;
+	employeeId: string | null;
 	metadata?: any;
 }

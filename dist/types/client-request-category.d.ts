@@ -4,7 +4,6 @@ export interface IClientRequestCategory {
 	updatedAt: Date;
 
 	name: string;
-	systemReserved: boolean;
 	weight: number;
 	hidden: boolean;
 	infoType: "INFO" | "DANGER" | "WARNING";

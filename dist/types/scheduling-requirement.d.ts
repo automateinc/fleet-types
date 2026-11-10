@@ -1,6 +1,5 @@
 import type { IEmployeeGroup } from "./employee-group";
 import type { IEmployeeLabel } from "./employee-label";
-import { IGender } from "./gender";
 import type { IRole } from "./role";
 
 export interface ISchedulingRequirement {
@@ -9,7 +8,7 @@ export interface ISchedulingRequirement {
 	updatedAt?: string;
 
 	strength: "HARD" | "SOFT";
-	gender?: IGender | null;
+	gender?: string | null;
 
 	clientId?: string | null;
 	positionVersionId?: string | null;
@@ -25,7 +24,7 @@ export interface ISchedulingRequirementSelection {
 	roleIds: string[];
 	employeeGroupIds: string[];
 	labelIds: string[];
-	gender?: IGender | null;
+	gender?: string | null;
 }
 
 export interface ISchedulingRequirementsInput {

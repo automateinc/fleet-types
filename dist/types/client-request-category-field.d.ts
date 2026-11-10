@@ -8,6 +8,7 @@ export interface IClientRequestCategoryField {
 
 	categoryId: string;
 
+	hidden?: boolean;
 	required: boolean;
 	order: number;
 
@@ -24,7 +25,7 @@ export interface IClientRequestCategoryField {
 		| "TIME"
 		| "UPLOAD"
 		| "RELATION"
-		| "SINGLE_SELECT"
+		| "SELECT"
 		| "RELATION";
 
 	metadata?: any;

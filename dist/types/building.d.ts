@@ -11,5 +11,6 @@ export interface IBuilding {
 	status: "ACTIVE" | "INACTIVE";
 	isInitial: boolean;
 	companyId: string;
+	vendorId: string | null;
 	metadata?: any;
 }

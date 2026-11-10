@@ -6,7 +6,7 @@ export interface IRecruitment {
 	status: "DRAFT" | "VERIFIED" | "PENDING" | "CHANGES_NEEDED" | "RECRUITED" | "REJECTED";
 	regionId: string;
 	createdById: string;
-	folderKey: string;
+	folderKey?: string | null;
 
 	recruitedAt?: string;
 	recruitedById?: string;

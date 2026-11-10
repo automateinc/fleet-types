@@ -5,7 +5,6 @@ export interface IContractSnapshot {
 
 	contractId: string;
 	type: "FULL_TIME" | "PART_TIME" | "FREELANCE";
-	companyId?: string;
 	regionId: string;
 	roleId: string;
 

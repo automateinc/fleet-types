@@ -3,14 +3,14 @@ export interface IRecruitmentPersonalInformation {
 	createdAt: string;
 	updatedAt: string;
 
-	employeeGroupId: string;
+	employeeGroupId?: string | null;
 
 	educationLevel?: string;
 	firstName?: string;
 	middleNames?: string;
 	fatherName?: string;
 	lastName?: string;
-	gender?: "MALE" | "FEMALE";
+	gender?: string | null;
 	nationality?: string;
 	nationalNumber: string;
 	dateOfBirth?: string;

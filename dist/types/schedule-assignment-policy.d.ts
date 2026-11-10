@@ -1,5 +1,4 @@
 import type { IDayOfWeek } from "./day-of-week";
-import type { IGender } from "./gender";
 
 export interface IScheduleAssignmentPolicy {
 	id: string;
@@ -11,8 +10,7 @@ export interface IScheduleAssignmentPolicy {
 	priority: number;
 
 	contractDailyHours?: number | null;
-	gender?: IGender | null;
-	retired?: boolean | null;
+	gender?: string | null;
 
 	regularHoursLimit?: number | null;
 	maximumDailyHours: number;

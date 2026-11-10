@@ -4,7 +4,6 @@ export interface IClientRequestType {
 	updatedAt: Date;
 
 	name: string;
-	systemReserved: boolean;
 	weight: number;
 	visible: boolean;
 

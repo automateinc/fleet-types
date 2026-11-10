@@ -2,20 +2,13 @@ import { IModel } from "./models";
 
 export interface IRequestCategoryField {
 	name: string;
+	hidden?: boolean;
 	required: boolean;
-	type:
-		| "STRING"
-		| "NUMBER"
-		| "BOOLEAN"
-		| "DATE"
-		| "DATETIME"
-		| "TIME"
-		| "UPLOAD"
-		| "RELATION"
-		| "SINGLE_SELECT"
-		| "SIGNATURE";
+	type: "STRING" | "NUMBER" | "BOOLEAN" | "DATE" | "DATETIME" | "TIME" | "UPLOAD" | "RELATION" | "SELECT" | "SIGNATURE";
 	model?: IModel;
 	config: {
+		cardinality?: "SINGLE" | "MULTI";
+		multiple?: boolean;
 		options: any[];
 		optionsUrl: string;
 		uploadCategory?: string;
