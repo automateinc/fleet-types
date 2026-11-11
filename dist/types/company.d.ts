@@ -1,4 +1,5 @@
 export interface ICompany {
+	address?: Record<string, string | boolean | null> | null;
 	createdAt: Date;
 	id: string;
 	paymentCycleConfigId?: string | null;
