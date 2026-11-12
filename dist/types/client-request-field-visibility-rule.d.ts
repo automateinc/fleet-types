@@ -4,7 +4,21 @@ export interface IClientRequestFieldVisibilityRule {
 	id: string;
 	action: "SHOW" | "HIDE";
 	conditionJoin?: "AND" | "OR" | null;
-	operator: "EQUALS" | "NOT_EQUALS" | "CONTAINS" | "NOT_CONTAINS" | "IS_EMPTY" | "IS_NOT_EMPTY";
+	operator:
+		| "EQUALS"
+		| "NOT_EQUALS"
+		| "CONTAINS"
+		| "NOT_CONTAINS"
+		| "IS_EMPTY"
+		| "IS_NOT_EMPTY"
+		| "ANY_OF"
+		| "NONE_OF"
+		| "ONE_OF"
+		| "GREATER_THAN"
+		| "GREATER_THAN_EQUALS"
+		| "LESS_THAN"
+		| "LESS_THAN_EQUALS"
+		| "BETWEEN";
 	sourceFieldId: string;
 	targetFieldId: string;
 	order: number;
