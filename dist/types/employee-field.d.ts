@@ -5,7 +5,7 @@ type EmployeeFieldBase = {
 };
 
 type EmployeeFieldRequest = {
-	mode: "LATEST" | "ALL" | "SUM" | "COUNT" | "EXISTENCE";
+	mode: "LATEST" | "FIRST" | "ALL" | "SUM" | "COUNT" | "EXISTENCE";
 	requestType: string;
 	requestCategory: string;
 };
